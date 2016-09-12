@@ -12,5 +12,7 @@ Prepare the local site:
 
 * xampp / wamp
 * mysql (optional phpmyadmin)
-* generate a database with the name 'ecb' 
-* `./wp-config.php`
+* generate a database with the name `ecb`
+* modify the follow file `./wp-config.php`
+  * DB_USER: [your_loca_db_user] 
+  * DB_PASSWORD: [your_local_db_password] 

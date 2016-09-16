@@ -25,7 +25,7 @@
 		<?php
 			/* translators: %s: Name of current post */
 			the_content( sprintf(
-				__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'twentysixteen' ),
+				__( 'Read More<span class="screen-reader-text"> "%s"</span>', 'twentysixteen' ),
 				get_the_title()
 			) );
 
@@ -38,8 +38,9 @@
 				'separator'   => '<span class="screen-reader-text">, </span>',
 			) );
 		?>
+           
 	</div><!-- .entry-content -->
-
+        
 	<footer class="entry-footer">
 		<?php twentysixteen_entry_meta(); ?>
 		<?php

@@ -18,8 +18,7 @@ get_header();
 
 <div id="primary" class="">
     <main id="main" class="site-main" role="main">
-        <?php get_navigation(); ?>
-
+        
         <div>
             <h1>Insertar pilares (estatico)</h1>
         </div>
@@ -29,21 +28,24 @@ get_header();
                 <header>
                     <h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
                 </header>
+                
             <?php endif; ?>
 
             <?php
             // Start the loop.
-            while (have_posts()) : the_post();
+            $the_query = new WP_Query('blog=wordpress&showposts=3');
+            while ($the_query->have_posts()) : $the_query->the_post();
 
                 /*
                  * Include the Post-Format-specific template for the content.
                  * If you want to override this in a child theme, then include a file
                  * called content-___.php (where ___ is the Post Format name) and that will be used instead.
                  */
-                get_template_part('template-parts/content', get_post_format());
-
+                get_template_part('template-parts/content', get_post_format());?>
+            <?php
             // End the loop.
             endwhile;
+             
 
             // Previous/next page navigation.
             the_posts_pagination(array(
@@ -59,15 +61,7 @@ get_header();
         endif;
         ?>
         <div>
-            <h1>llamar a Blog estilo 1</h1>
-        </div>
-        <div>
-            <h1>llamar a Blog estilo 2</h1>
-        </div>
-        <div>
-            <h1>llamar a Blog estilo 3</h1>
-        </div>
-        <div>
+            
             <?php get_block(); ?>
         </div>
     </main><!-- .site-main -->

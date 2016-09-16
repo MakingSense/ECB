@@ -1,4 +1,7 @@
 <?php
+/*
+Template Name: StyleBlog
+*/
 /**
  * The blog template file
  *
@@ -15,49 +18,60 @@
  */
 
 get_header(); ?>
+         
+            <div id="blog" class="content-area">
+            <?php get_navigation(); ?>
+                <h1>ESTAMOS EN EL BLOG</h1>
+                <main id="main" class="site-main" role="main">
 
-	<div id="blog" class="content-area">
-		<main id="main" class="site-main" role="main">
-                    <h1>ESTAMOS EN EL BLOG</h1>
-		<?php if ( have_posts() ) : ?>
 
-			<?php if ( is_home() && ! is_front_page() ) : ?>
-				<header>
-					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-				</header>
-			<?php endif; ?>
 
-			<?php
-			// Start the loop.
-			while ( have_posts() ) : the_post();
+                    <ul>
 
-				/*
-				 * Include the Post-Format-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', get_post_format() );
+                        <?php $the_query = new WP_Query('blog=wordpress&showposts=1'); ?>
+            <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
 
-			// End the loop.
-			endwhile;
+                                <li>
 
-			// Previous/next page navigation.
-			the_posts_pagination( array(
-				'prev_text'          => __( 'Previous page', 'twentysixteen' ),
-				'next_text'          => __( 'Next page', 'twentysixteen' ),
-				'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'twentysixteen' ) . ' </span>',
-			) );
+                                    <div class="dslc-blog-post-title">
+                                        <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+                                    </div><!-- .dslc-blog-post-title -->
+                                    <div class="dslc-blog-post-meta-date">
+                <?php the_time(get_option('date_format')); ?>
+                                    </div><!-- .dslc-blog-post-meta-date -->
+                                    <div class="dslc-blog-post-meta-author">
+                                        <span class="dslc-blog-post-meta-avatar">
+                                    <?php echo get_the_author_meta(); ?>
+                                        </span>
+                <?php _e('By', 'live-composer-page-builder'); ?> <?php the_author_posts_link(); ?>
+                                    </div><!-- .dslc-blog-post-meta-author -->
 
-		// If no content, include the "No posts found" template.
-		else :
-			get_template_part( 'template-parts/content', 'none' );
+                                    <div class="dslc-blog-post-excerpt">
 
-		endif;
-		?>
+                                    <?php
+                                    the_excerpt('');
+                                    ?>
 
-		</main><!-- .site-main -->
-	</div><!-- .content-area -->
+                                    </div><!-- .dslc-blog-post-excerpt -->
 
-<?php get_sidebar(); ?>
+                                    <!--                                         <div class="dslc-blog-post-read-more">
+                                                                                 <a href="<?php the_permalink(); ?>">
+
+                                                                                         <span class="dslc-icon dslc-icon-<?php echo $options['button_icon_id']; ?>">read more</span>
+
+                <?php echo $options['button_text']; ?>
+                                                                                 </a>
+                                                                             </div> .dslc-blog-post-read-more -->
+
+
+                                </li>
+
+            <?php endwhile; ?>
+
+                    </ul>
+                </main><!-- .site-main -->        
+            </div><!-- .content-area -->
+
+
 <?php get_footer(); ?>
 

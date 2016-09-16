@@ -153,7 +153,7 @@ add_action( 'after_setup_theme', 'twentysixteen_content_width', 0 );
  */
 function twentysixteen_widgets_init() {
 	register_sidebar( array(
-		'name'          => __( 'Sidebar (blog)', 'twentysixteen' ),
+		'name'          => __( 'Sidebar', 'twentysixteen' ),
 		'id'            => 'sidebar-1',
 		'description'   => __( 'Add widgets here to appear in your sidebar.', 'twentysixteen' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
@@ -182,7 +182,7 @@ function twentysixteen_widgets_init() {
 		'after_title'   => '</h2>',
 	) );
         register_sidebar( array(
-		'name'          => __( 'Navigation-homepage', 'twentysixteen' ),
+		'name'          => __( 'Navigation-blog', 'twentysixteen' ),
 		'id'            => 'navigation',
 		'description'   => __( 'Appears at the bottom of the content on posts and pages.', 'twentysixteen' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',

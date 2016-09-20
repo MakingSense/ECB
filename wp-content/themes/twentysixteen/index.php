@@ -39,6 +39,18 @@ get_header();
             
                 $the_query->the_post();
                 get_template_part('template-parts/content', get_post_format());
+                
+                
+                $custom_fields = get_post_custom();
+                ?>
+                <ul>
+                     <?php if( isset($custom_fields['ecb_extraordinary_person']) ) { ?>
+                     <li>El input fue seleccionado</li>
+                     <?php } ?>
+
+                </ul>
+                <?php
+                
                 $media->the_post();
                 get_template_part('template-parts/content-media', get_post_format());
                 $articles->the_post();

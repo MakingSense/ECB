@@ -28,6 +28,95 @@
  * Twenty Sixteen only works in WordPress 4.4 or later.
  */
 /**
+ * Function meta for custon fields in home page.
+ */
+add_action( 'init', 'ecb_register_meta_fields' );
+function ecb_register_meta_fields() {
+
+  register_meta( 'post',
+               'ecb_extraordinary_person',
+               [
+                 'description'      => _x( 'Are you a extraordinary person?', 'meta description', 'ecb-textdomain' ),
+                 'single'           => true,
+                 'sanitize_callback' => 'ecb_sanitize_extraordinary_person',
+                 'auth_callback'     => 'ecb_custom_fields_auth_callback'
+               ]
+  );
+  
+}
+
+function ecb_sanitize_extraordinary_person( $value ) {
+
+  // Si hay algún valor, el checbox fue seleccionado
+  if( ! empty( $value ) ) {
+    return 1;
+  } else {
+    return 0;
+  }
+
+}
+
+function ecb_custom_fields_auth_callback( $allowed, $meta_key, $post_id, $user_id, $cap, $caps ) {
+  
+  if( 'post' == get_post_type( $post_id ) && current_user_can( 'edit_post', $post_id ) ) {
+    $allowed = true;
+  } else {
+    $allowed = false;
+  }
+
+  return $allowed;
+
+}
+add_action( 'add_meta_boxes', 'ecb_meta_boxes' );
+function ecb_meta_boxes() {
+
+    add_meta_box( 'ecb-meta-box',
+            __( 'Mi primer Meta Box', 'ecb_textdomain' ),
+            'ecb_meta_box_callback',
+            'recipe' );
+    add_meta_box( 'ecb-meta-box', 
+            __( 'Mi primer Meta Box', 'ecb_textdomain' ),
+            'ecb_meta_box_callback',
+            'post' );
+}
+
+function ecb_meta_box_callback() {
+     // El nonce es opcional pero recomendable. Vea http://codex.wordpress.org/Function_Reference/wp_nonce_field
+     wp_nonce_field( 'ecb_meta_box', 'ecb_meta_box_noncename' );
+    
+     // Obtenermos los meta data actuales para rellenar los custom fields
+     // en caso de que ya tenga valores
+     $post_meta = get_post_custom( $post->ID );
+    // La función checked() es similar a
+    // if ( $current_value == "un valor") { echo ' checked="checked"' ; }
+    $current_value = get_post_meta( $post->ID, 'ecb_extraordinary_person', true );
+    ?>
+    <p>
+        <input type="checkbox" name="ecb_extraordinary_person" id="ecb_extraordinary_person" value="1" <?php checked( $current_value, 1 ); ?>>
+        <label class="label" for="ecb_extraordinary_person"><?php  _e( 'Soy extraordinario', 'ecb_textdomain' ); ?></label>
+   </p>
+   <?php
+}
+
+add_action( 'save_post', 'ecb_save_custom_fields', 10, 2 );
+function ecb_save_custom_fields( $post_id, $post ){
+    
+    // Primero, comprobamos el nonce como medida de segurida
+    if ( ! isset( $_POST['ecb_meta_box_noncename'] ) || ! wp_verify_nonce( $_POST['ecb_meta_box_noncename'], 'ecb_meta_box' ) ) {
+        return;
+    }
+    // En nuestro ejemplo, solo el valor 1 es válido
+    if( isset( $_POST['ecb_extraordinary_person'] ) && $_POST['ecb_extraordinary_person'] == "1" ) {
+        update_post_meta( $post_id, 'ecb_extraordinary_person', $_POST['ecb_extraordinary_person'] );
+    } else {
+        // Opcional
+        // $_POST['ecb_extraordinary_person'] no tiene valor establecido
+        // o tiene un valor no válido (diferente de "1" en este ejemplo)
+        delete_post_meta( $post_id, 'ecb_extraordinary_person' );
+    }
+}
+
+/**
  * New function for Custom post type Media en backend.
  */
 
@@ -52,7 +141,7 @@ function my_custom_post_media() {
     'description'   => 'Published Post in Media Page the Ecocity Builder',
     'public'        => true,
     'menu_position' => 5,
-    'supports'      => array( 'title', 'editor', 'thumbnail', 'excerpt', 'comments' ),
+    'supports'      => array( 'title', 'editor', 'thumbnail', 'excerpt', 'comments', 'custom-fields', 'author', 'trackbacks' ),
     'has_archive'   => true,
   );
   register_post_type( 'media', $args ); 
@@ -144,7 +233,7 @@ function my_custom_post_article() {
     'description'   => 'Published Post in Article Page the Ecocity Builder',
     'public'        => true,
     'menu_position' => 6,
-    'supports'      => array( 'title', 'editor', 'thumbnail', 'excerpt', 'comments' ),
+    'supports'      => array( 'title', 'editor', 'thumbnail', 'excerpt', 'comments', 'custom-fields', 'author', 'trackbacks' ),
     'has_archive'   => true,
   );
   register_post_type( 'article', $args ); 

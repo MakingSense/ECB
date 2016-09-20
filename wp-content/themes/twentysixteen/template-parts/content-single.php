@@ -11,6 +11,7 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+                <?php the_date(); ?>
 	</header><!-- .entry-header -->
 
 	<?php twentysixteen_excerpt(); ?>
@@ -37,7 +38,6 @@
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">
-		<?php twentysixteen_entry_meta(); ?>
 		<?php
 			edit_post_link(
 				sprintf(

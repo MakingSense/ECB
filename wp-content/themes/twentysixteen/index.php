@@ -68,10 +68,7 @@ get_header();
 
         endif;
         ?>
-        <div>
-
-            <?php get_block(); ?>
-        </div>
+        
     </main><!-- .site-main -->
 </div><!-- .content-area -->
 <?php get_footer(); ?>

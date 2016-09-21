@@ -13,50 +13,65 @@
  * @subpackage Twenty_Sixteen
  * @since Twenty Sixteen 1.0
  */
+get_header();
+?>
 
-get_header(); ?>
+<div id="primary" class="">
+    <main id="main" class="site-main" role="main">
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+        <div>
+            <h1>Insertar pilares (estatico)</h1>
+        </div>
+        <?php if (have_posts()) : ?>
 
-		<?php if ( have_posts() ) : ?>
+            <?php if (is_home() && !is_front_page()) : ?>
+                <header>
+                    <h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
+                </header>
 
-			<?php if ( is_home() && ! is_front_page() ) : ?>
-				<header>
-					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-				</header>
-			<?php endif; ?>
+            <?php endif; ?>
 
-			<?php
-			// Start the loop.
-			while ( have_posts() ) : the_post();
+            <?php
+            // Start the loop.
+            $the_query = new WP_Query('blog=wordpress&showposts=1');
+            $media = new WP_Query('post_type=media&showposts=1');
+            $articles = new WP_Query('post_type=article&showposts=1');
 
-				/*
-				 * Include the Post-Format-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', get_post_format() );
+                $the_query->the_post();
+                get_template_part('template-parts/content', get_post_format());
 
-			// End the loop.
-			endwhile;
 
-			// Previous/next page navigation.
-			the_posts_pagination( array(
-				'prev_text'          => __( 'Previous page', 'twentysixteen' ),
-				'next_text'          => __( 'Next page', 'twentysixteen' ),
-				'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'twentysixteen' ) . ' </span>',
-			) );
+                $custom_fields = get_post_custom();
+                ?>
+                <ul>
+                     <?php if( isset($custom_fields['ecb_extraordinary_person']) ) { ?>
+                     <li>El input fue seleccionado</li>
+                     <?php } ?>
 
-		// If no content, include the "No posts found" template.
-		else :
-			get_template_part( 'template-parts/content', 'none' );
+                </ul>
+                <?php
 
-		endif;
-		?>
+                $media->the_post();
+                get_template_part('template-parts/content-media', get_post_format());
+                $articles->the_post();
+                get_template_part('template-parts/content-article', get_post_format());
+            // Previous/next page navigation.
+            the_posts_pagination(array(
+                'prev_text' => __('Previous page', 'twentysixteen'),
+                'next_text' => __('Next page', 'twentysixteen'),
+                'before_page_number' => '<span class="meta-nav screen-reader-text">' . __('Page', 'twentysixteen') . ' </span>',
+            ));
 
-		</main><!-- .site-main -->
-	</div><!-- .content-area -->
+        // If no content, include the "No posts found" template.
+        else :
+            get_template_part('template-parts/content', 'none');
 
-<?php get_sidebar(); ?>
+        endif;
+        ?>
+        <div>
+
+            <?php get_block(); ?>
+        </div>
+    </main><!-- .site-main -->
+</div><!-- .content-area -->
 <?php get_footer(); ?>

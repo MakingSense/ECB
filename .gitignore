@@ -58,6 +58,7 @@ wp-content/*
 !wp-content/plugins/
 !wp-content/themes/
 wp-content/themes/twentysixteen/msuif
+wp-content/themes/twentysixteen/ecb-ui
 
 # ignore these plugins
 wp-content/plugins/hello.php

@@ -122,50 +122,6 @@ function get_sidebar( $name = null ) {
 	locate_template( $templates, true );
 }
 
-function get_navigation( $name = null ) {
-	/**
-	 * Fires before the sidebar template file is loaded.
-	 *
-	 * The hook allows a specific sidebar template file to be used in place of the
-	 * default sidebar template file. If your file is called sidebar-new.php,
-	 * you would specify the filename in the hook as get_sidebar( 'new' ).
-	 *
-	 * @since 2.2.0
-	 * @since 2.8.0 $name parameter added.
-	 *
-	 * @param string $name Name of the specific sidebar file to use.
-	 */
-	do_action( 'get_navigation' );
-
-	$templates = array();
-
-	$templates[] = 'navigation.php';
-
-	locate_template( $templates, true );
-}
-
-
-function get_block( $name = null ) {
-	/**
-	 * Fires before the sidebar template file is loaded.
-	 *
-	 * The hook allows a specific sidebar template file to be used in place of the
-	 * default sidebar template file. If your file is called sidebar-new.php,
-	 * you would specify the filename in the hook as get_sidebar( 'new' ).
-	 *
-	 * @since 2.2.0
-	 * @since 2.8.0 $name parameter added.
-	 *
-	 * @param string $name Name of the specific sidebar file to use.
-	 */
-	do_action( 'get_block');
-
-	$templates = array();
-	
-	$templates[] = 'body-homepage.php';
-
-	locate_template( $templates, true );
-}
 /**
  * Load a template part into a template
  *

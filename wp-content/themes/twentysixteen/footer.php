@@ -10,50 +10,59 @@
  */
 ?>
 
-		</div><!-- .site-content -->
 
-		<footer id="colophon" class="site-footer" role="contentinfo">
-			<?php if ( has_nav_menu( 'primary' ) ) : ?>
-				<nav class="main-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Footer Primary Menu', 'twentysixteen' ); ?>">
-					<?php
-						wp_nav_menu( array(
-							'theme_location' => 'primary',
-							'menu_class'     => 'primary-menu',
-						 ) );
-					?>
-				</nav><!-- .main-navigation -->
-			<?php endif; ?>
+			</div> <!-- .content -->
+	 </main><!-- .section--home -->
 
-			<?php if ( has_nav_menu( 'social' ) ) : ?>
-				<nav class="social-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Footer Social Links Menu', 'twentysixteen' ); ?>">
-					<?php
-						wp_nav_menu( array(
-							'theme_location' => 'social',
-							'menu_class'     => 'social-links-menu',
-							'depth'          => 1,
-							'link_before'    => '<span class="screen-reader-text">',
-							'link_after'     => '</span>',
-						) );
-					?>
-				</nav><!-- .social-navigation -->
-			<?php endif; ?>
+	 <footer class="component--footer">
+	   <h2>Stay in Touch</h2>
+	   <p>Sign up to receive our monthly newsletter and the latest Ecocity news</p>
 
-			<div class="site-info">
-				<?php
-					/**
-					 * Fires before the twentysixteen footer text for footer customization.
-					 *
-					 * @since Twenty Sixteen 1.0
-					 */
-					do_action( 'twentysixteen_credits' );
-				?>
-				<span class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span>
-				<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'twentysixteen' ) ); ?>"><?php printf( __( 'Proudly powered by %s', 'twentysixteen' ), 'WordPress' ); ?></a>
-			</div><!-- .site-info -->
-		</footer><!-- .site-footer -->
-	</div><!-- .site-inner -->
-</div><!-- .site -->
+	   <div class="suscribe-container">
+	     <label>
+	       <input type="text" name="email" placeholder="Email">
+	     </label>
+	     <button class="suscribe-button">Suscribe</button>
+	     <span class="submit-message">Submit Message</span>
+	   </div>
 
-<?php wp_footer(); ?>
+	   <div class="mobile-only">
+			 <nav class="component--social-menu">
+			   <a class="menuitem" href="https://www.facebook.com/ecocitybuilders/">
+			     <span class="ms-icon icon-facebook-white-socialico"></span>
+			   </a>
+			   <a class="menuitem" href="https://twitter.com/ecocitybuilder">
+			     <span class="ms-icon icon-twitter-white-socialico"></span>
+			   </a>
+			   <a class="menuitem" href="https://www.instagram.com/ecocitybuilders/">
+			     <span class="ms-icon icon-linkedin-white-socialico"></span>
+			   </a>
+			 </nav>
+	   </div>
+
+	   <span class="contact-container">
+	     <span class="pipe">Ecociti Builders</span>
+	     <span class="pipe">399 15th Street, Suite 208</span>
+	     <span class="pipe">Oajland, CA 94612</span>
+	     <span>510-452-9522</span>
+	   </span>
+
+	   <hr>
+
+	   <div class="bottom-container">
+	     <span class="legal-container">
+	       <a class="pipe" href="#">Privacy Policy</a>
+	       <a class="pipe" href="#">Terms & Conditions</a>
+	       <span>© 2016 Ecocity Builders. All Rights Reserved.</span>
+	     </span>
+
+	     <div class="desktop-only">
+	       <!-- build:include ../includes/social/social.html --><!-- /build -->
+	     </div>
+	   </div>
+	 </footer>
+
+</div><!-- .main-wrapper  -->
+
 </body>
 </html>

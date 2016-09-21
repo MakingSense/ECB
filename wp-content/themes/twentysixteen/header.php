@@ -21,79 +21,119 @@
 	<?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?>>
-<div id="page" class="site">
-	<div class="site-inner">
-		<a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'twentysixteen' ); ?></a>
+<body>
+  <div class="main-wrapper home header-light">
+		<header class="component--header">
+			<div class="top-container desktop-only">
+				<div class="component--top-bar">
 
-		<header id="masthead" class="site-header" role="banner">
-			<div class="site-header-main">
-				<div class="site-branding">
-					<?php twentysixteen_the_custom_logo(); ?>
+				  <div class="top-menu-container">
+						<nav class="component--social-menu">
+						  <a class="menuitem" href="https://www.facebook.com/ecocitybuilders/">
+						    <span class="ms-icon icon-facebook-white-socialico"></span>
+						  </a>
+						  <a class="menuitem" href="https://twitter.com/ecocitybuilder">
+						    <span class="ms-icon icon-twitter-white-socialico"></span>
+						  </a>
+						  <a class="menuitem" href="https://www.instagram.com/ecocitybuilders/">
+						    <span class="ms-icon icon-linkedin-white-socialico"></span>
+						  </a>
+						</nav>
 
-					<?php if ( is_front_page() && is_home() ) : ?>
-						<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-					<?php else : ?>
-						<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-					<?php endif;
+				    <nav class="top-menu">
+				      <a class="menuitem" href="#">Blog</a>
+				      <a class="menuitem" href="#">Newsletter</a>
+				      <a class="menuitem" href="#">Contact</a>
+				      <a class="menuitem mobile-only" href="#"><button class="donate-button">DONATE</button></a>
+				    </nav>
+				  </div>
 
-					$description = get_bloginfo( 'description', 'display' );
-					if ( $description || is_customize_preview() ) : ?>
-						<p class="site-description"><?php echo $description; ?></p>
-					<?php endif; ?>
-				</div><!-- .site-branding -->
+				  <hr>
+				</div>
+			</div>
 
-				<?php if ( has_nav_menu( 'primary' ) || has_nav_menu( 'social' ) ) : ?>
-					<button id="menu-toggle" class="menu-toggle"><?php _e( 'Menu', 'twentysixteen' ); ?></button>
+			<div class="nav-container">
+				<figure>
+					<img class="desktop-only logo logo-white" src="<?php echo get_template_directory_uri(); ?>/img/logo-inline-white.svg" alt="Ecocity Builders" />
+					<img class="desktop-only logo logo-black" src="<?php echo get_template_directory_uri(); ?>/img/logo-inline-black.svg" alt="Ecocity Builders" />
+					<img class="mobile-only logo" src="<?php echo get_template_directory_uri(); ?>/img/logo-stacked-black.svg" alt="Ecocity Builders" />
+				</figure>
 
-					<div id="site-header-menu" class="site-header-menu">
-						<?php if ( has_nav_menu( 'primary' ) ) : ?>
-							<nav id="site-navigation" class="main-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Primary Menu', 'twentysixteen' ); ?>">
+				<nav class="main-menubar desktop-only" role="navigation">
+					<div class="component--menu">
+					  <ul class="main-menu" role="menu">
+							<?php
+								wp_nav_menu( array(
+									'theme_location' => 'primary',
+									'menu_class'     => 'primary-menu',
+								 ) );
+							?>
+					    <li class="menuitem desktop-only" role="menuitem"><button class="donate-button">DONATE</button></li>
+					  </ul>
+					</div>
+
+				</nav>
+
+				<button class="mobile-only menu-button">
+					<span class="ms-icon menu-opener icon-hamburger-menu"></span>
+				</button>
+
+				<div class="mobile-menubar mobile-only">
+					<div class="menu-head">
+						<figure>
+							<img class="mobile-only logo" src="./img/logo-stacked-white.svg" alt="Ecocity Builders" />
+						</figure>
+						<button class="mobile-only menu-button">
+							<span class="ms-icon menu-opener icon-hamburger-menu"></span>
+						</button>
+					</div>
+					<div class="menu-content">
+						<div class="component--menu">
+						  <ul class="main-menu" role="menu">
 								<?php
 									wp_nav_menu( array(
 										'theme_location' => 'primary',
 										'menu_class'     => 'primary-menu',
 									 ) );
 								?>
-							</nav><!-- .main-navigation -->
-						<?php endif; ?>
+						    <li class="menuitem desktop-only" role="menuitem"><button class="donate-button">DONATE</button></li>
+						  </ul>
+						</div>
+						<div class="component--top-bar">
 
-						<?php if ( has_nav_menu( 'social' ) ) : ?>
-							<nav id="social-navigation" class="social-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Social Links Menu', 'twentysixteen' ); ?>">
-								<?php
-									wp_nav_menu( array(
-										'theme_location' => 'social',
-										'menu_class'     => 'social-links-menu',
-										'depth'          => 1,
-										'link_before'    => '<span class="screen-reader-text">',
-										'link_after'     => '</span>',
-									) );
-								?>
-							</nav><!-- .social-navigation -->
-						<?php endif; ?>
-					</div><!-- .site-header-menu -->
-				<?php endif; ?>
-			</div><!-- .site-header-main -->
+						  <div class="top-menu-container">
+								<nav class="component--social-menu">
+								  <a class="menuitem" href="https://www.facebook.com/ecocitybuilders/">
+								    <span class="ms-icon icon-facebook-white-socialico"></span>
+								  </a>
+								  <a class="menuitem" href="https://twitter.com/ecocitybuilder">
+								    <span class="ms-icon icon-twitter-white-socialico"></span>
+								  </a>
+								  <a class="menuitem" href="https://www.instagram.com/ecocitybuilders/">
+								    <span class="ms-icon icon-linkedin-white-socialico"></span>
+								  </a>
+								</nav>
 
-			<?php if ( get_header_image() ) : ?>
-				<?php
-					/**
-					 * Filter the default twentysixteen custom header sizes attribute.
-					 *
-					 * @since Twenty Sixteen 1.0
-					 *
-					 * @param string $custom_header_sizes sizes attribute
-					 * for Custom Header. Default '(max-width: 709px) 85vw,
-					 * (max-width: 909px) 81vw, (max-width: 1362px) 88vw, 1200px'.
-					 */
-					$custom_header_sizes = apply_filters( 'twentysixteen_custom_header_sizes', '(max-width: 709px) 85vw, (max-width: 909px) 81vw, (max-width: 1362px) 88vw, 1200px' );
-				?>
-				<div class="header-image">
-					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-						<img src="<?php header_image(); ?>" srcset="<?php echo esc_attr( wp_get_attachment_image_srcset( get_custom_header()->attachment_id ) ); ?>" sizes="<?php echo esc_attr( $custom_header_sizes ); ?>" width="<?php echo esc_attr( get_custom_header()->width ); ?>" height="<?php echo esc_attr( get_custom_header()->height ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>">
-					</a>
-				</div><!-- .header-image -->
-			<?php endif; // End header image check. ?>
-		</header><!-- .site-header -->
+						    <nav class="top-menu">
+						      <a class="menuitem" href="#">Blog</a>
+						      <a class="menuitem" href="#">Newsletter</a>
+						      <a class="menuitem" href="#">Contact</a>
+						      <a class="menuitem mobile-only" href="#"><button class="donate-button">DONATE</button></a>
+						    </nav>
+						  </div>
 
-		<div id="content" class="site-content">
+						  <hr>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</header>
+		<main role="main" class="section--home">
+			<div class="component--jumbo">
+			  <div class="image-container">
+			    <img src="<?php echo get_template_directory_uri(); ?>/img/bio-geo-hero.jpg">
+			  </div>
+			</div>
+
+	    <div class="content">

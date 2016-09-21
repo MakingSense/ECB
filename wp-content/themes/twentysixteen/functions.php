@@ -24,6 +24,281 @@
  * @subpackage Twenty_Sixteen
  * @since Twenty Sixteen 1.0
  */
+/**
+ * Twenty Sixteen only works in WordPress 4.4 or later.
+ */
+/**
+ * Function meta for custon fields in home page.
+ */
+add_action( 'init', 'ecb_register_meta_fields' );
+function ecb_register_meta_fields() {
+
+  register_meta( 'post',
+               'ecb_extraordinary_person',
+               [
+                 'description'      => _x( 'Are you a extraordinary person?', 'meta description', 'ecb-textdomain' ),
+                 'single'           => true,
+                 'sanitize_callback' => 'ecb_sanitize_extraordinary_person',
+                 'auth_callback'     => 'ecb_custom_fields_auth_callback'
+               ]
+  );
+  
+}
+
+function ecb_sanitize_extraordinary_person( $value ) {
+
+  // Si hay algún valor, el checbox fue seleccionado
+  if( ! empty( $value ) ) {
+    return 1;
+  } else {
+    return 0;
+  }
+
+}
+
+function ecb_custom_fields_auth_callback( $allowed, $meta_key, $post_id, $user_id, $cap, $caps ) {
+  
+  if( 'post' == get_post_type( $post_id ) && current_user_can( 'edit_post', $post_id ) ) {
+    $allowed = true;
+  } else {
+    $allowed = false;
+  }
+
+  return $allowed;
+
+}
+add_action( 'add_meta_boxes', 'ecb_meta_boxes' );
+function ecb_meta_boxes() {
+
+    add_meta_box( 'ecb-meta-box',
+            __( 'Mi primer Meta Box', 'ecb_textdomain' ),
+            'ecb_meta_box_callback',
+            'recipe' );
+    add_meta_box( 'ecb-meta-box', 
+            __( 'Mi primer Meta Box', 'ecb_textdomain' ),
+            'ecb_meta_box_callback',
+            'post' );
+}
+
+function ecb_meta_box_callback() {
+     // El nonce es opcional pero recomendable. Vea http://codex.wordpress.org/Function_Reference/wp_nonce_field
+     wp_nonce_field( 'ecb_meta_box', 'ecb_meta_box_noncename' );
+    
+     // Obtenermos los meta data actuales para rellenar los custom fields
+     // en caso de que ya tenga valores
+     $post_meta = get_post_custom( $post->ID );
+    // La función checked() es similar a
+    // if ( $current_value == "un valor") { echo ' checked="checked"' ; }
+    $current_value = get_post_meta( $post->ID, 'ecb_extraordinary_person', true );
+    ?>
+    <p>
+        <input type="checkbox" name="ecb_extraordinary_person" id="ecb_extraordinary_person" value="1" <?php checked( $current_value, 1 ); ?>>
+        <label class="label" for="ecb_extraordinary_person"><?php  _e( 'Soy extraordinario', 'ecb_textdomain' ); ?></label>
+   </p>
+   <?php
+}
+
+add_action( 'save_post', 'ecb_save_custom_fields', 10, 2 );
+function ecb_save_custom_fields( $post_id, $post ){
+    
+    // Primero, comprobamos el nonce como medida de segurida
+    if ( ! isset( $_POST['ecb_meta_box_noncename'] ) || ! wp_verify_nonce( $_POST['ecb_meta_box_noncename'], 'ecb_meta_box' ) ) {
+        return;
+    }
+    // En nuestro ejemplo, solo el valor 1 es válido
+    if( isset( $_POST['ecb_extraordinary_person'] ) && $_POST['ecb_extraordinary_person'] == "1" ) {
+        update_post_meta( $post_id, 'ecb_extraordinary_person', $_POST['ecb_extraordinary_person'] );
+    } else {
+        // Opcional
+        // $_POST['ecb_extraordinary_person'] no tiene valor establecido
+        // o tiene un valor no válido (diferente de "1" en este ejemplo)
+        delete_post_meta( $post_id, 'ecb_extraordinary_person' );
+    }
+}
+
+/**
+ * New function for Custom post type Media en backend.
+ */
+
+function my_custom_post_media() {
+  $labels = array(
+    'name'               => _x( 'Media', 'post type general name' ),
+    'singular_name'      => _x( 'Media', 'post type singular name' ),
+    'add_new'            => _x( 'Add New', 'book' ),
+    'add_new_item'       => __( 'Add New Media' ),
+    'edit_item'          => __( 'Edit Media' ),
+    'new_item'           => __( 'New Media' ),
+    'all_items'          => __( 'All Media' ),
+    'view_item'          => __( 'View Media' ),
+    'search_items'       => __( 'Search Media' ),
+    'not_found'          => __( 'No media found' ),
+    'not_found_in_trash' => __( 'No media found in the Trash' ), 
+    'parent_item_colon'  => '',
+    'menu_name'          => 'Media Post'
+  );
+  $args = array(
+    'labels'        => $labels,
+    'description'   => 'Published Post in Media Page the Ecocity Builder',
+    'public'        => true,
+    'menu_position' => 5,
+    'supports'      => array( 'title', 'editor', 'thumbnail', 'excerpt', 'comments', 'custom-fields', 'author', 'trackbacks' ),
+    'has_archive'   => true,
+  );
+  register_post_type( 'media', $args ); 
+}
+add_action( 'init', 'my_custom_post_media' );
+
+
+function my_updated_messages( $messages ) {
+  global $post, $post_ID;
+  $messages['media'] = array(
+    0 => '', 
+    1 => sprintf( __('Media updated. <a href="%s">View media</a>'), esc_url( get_permalink($post_ID) ) ),
+    2 => __('Custom field updated.'),
+    3 => __('Custom field deleted.'),
+    4 => __('Mediat updated.'),
+    5 => isset($_GET['revision']) ? sprintf( __('Media restored to revision from %s'), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
+    6 => sprintf( __('Media published. <a href="%s">View media</a>'), esc_url( get_permalink($post_ID) ) ),
+    7 => __('Media saved.'),
+    8 => sprintf( __('Meida submitted. <a target="_blank" href="%s">Preview media</a>'), esc_url( add_query_arg( 'preview', 'true', get_permalink($post_ID) ) ) ),
+    9 => sprintf( __('Media scheduled for: <strong>%1$s</strong>. <a target="_blank" href="%2$s">Preview media</a>'), date_i18n( __( 'M j, Y @ G:i' ), strtotime( $post->post_date ) ), esc_url( get_permalink($post_ID) ) ),
+    10 => sprintf( __('Media draft updated. <a target="_blank" href="%s">Preview media</a>'), esc_url( add_query_arg( 'preview', 'true', get_permalink($post_ID) ) ) ),
+  );
+  return $messages;
+}
+add_filter( 'post_updated_messages', 'my_updated_messages' );
+
+
+function my_contextual_help( $contextual_help, $screen_id, $screen ) { 
+  if ( 'media' == $screen->id ) {
+
+    $contextual_help = '<h2>Media</h2>
+    <p>Post media show the articles in the website Media page. You can see a list of them on this page in reverse chronological order - the latest one we added is first.</p> 
+    <p>You can view/edit the details of each product by clicking on its name, or you can perform bulk actions using the dropdown menu and selecting multiple items.</p>';
+
+  } elseif ( 'edit-media' == $screen->id ) {
+
+    $contextual_help = '<h2>Editing media</h2>
+    <p>This page allows you to view/modify media details. Please make sure to fill out the available boxes with the appropriate details (product image, price, brand) and <strong>not</strong> add these details to the product description.</p>';
+
+  }
+  return $contextual_help;
+}
+add_action( 'contextual_help', 'my_contextual_help', 10, 3 );
+
+function my_taxonomies_media() {
+  $labels = array(
+    'name'              => _x( 'Media Categories', 'taxonomy general name' ),
+    'singular_name'     => _x( 'Media Category', 'taxonomy singular name' ),
+    'search_items'      => __( 'Search Media Categories' ),
+    'all_items'         => __( 'All Media Categories' ),
+    'parent_item'       => __( 'Parent Media Category' ),
+    'parent_item_colon' => __( 'Parent Media Category:' ),
+    'edit_item'         => __( 'Edit Media Category' ), 
+    'update_item'       => __( 'Update Media Category' ),
+    'add_new_item'      => __( 'Add New Media Category' ),
+    'new_item_name'     => __( 'New Media Category' ),
+    'menu_name'         => __( 'Media Categories' ),
+  );
+  $args = array(
+    'labels' => $labels,
+    'hierarchical' => true,
+  );
+  register_taxonomy( 'media_category', 'media', $args );
+}
+add_action( 'init', 'my_taxonomies_media', 0 );
+
+/**
+ * New function for Custom post type article en backend.
+ */
+
+function my_custom_post_article() {
+  $labels = array(
+    'name'               => _x( 'Article', 'post type general name' ),
+    'singular_name'      => _x( 'Article', 'post type singular name' ),
+    'add_new'            => _x( 'Add New', 'book' ),
+    'add_new_item'       => __( 'Add New Article' ),
+    'edit_item'          => __( 'Edit Article' ),
+    'new_item'           => __( 'New Article' ),
+    'all_items'          => __( 'All Article' ),
+    'view_item'          => __( 'View Article' ),
+    'search_items'       => __( 'Search Article' ),
+    'not_found'          => __( 'No article found' ),
+    'not_found_in_trash' => __( 'No article found in the Trash' ), 
+    'parent_item_colon'  => '',
+    'menu_name'          => 'Article Post'
+  );
+  $args = array(
+    'labels'        => $labels,
+    'description'   => 'Published Post in Article Page the Ecocity Builder',
+    'public'        => true,
+    'menu_position' => 6,
+    'supports'      => array( 'title', 'editor', 'thumbnail', 'excerpt', 'comments', 'custom-fields', 'author', 'trackbacks' ),
+    'has_archive'   => true,
+  );
+  register_post_type( 'article', $args ); 
+}
+add_action( 'init', 'my_custom_post_article' );
+
+
+function my_updated_messages_article( $messages ) {
+  global $post, $post_ID;
+  $messages['article'] = array(
+    0 => '', 
+    1 => sprintf( __('Article updated. <a href="%s">View article</a>'), esc_url( get_permalink($post_ID) ) ),
+    2 => __('Custom field updated.'),
+    3 => __('Custom field deleted.'),
+    4 => __('Article updated.'),
+    5 => isset($_GET['revision']) ? sprintf( __('Article restored to revision from %s'), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
+    6 => sprintf( __('Article published. <a href="%s">View article</a>'), esc_url( get_permalink($post_ID) ) ),
+    7 => __('Article saved.'),
+    8 => sprintf( __('Article submitted. <a target="_blank" href="%s">Preview article</a>'), esc_url( add_query_arg( 'preview', 'true', get_permalink($post_ID) ) ) ),
+    9 => sprintf( __('Article scheduled for: <strong>%1$s</strong>. <a target="_blank" href="%2$s">Preview article</a>'), date_i18n( __( 'M j, Y @ G:i' ), strtotime( $post->post_date ) ), esc_url( get_permalink($post_ID) ) ),
+    10 => sprintf( __('Article draft updated. <a target="_blank" href="%s">Preview article</a>'), esc_url( add_query_arg( 'preview', 'true', get_permalink($post_ID) ) ) ),
+  );
+  return $messages;
+}
+add_filter( 'post_updated_messages', 'my_updated_messages_article' );
+
+
+function my_contextual_help_article( $contextual_help, $screen_id, $screen ) { 
+  if ( 'article' == $screen->id ) {
+
+    $contextual_help = '<h2>Article</h2>
+    <p>Post article show the articles in the website article page.. You can see a list of them on this page in reverse chronological order - the latest one we added is first.</p> 
+    <p>You can view/edit the details of each article by clicking on its name, or you can perform bulk actions using the dropdown menu and selecting multiple items.</p>';
+
+  } elseif ( 'edit-article' == $screen->id ) {
+
+    $contextual_help = '<h2>Editing articles</h2>
+    <p>This page allows you to view/modify articles details. Please make sure to fill out the available boxes with the appropriate details (article image, author) and <strong>not</strong> add these details to the article description.</p>';
+
+  }
+  return $contextual_help;
+}
+add_action( 'contextual_help', 'my_contextual_help_article', 10, 3 );
+
+function my_taxonomies_article() {
+  $labels = array(
+    'name'              => _x( 'Article Categories', 'taxonomy general name' ),
+    'singular_name'     => _x( 'Article Category', 'taxonomy singular name' ),
+    'search_items'      => __( 'Search Article Categories' ),
+    'all_items'         => __( 'All Article Categories' ),
+    'parent_item'       => __( 'Parent Article Category' ),
+    'parent_item_colon' => __( 'Parent Article Category:' ),
+    'edit_item'         => __( 'Edit Article Category' ), 
+    'update_item'       => __( 'Update Article Category' ),
+    'add_new_item'      => __( 'Add New Article Category' ),
+    'new_item_name'     => __( 'New Article Category' ),
+    'menu_name'         => __( 'Article Categories' ),
+  );
+  $args = array(
+    'labels' => $labels,
+    'hierarchical' => true,
+  );
+  register_taxonomy( 'article_category', 'article', $args );
+}
+add_action( 'init', 'my_taxonomies_article', 0 );
 
 /**
  * Twenty Sixteen only works in WordPress 4.4 or later.

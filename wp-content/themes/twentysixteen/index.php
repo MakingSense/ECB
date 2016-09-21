@@ -33,20 +33,28 @@ get_header();
 
             <?php
             // Start the loop.
-            $the_query = new WP_Query('blog=wordpress&showposts=3');
-            while ($the_query->have_posts()) : $the_query->the_post();
+            $the_query = new WP_Query('blog=wordpress&showposts=1');
+            $media = new WP_Query('post_type=media&showposts=1');
+            $articles = new WP_Query('post_type=article&showposts=1');
+            
+                $the_query->the_post();
+                get_template_part('template-parts/content', get_post_format());
+                
+                
+                $custom_fields = get_post_custom();
+                ?>
+                <ul>
+                     <?php if( isset($custom_fields['ecb_extraordinary_person']) ) { ?>
+                     <li>El input fue seleccionado</li>
+                     <?php } ?>
 
-                /*
-                 * Include the Post-Format-specific template for the content.
-                 * If you want to override this in a child theme, then include a file
-                 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-                 */
-                get_template_part('template-parts/content', get_post_format());?>
-            <?php
-            // End the loop.
-            endwhile;
-             
-
+                </ul>
+                <?php
+                
+                $media->the_post();
+                get_template_part('template-parts/content-media', get_post_format());
+                $articles->the_post();
+                get_template_part('template-parts/content-article', get_post_format());
             // Previous/next page navigation.
             the_posts_pagination(array(
                 'prev_text' => __('Previous page', 'twentysixteen'),

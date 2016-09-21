@@ -60,18 +60,14 @@
 				</figure>
 
 				<nav class="main-menubar desktop-only" role="navigation">
-					<div class="component--menu">
-					  <ul class="main-menu" role="menu">
 							<?php
 								wp_nav_menu( array(
 									'theme_location' => 'primary',
-									'menu_class'     => 'primary-menu',
+									'menu_class'     => 'main-menu',
+									'container'      => 'div',
+									'container_class' => 'component--menu',
 								 ) );
 							?>
-					    <li class="menuitem desktop-only" role="menuitem"><button class="donate-button">DONATE</button></li>
-					  </ul>
-					</div>
-
 				</nav>
 
 				<button class="mobile-only menu-button">

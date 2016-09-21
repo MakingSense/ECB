@@ -65,4 +65,5 @@
 </div><!-- .main-wrapper  -->
 
 </body>
+ <?php wp_footer(); ?> 
 </html>

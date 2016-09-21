@@ -57,6 +57,9 @@ wp-content/*
 !wp-content/themes/
 wp-content/themes/twentysixteen/msuif
 
+# ignore main configuration
+wp-config.php
+
 # ignore these plugins
 wp-content/plugins/hello.php
 

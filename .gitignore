@@ -21,6 +21,8 @@
 ehthumbs.db
 Thumbs.db
 
+!example-wp-config.php
+
 # ignore Editor files
 *.sublime-project
 *.sublime-workspace

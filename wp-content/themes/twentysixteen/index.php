@@ -32,29 +32,74 @@ get_header();
             <?php endif; ?>
 
             <?php
-            // Start the loop.
-            $the_query = new WP_Query('blog=wordpress&showposts=1');
-            $media = new WP_Query('post_type=media&showposts=1');
-            $articles = new WP_Query('post_type=article&showposts=1');
+//            // Start the loop.
+//            $the_query = new WP_Query('blog=wordpress');
+//            $media = new WP_Query('post_type=media');
+//            $articles = new WP_Query('post_type=article');
+//
+//                $the_query->the_post();
+//                get_template_part('template-parts/content', get_post_format());
+//                $media->the_post();
+//                get_template_part('template-parts/content-media', get_post_format());
+//                $articles->the_post();
+//                get_template_part('template-parts/content-article', get_post_format());
 
-                $the_query->the_post();
-                get_template_part('template-parts/content', get_post_format());
+                // args the custom post type blog
+                $args =  array(
+                    'post_type' => array ('media', 'article', 'post'),
+                        'numberposts'	=> -1,
+                    'meta_query' => array(
+                        array(
+                            'key' => 'post_field',
+                            'value' => 'first',
+                        ),
 
+                    ),
+                );
 
-                $custom_fields = get_post_custom();
+                // query
+                $the_query = new WP_Query( $args );
                 ?>
-                <ul>
-                     <?php if( isset($custom_fields['ecb_extraordinary_person']) ) { ?>
-                     <li>El input fue seleccionado</li>
-                     <?php } ?>
+                <?php if( $the_query->have_posts() ): ?>
+                        <ul>
+                        <?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
+                                 <?php get_template_part('template-parts/content', get_post_format());?>
+                        <?php endwhile; ?>
+                        </ul>
+                <?php endif; ?>
 
-                </ul>
+                <?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>
+
                 <?php
+                
+                  // media_args the custom post type media
+                $media_args =  array(
+                    'post_type' => array ('media', 'article', 'post'),
+                        'numberposts'	=> -1,
+                    'meta_query' => array(
+                        array(
+                            'key' => 'post_field',
+                            'value' => 'second',
+                        ),
 
-                $media->the_post();
-                get_template_part('template-parts/content-media', get_post_format());
-                $articles->the_post();
-                get_template_part('template-parts/content-article', get_post_format());
+                    ),
+                );
+
+                // media_query
+                $media_query = new WP_Query( $media_args );
+                ?>
+                <?php if( $media_query->have_posts() ): ?>
+                        <ul>
+                        <?php while( $media_query->have_posts() ) : $media_query->the_post(); ?>
+                                 <?php get_template_part('template-parts/content-media', get_post_format()); ?>
+                        <?php endwhile; ?>
+                        </ul>
+                <?php endif; ?>
+
+                <?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>
+
+                <?php
+      
             // Previous/next page navigation.
             the_posts_pagination(array(
                 'prev_text' => __('Previous page', 'twentysixteen'),
@@ -70,7 +115,7 @@ get_header();
         ?>
         <div>
 
-            <?php get_block(); ?>
+         <!--   <?php get_block(); ?> -->
         </div>
     </main><!-- .site-main -->
 </div><!-- .content-area -->

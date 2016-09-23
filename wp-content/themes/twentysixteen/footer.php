@@ -87,6 +87,15 @@
     ftypes[0]='email';fnames[1]='FNAME';
     ftypes[1]='text';fnames[2]='LNAME';
     ftypes[2]='text';}(jQuery));var $mcj = jQuery.noConflict(true);
+
+		(function(){
+			var $ = jQuery;
+			$('#menu-main li').each(function (key,val){
+				var $title = $(val).find('a').html();
+				$(val).find('.js-submenu-title').html($title);
+			});
+		})();
+
 </script>
 </body>
  <?php wp_footer(); ?>

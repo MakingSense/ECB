@@ -52,7 +52,6 @@ class Walker_Nav_Menu extends Walker {
 	public function start_lvl( &$output, $depth = 0, $args = array()) {
 		$indent = str_repeat("\t", $depth);
 		$output .= "\n$indent<ul class=\"sub-menu\">\n";
-		$output .= "\n$indent<li class=\"title\"><a href=\"#\" class=\"js-submenu-title\"></a></li>\n";
 	}
 
 	/**

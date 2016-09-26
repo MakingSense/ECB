@@ -103,7 +103,7 @@ endforeach;
 					<img class="mobile-only logo" src="<?php echo get_template_directory_uri(); ?>/img/logo-stacked-black.svg" alt="Ecocity Builders" />
 				</figure>
 
-			<nav>
+			<nav class="main-menubar desktop-only" role="navigation">
 				<div class="component--menu">
 					  <ul class="main-menu" role="menu">
 							<?php
@@ -113,9 +113,6 @@ endforeach;
 				   </ul>
 			 	</div>
 			 </nav>
-
-
-
 
 				<button class="mobile-only menu-button">
 					<span class="ms-icon menu-opener icon-hamburger-menu"></span>

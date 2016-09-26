@@ -20,7 +20,7 @@ get_header();
     <main id="main" class="site-main" role="main">
 
         <div>
-            <h1>Insertar pilares (estatico)</h1>
+            <h1>INSERT PILLARD (STATIC)</h1>
         </div>
         <?php if (have_posts()) : ?>
 
@@ -32,18 +32,6 @@ get_header();
             <?php endif; ?>
 
             <?php
-//            // Start the loop.
-//            $the_query = new WP_Query('blog=wordpress');
-//            $media = new WP_Query('post_type=media');
-//            $articles = new WP_Query('post_type=article');
-//
-//                $the_query->the_post();
-//                get_template_part('template-parts/content', get_post_format());
-//                $media->the_post();
-//                get_template_part('template-parts/content-media', get_post_format());
-//                $articles->the_post();
-//                get_template_part('template-parts/content-article', get_post_format());
-
                 // args the custom post type blog
                 $args =  array(
                     'post_type' => array ('media', 'article', 'post'),
@@ -106,14 +94,13 @@ get_header();
                 'next_text' => __('Next page', 'twentysixteen'),
                 'before_page_number' => '<span class="meta-nav screen-reader-text">' . __('Page', 'twentysixteen') . ' </span>',
             ));
-
         // If no content, include the "No posts found" template.
         else :
             get_template_part('template-parts/content', 'none');
 
         endif;
         ?>
-        
+        <?php get_blockhome(); ?>
     </main><!-- .site-main -->
 </div><!-- .content-area -->
 <?php get_footer(); ?>

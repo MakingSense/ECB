@@ -9,10 +9,7 @@
  * @since Twenty Sixteen 1.0
  */
 ?>
-
-
-			</div> <!-- .content -->
-	 </main><!-- .section--home -->
+>
 
 	 <footer class="component--footer">
 	   <h2>Stay in Touch</h2>
@@ -24,13 +21,13 @@
                        <div style="text-align:center;">Thanks for signing up!</div>
                    </span>
                    <form data-id="embedded_signup:form" class="ctct-custom-form Form" name="embedded_signup" method="POST" action="https://visitor2.constantcontact.com/api/signup">
-                      
+
                        <!-- The following code must be included to ensure your sign-up form works properly. -->
                        <input data-id="ca:input" type="hidden" name="ca" value="f99de5de-dc09-47d1-bc25-5f778694a5d5">
                        <input data-id="list:input" type="hidden" name="list" value="2080365734">
                        <input data-id="source:input" type="hidden" name="source" value="EFD">
                        <input data-id="required:input" type="hidden" name="required" value="list,email">
-                       <input data-id="url:input" type="hidden" name="url" value="">   
+                       <input data-id="url:input" type="hidden" name="url" value="">
                        <p data-id="Email Address:p" ></p>
                            <label data-id="Email Address:label" data-name="email" class="ctct-form-required">
                                <input data-id="Email Address:input" type="text" name="email" value="" maxlength="80" placeholder="Email">
@@ -39,16 +36,16 @@
                    </form>
                </div>
             <!--End CTCT Sign-Up Form-->
-            
+
 	   <div class="mobile-only">
 			 <nav class="component--social-menu">
-			   <a class="menuitem" href="https://www.facebook.com/ecocitybuilders/">
+			   <a class="menuitem" href="https://www.facebook.com/ecocitybuilders/" target="_blank">
 			     <span class="ms-icon icon-facebook-white-socialico"></span>
 			   </a>
-			   <a class="menuitem" href="https://twitter.com/ecocitybuilder">
+			   <a class="menuitem" href="https://twitter.com/ecocitybuilder" target="_blank">
 			     <span class="ms-icon icon-twitter-white-socialico"></span>
 			   </a>
-			   <a class="menuitem" href="https://www.instagram.com/ecocitybuilders/">
+			   <a class="menuitem" href="https://www.instagram.com/ecocitybuilders/" target="_blank">
 			     <span class="ms-icon icon-linkedin-white-socialico"></span>
 			   </a>
 			 </nav>
@@ -71,7 +68,17 @@
 	     </span>
 
 	     <div class="desktop-only">
-	       <!-- build:include ../includes/social/social.html --><!-- /build -->
+					 <nav class="component--social-menu">
+		 				  <a class="menuitem" href="https://www.facebook.com/ecocitybuilders/" target="_blank">
+		 				    <span class="ms-icon icon-facebook-white-socialico"></span>
+		 				  </a>
+		 				  <a class="menuitem" href="https://twitter.com/ecocitybuilder" target="_blank">
+		 				    <span class="ms-icon icon-twitter-white-socialico"></span>
+		 				  </a>
+		 				  <a class="menuitem" href="https://www.instagram.com/ecocitybuilders/" target="_blank">
+		 				    <span class="ms-icon icon-linkedin-white-socialico"></span>
+		 				  </a>
+	 				</nav>
 	     </div>
 	   </div>
 	 </footer>

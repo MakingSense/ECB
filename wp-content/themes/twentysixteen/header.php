@@ -72,24 +72,8 @@ endforeach;
 				<div class="component--top-bar">
 
 				  <div class="top-menu-container">
-						<nav class="component--social-menu">
-						  <a class="menuitem" href="https://www.facebook.com/ecocitybuilders/">
-						    <span class="ms-icon icon-facebook-white-socialico"></span>
-						  </a>
-						  <a class="menuitem" href="https://twitter.com/ecocitybuilder">
-						    <span class="ms-icon icon-twitter-white-socialico"></span>
-						  </a>
-						  <a class="menuitem" href="https://www.instagram.com/ecocitybuilders/">
-						    <span class="ms-icon icon-linkedin-white-socialico"></span>
-						  </a>
-						</nav>
-
-				    <nav class="top-menu">
-				      <a class="menuitem" href="#">Blog</a>
-				      <a class="menuitem" href="#">Newsletter</a>
-				      <a class="menuitem" href="#">Contact</a>
-				      <a class="menuitem mobile-only" href="#"><button class="donate-button">DONATE</button></a>
-				    </nav>
+						<?php include_once(get_template_directory() .'/template-parts/social_networks.php'); ?>
+            <?php include_once(get_template_directory() .'/template-parts/top_menu.php'); ?>
 				  </div>
 
 				  <hr>
@@ -139,24 +123,8 @@ endforeach;
 						<div class="component--top-bar">
 
 						  <div class="top-menu-container">
-								<nav class="component--social-menu">
-								  <a class="menuitem" href="https://www.facebook.com/ecocitybuilders/">
-								    <span class="ms-icon icon-facebook-white-socialico"></span>
-								  </a>
-								  <a class="menuitem" href="https://twitter.com/ecocitybuilder">
-								    <span class="ms-icon icon-twitter-white-socialico"></span>
-								  </a>
-								  <a class="menuitem" href="https://www.instagram.com/ecocitybuilders/">
-								    <span class="ms-icon icon-linkedin-white-socialico"></span>
-								  </a>
-								</nav>
-
-						    <nav class="top-menu">
-						      <a class="menuitem" href="#">Blog</a>
-						      <a class="menuitem" href="#">Newsletter</a>
-						      <a class="menuitem" href="#">Contact</a>
-						      <a class="menuitem mobile-only" href="#"><button class="donate-button">DONATE</button></a>
-						    </nav>
+								<?php include_once(get_template_directory() .'/template-parts/social_networks.php'); ?>
+                <?php include_once(get_template_directory() .'/template-parts/top_menu.php'); ?>
 						  </div>
 
 						  <hr>
@@ -167,11 +135,4 @@ endforeach;
 			</div>
 
 		</header>
-		<main role="main" class="section--home">
-			<div class="component--jumbo">
-			  <div class="image-container">
-			    <img src="<?php echo get_template_directory_uri(); ?>/img/bio-geo-hero.jpg">
-			  </div>
-			</div>
-
-	    <div class="content">
+		

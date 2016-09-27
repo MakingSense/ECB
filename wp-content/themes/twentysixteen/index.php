@@ -17,11 +17,15 @@ get_header();
 ?>
 
 <div id="primary" class="">
-    <main id="main" class="site-main" role="main">
+    <main id="main" class="site-main section--home" role="main">
 
-        <div>
-            <h1>INSERT PILLARD (STATIC)</h1>
-        </div>
+      <?php include_once(get_template_directory() .'/template-parts/jumbo.php'); ?>
+
+      <section class="content">
+
+        <?php include_once(get_template_directory() .'/template-parts/four_pilars.php'); ?>
+
+
         <?php if (have_posts()) : ?>
 
             <?php if (is_home() && !is_front_page()) : ?>
@@ -59,7 +63,7 @@ get_header();
                 <?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>
 
                 <?php
-                
+
                   // media_args the custom post type media
                 $media_args =  array(
                     'post_type' => array ('media', 'article', 'post'),
@@ -87,7 +91,7 @@ get_header();
                 <?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>
 
                 <?php
-      
+
             // Previous/next page navigation.
             the_posts_pagination(array(
                 'prev_text' => __('Previous page', 'twentysixteen'),
@@ -101,6 +105,7 @@ get_header();
         endif;
         ?>
         <?php get_blockhome(); ?>
+      </section><!-- .section-main content -->
     </main><!-- .site-main -->
 </div><!-- .content-area -->
 <?php get_footer(); ?>

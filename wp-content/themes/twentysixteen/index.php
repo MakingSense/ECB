@@ -17,11 +17,15 @@ get_header();
 ?>
 
 <div id="primary" class="">
-    <main id="main" class="site-main" role="main">
+    <main id="main" class="site-main section--home" role="main">
 
-        <div>
-            <h1>Insertar pilares (estatico)</h1>
-        </div>
+      <?php include_once(get_template_directory() .'/template-parts/jumbo.php'); ?>
+
+      <section class="content">
+
+        <?php include_once(get_template_directory() .'/template-parts/four_pilars.php'); ?>
+
+
         <?php if (have_posts()) : ?>
 
             <?php if (is_home() && !is_front_page()) : ?>
@@ -32,18 +36,6 @@ get_header();
             <?php endif; ?>
 
             <?php
-//            // Start the loop.
-//            $the_query = new WP_Query('blog=wordpress');
-//            $media = new WP_Query('post_type=media');
-//            $articles = new WP_Query('post_type=article');
-//
-//                $the_query->the_post();
-//                get_template_part('template-parts/content', get_post_format());
-//                $media->the_post();
-//                get_template_part('template-parts/content-media', get_post_format());
-//                $articles->the_post();
-//                get_template_part('template-parts/content-article', get_post_format());
-
                 // args the custom post type blog
                 $args =  array(
                     'post_type' => array ('media', 'article', 'post'),
@@ -71,7 +63,7 @@ get_header();
                 <?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>
 
                 <?php
-                
+
                   // media_args the custom post type media
                 $media_args =  array(
                     'post_type' => array ('media', 'article', 'post'),
@@ -99,21 +91,21 @@ get_header();
                 <?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>
 
                 <?php
-      
+
             // Previous/next page navigation.
             the_posts_pagination(array(
                 'prev_text' => __('Previous page', 'twentysixteen'),
                 'next_text' => __('Next page', 'twentysixteen'),
                 'before_page_number' => '<span class="meta-nav screen-reader-text">' . __('Page', 'twentysixteen') . ' </span>',
             ));
-
         // If no content, include the "No posts found" template.
         else :
             get_template_part('template-parts/content', 'none');
 
         endif;
         ?>
-        
+        <?php get_blockhome(); ?>
+      </section><!-- .section-main content -->
     </main><!-- .site-main -->
 </div><!-- .content-area -->
 <?php get_footer(); ?>

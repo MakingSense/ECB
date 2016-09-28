@@ -5,7 +5,7 @@
 <!-- Article with image -->
 <article id="post-<?php the_ID(); ?>" class="right-aligned">
 
-	<h2>category ?</h2>
+	<h2>Content Media</h2>
 	<div class="wrapper">
 		<?php twentysixteen_post_thumbnail(); ?>
 		<div class="text">

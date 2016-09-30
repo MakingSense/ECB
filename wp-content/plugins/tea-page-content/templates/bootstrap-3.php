@@ -60,7 +60,7 @@ if($template_variables['ordering-type'] === 'transposed') {
 					</div>
 				<?php endif; ?>
 
-				<?php if($instance['show_page_title'] || $instance['show_page_content'] || $instance['show_page_date']) : ?>
+				<?php if($instance['show_page_title'] || $instance['show_page_content'] ) : ?>
 				<div class="tpc-body">
 					<?php if($instance['show_page_title']) : ?>
 						<h3 class="tpc-title">
@@ -70,11 +70,6 @@ if($template_variables['ordering-type'] === 'transposed') {
 							<?php echo $entry['title'] ?>
 						<?php endif; ?>
 						</h3>
-					<?php endif; ?>
-                                        <?php if($instance['show_page_date']) : ?>
-						<div class="tpc-date">
-							<?php echo $entry['date'] ?>
-						</div>
 					<?php endif; ?>
 					<?php if($instance['show_page_content']) : ?>
 						<div class="tpc-content post-content">
@@ -138,11 +133,6 @@ if($template_variables['ordering-type'] === 'transposed') {
 								<?php echo $entry['title'] ?>
 							<?php endif; ?>
 							</h3>
-						<?php endif; ?>
-                                                <?php if($instance['show_page_date']) : ?>
-							<div class="tpc-date">
-								<?php echo $entry['date'] ?>
-							</div>
 						<?php endif; ?>
 						<?php if($instance['show_page_content']) : ?>
 							<div class="tpc-content post-content">

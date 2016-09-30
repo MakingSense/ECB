@@ -9,7 +9,7 @@
  * @since Twenty Sixteen 1.0
  */
 ?>
->
+
 
 	 <footer class="component--footer">
 	   <h2>Stay in Touch</h2>

@@ -161,7 +161,7 @@ class TeaPageContent_Helper {
 				'link' => get_permalink($post->ID),
                                 'date' => get_the_date(),
                                 'author' => get_the_author($post->ID),
-                                'cat' => get_categories(),
+                                'cat' => search_category_post($post->ID),
                                 $category = get_the_category($post->ID),
                                 'category' => $category[0]->cat_name,
                                 

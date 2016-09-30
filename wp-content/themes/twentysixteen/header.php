@@ -63,7 +63,6 @@ endforeach;
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 	<?php endif; ?>
 	<?php wp_head(); ?>
-  <script type="text/javascript" src="<?php echo get_template_directory_uri()?>/js/scripts.mins.js"></script>
 </head>
 
 <body>

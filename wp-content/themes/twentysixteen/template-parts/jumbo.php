@@ -18,4 +18,11 @@
     <img src="<?php echo get_template_directory_uri(); ?>/img/ecological-hero.jpg">
     <h3>Biologic things</h3>
   </div>
+
+  <div class="owl-dots">
+    <div class="owl-dot active"><span></span></div>
+    <div class="owl-dot"><span></span></div>
+    <div class="owl-dot"><span></span></div>
+    <div class="owl-dot"><span></span></div>
+  </div>
 </div>

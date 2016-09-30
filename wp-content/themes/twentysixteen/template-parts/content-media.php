@@ -15,7 +15,7 @@
 				<?php
 					/* translators: %s: Name of current post */
 					the_content( sprintf(
-						__( 'Read More<span class="screen-reader-text"> "%s"</span>', 'twentysixteen' ),
+						__( '<div class="button-container"><button class="more-button">Learn More</button></div>', 'twentysixteen' ),
 						get_the_title()
 					) );
 
@@ -29,7 +29,7 @@
 					) );
 				?>
 			</p>
-			<div class="button-container"><button class="more-button">Learn More</button></div>
+			
 			<?php
 				edit_post_link(
 					sprintf(

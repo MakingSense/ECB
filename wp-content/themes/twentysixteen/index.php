@@ -53,11 +53,9 @@ get_header();
                 $the_query = new WP_Query( $args );
                 ?>
                 <?php if( $the_query->have_posts() ): ?>
-                        <ul>
-                        <?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
-                                 <?php get_template_part('template-parts/content', get_post_format());?>
-                        <?php endwhile; ?>
-                        </ul>
+                    <?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
+                             <?php get_template_part('template-parts/content', get_post_format());?>
+                    <?php endwhile; ?>
                 <?php endif; ?>
 
                 <?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>
@@ -81,11 +79,9 @@ get_header();
                 $media_query = new WP_Query( $media_args );
                 ?>
                 <?php if( $media_query->have_posts() ): ?>
-                        <ul>
-                        <?php while( $media_query->have_posts() ) : $media_query->the_post(); ?>
-                                 <?php get_template_part('template-parts/content-media', get_post_format()); ?>
-                        <?php endwhile; ?>
-                        </ul>
+                    <?php while( $media_query->have_posts() ) : $media_query->the_post(); ?>
+                             <?php get_template_part('template-parts/content-media', get_post_format()); ?>
+                    <?php endwhile; ?>
                 <?php endif; ?>
 
                 <?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>

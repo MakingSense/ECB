@@ -33,11 +33,10 @@ if(isset($template_variables['is-padded']) && $template_variables['is-padded']) 
 			<?php endif; ?>
 			<?php endif; ?>
 
-			<?php if($instance['show_page_title'] || $instance['show_page_content']) :
-                        var_dump($entry); ?>
+			<?php if($instance['show_page_title'] || $instance['show_page_content']) : ?>
 			<div class="tpc-body">
                                 <div class="tpc-category">
-						<?php echo $entry['category'] ?>
+						<?php echo $entry['cat'] ?>
 				</div>
 				<?php if($instance['show_page_title']) : ?>
 					<h3 class="tpc-title">

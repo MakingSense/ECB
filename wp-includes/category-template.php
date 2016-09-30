@@ -421,7 +421,7 @@ function wp_dropdown_categories( $args = '' ) {
 	$required = $r['required'] ? 'required' : '';
 
 	if ( ! $r['hide_if_empty'] || ! empty( $categories ) ) {
-		$output = "<select $required name='$name' id='$id' class='$class' $tab_index_attribute>\n";
+		$output = "<select $required name='$name' id='$id' class='$class filter-blog' $tab_index_attribute>\n\t<option value='-1'>Topic</option>\n";
 	} else {
 		$output = '';
 	}
@@ -441,8 +441,8 @@ function wp_dropdown_categories( $args = '' ) {
 		 *
 		 * @param string $element Taxonomy element to list.
 		 */
-		$show_option_none = apply_filters( 'list_cats', $r['show_option_none'] );
-		$output .= "\t<option value='" . esc_attr( $option_none_value ) . "' selected='selected'>$show_option_none</option>\n";
+		$show_option_none = apply_filters( 'list_cats', $r['show_option_none'] );                
+//		$output .= "\t<option value='" . esc_attr( $option_none_value ) . "' selected='selected'>$show_option_none</option>\n";
 	}
 
 	if ( ! empty( $categories ) ) {
@@ -451,7 +451,7 @@ function wp_dropdown_categories( $args = '' ) {
 
 			/** This filter is documented in wp-includes/category-template.php */
 			$show_option_all = apply_filters( 'list_cats', $r['show_option_all'] );
-			$selected = ( '0' === strval($r['selected']) ) ? " selected='selected'" : '';
+			$selected = ( '0' === strval($r['selected']) ) ? " selected='selected'" : '';                        
 			$output .= "\t<option value='0'$selected>$show_option_all</option>\n";
 		}
 
@@ -460,7 +460,7 @@ function wp_dropdown_categories( $args = '' ) {
 			/** This filter is documented in wp-includes/category-template.php */
 			$show_option_none = apply_filters( 'list_cats', $r['show_option_none'] );
 			$selected = selected( $option_none_value, $r['selected'], false );
-			$output .= "\t<option value='" . esc_attr( $option_none_value ) . "'$selected>$show_option_none</option>\n";
+      			$output .= "\t<option value='" . esc_attr( $option_none_value ) . "'$selected>$show_option_none</option>\n";
 		}
 
 		if ( $r['hierarchical'] ) {
@@ -468,6 +468,7 @@ function wp_dropdown_categories( $args = '' ) {
 		} else {
 			$depth = -1; // Flat.
 		}
+               
 		$output .= walk_category_dropdown_tree( $categories, $depth, $r );
 	}
 

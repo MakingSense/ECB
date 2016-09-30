@@ -79,15 +79,6 @@
 
 					<br />
                                         
-                                        <label for="tpc-show_page_date">
-						<?php $checked = (isset($instance['show_page_date']) && $instance['show_page_date']) ? 'checked' : '';  ?>
-
-						<input class="widefat" type="checkbox" id="tpc-show_page_date" name="show_page_date" value="1" <?php echo $checked ?> />
-						<span><?php _e('Show page date', 'tea-page-content'); ?></span>
-					</label>
-
-					<br />
-                                        
 					<label for="tpc-show_page_content">
 						<?php $checked = (isset($instance['show_page_content']) && $instance['show_page_content']) ? 'checked' : '';  ?>
 

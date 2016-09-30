@@ -38,7 +38,7 @@ class Walker_CategoryDropdown extends Walker {
 	 * @see Walker::$db_fields
 	 */
 	public $db_fields = array ('parent' => 'parent', 'id' => 'term_id');
-
+        
 	/**
 	 * Starts the element output.
 	 *
@@ -56,18 +56,17 @@ class Walker_CategoryDropdown extends Walker {
 	 */
 	public function start_el( &$output, $category, $depth = 0, $args = array(), $id = 0 ) {
 		$pad = str_repeat('&nbsp;', $depth * 3);
-
+                
 		/** This filter is documented in wp-includes/category-template.php */
 		$cat_name = apply_filters( 'list_cats', $category->name, $category );
-
+                
 		if ( isset( $args['value_field'] ) && isset( $category->{$args['value_field']} ) ) {
 			$value_field = $args['value_field'];
 		} else {
 			$value_field = 'term_id';
-		}
-
+		}   
+                
 		$output .= "\t<option class=\"level-$depth\" value=\"" . esc_attr( $category->{$value_field} ) . "\"";
-
 		// Type-juggling causes false matches, so we force everything to a string.
 		if ( (string) $category->{$value_field} === (string) $args['selected'] )
 			$output .= ' selected="selected"';

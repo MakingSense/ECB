@@ -79,18 +79,6 @@
 				</label>
 
 				<br />
-                                <label for="<?php echo $bind->get_field_id('show_page_date'); ?>">
-					<?php 
-					$checked = $instance['show_page_date'] ? 'checked' : ''; 
-
-					// @deprecated since 1.1
-					if(array_key_exists('date', $instance) && !$instance['date']) $checked = '';
-					?>
-					<input class="widefat" type="checkbox" id="<?php echo $bind->get_field_id('show_page_date'); ?>" name="<?php echo $bind->get_field_name('show_page_date'); ?>" value="1" <?php echo $checked ?> />
-					<span><?php _e('Show page date', 'tea-page-content'); ?></span>
-				</label>
-
-				<br />
 				<label for="<?php echo $bind->get_field_id('show_page_title'); ?>">
 					<?php $checked = $instance['show_page_title'] ? 'checked' : ''; ?>
 					<input class="widefat" type="checkbox" id="<?php echo $bind->get_field_id('show_page_title'); ?>" name="<?php echo $bind->get_field_name('show_page_title'); ?>" value="1" <?php echo $checked ?> />

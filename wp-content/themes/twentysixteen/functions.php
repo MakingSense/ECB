@@ -27,6 +27,57 @@
 /**
  * Twenty Sixteen only works in WordPress 4.4 or later.
  */
+
+function theme_register_scripts() {
+//wp_deregister_script( 'jquery' ); // deregister the default wordpress jquery
+//wp_register_script( 'jquery', esc_url( 'js/vendor/jquery.min.js') , array(), '4.0.3' );
+
+
+wp_register_script( 'ajax-pagination', esc_url(   get_bloginfo('stylesheet_directory') . '/js/ajax-custom.js') ); // script
+
+wp_enqueue_script( 'jquery' );
+wp_enqueue_script( 'ajax-pagination' );
+
+
+  /** Localize Scripts with ajax */
+  $php_array = array( 'admin_ajax' => admin_url( 'ajax-pagination.php' ) );
+  wp_localize_script( 'ajax-pagination', 'php_array', $php_array );
+
+  $wnm_custom = array( 'template_url' => get_bloginfo('template_url') ); // Localized the get_bloginfo() into a variable to use in the ajax-custom.js file to find the svg animation image
+  wp_localize_script( 'ajax-pagination', 'wnm_custom', $wnm_custom );
+
+
+}
+add_action( 'wp_enqueue_scripts', 'theme_register_scripts', 1 );
+
+/**
+ * New function for search category in the post
+ */
+function search_category_post($id){
+    global $wpdb;
+    $cat_query = "SELECT
+                    ecb_terms.name
+                  FROM
+                    ecb_term_taxonomy
+                  LEFT OUTER JOIN
+                    ecb_terms
+                  ON
+                    ecb_terms.term_id = ecb_term_taxonomy.term_id
+                  RIGHT OUTER JOIN
+                    ecb_term_relationships
+                  ON
+                    ecb_term_relationships.term_taxonomy_id = ecb_term_taxonomy.term_taxonomy_id
+                  RIGHT OUTER JOIN
+                    ecb_posts
+                  ON
+                    ecb_term_relationships.object_id = ecb_posts.ID
+                  WHERE
+                    ecb_posts.ID = $id
+                  LIMIT 1";
+             
+    $cat_result = $wpdb->get_results( $cat_query );
+    return $cat_result[0]->name;
+}
 /**
  * New function for Custom post type Media en backend.
  */

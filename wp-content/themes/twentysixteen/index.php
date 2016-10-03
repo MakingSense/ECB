@@ -99,8 +99,11 @@ get_header();
             get_template_part('template-parts/content', 'none');
 
         endif;
+
+
+        get_blockhome();
+
         ?>
-        <?php get_blockhome(); ?>
       </section><!-- .section-main content -->
     </main><!-- .site-main -->
 </div><!-- .content-area -->

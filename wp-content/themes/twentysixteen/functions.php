@@ -28,6 +28,11 @@
  * Twenty Sixteen only works in WordPress 4.4 or later.
  */
 
+function custom_excerpt_length( $length ) {
+	return 30;
+}
+add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
+
 function theme_register_scripts() {
 //wp_deregister_script( 'jquery' ); // deregister the default wordpress jquery
 //wp_register_script( 'jquery', esc_url( 'js/vendor/jquery.min.js') , array(), '4.0.3' );
@@ -433,6 +438,15 @@ function twentysixteen_widgets_init() {
          register_sidebar( array(
 		'name'          => __( 'Content home', 'twentysixteen' ),
 		'id'            => 'block-home',
+		'description'   => __( 'Appears at the bottom of the content on posts and pages.', 'twentysixteen' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
+         register_sidebar( array(
+		'name'          => __( 'Content media', 'twentysixteen' ),
+		'id'            => 'block-media',
 		'description'   => __( 'Appears at the bottom of the content on posts and pages.', 'twentysixteen' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',

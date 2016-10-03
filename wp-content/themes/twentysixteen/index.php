@@ -42,7 +42,6 @@ get_header();
                         'numberposts'	=> -1,
                     'meta_query' => array(
                         array(
-                            'key' => 'post_field',
                             'value' => 'first',
                         ),
 
@@ -70,7 +69,6 @@ get_header();
                         'numberposts'	=> -1,
                     'meta_query' => array(
                         array(
-                            'key' => 'post_field',
                             'value' => 'second',
                         ),
 
@@ -89,7 +87,32 @@ get_header();
                 <?php endif; ?>
 
                 <?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>
+               
+                 <?php
+                // args the custom post type blog
+                $args =  array(
+                    'post_type' => array ('media', 'article', 'post'),
+                        'numberposts'	=> -1,
+                    'meta_query' => array(
+                        array(
+                            'value' => 'third',
+                        ),
 
+                    ),
+                );
+
+                // query
+                $the_query = new WP_Query( $args );
+                ?>
+                <?php if( $the_query->have_posts() ): ?>
+                        <ul>
+                        <?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
+                                 <?php get_template_part('template-parts/content-article', get_post_format());?>
+                        <?php endwhile; ?>
+                        </ul>
+                <?php endif; ?>
+
+                <?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>
                 <?php
 
             // Previous/next page navigation.

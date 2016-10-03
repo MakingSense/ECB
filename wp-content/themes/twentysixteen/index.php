@@ -39,7 +39,7 @@ get_header();
                 // args the custom post type blog
                 $args =  array(
                     'post_type' => array ('media', 'article', 'post'),
-                        'numberposts'	=> -1,
+                    'numberposts'	=> -1,
                     'meta_query' => array(
                         array(
                             'key' => 'post_field',
@@ -85,6 +85,44 @@ get_header();
                 <?php endif; ?>
 
                 <?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>
+
+                <?php 
+                //posts
+                    $args = array(
+                     'posts_per_page'   => 5,
+                     'offset'           => 0,
+                     'orderby'          => 'date',
+                     'order'            => 'DESC',
+                     'post_type'        => 'post',
+                     'post_status'      => 'publish',
+                     'suppress_filters' => true 
+                    );
+                    $blog_array = new WP_Query( $args );
+                ?>
+
+                <div class="blog-wrapper desktop-only">
+                    <h2>Ecocity World Summit</h2>
+                    <div class="blog-page owl-carousel">
+                        <?php if( $blog_array->have_posts() ): ?>
+                            <?php while( $blog_array->have_posts() ) : $blog_array->the_post(); ?>
+                                <?php get_template_part('template-parts/content-blog', get_post_format()); ?>
+                            <?php endwhile; ?>
+                        <?php endif; ?>
+                    </div>
+                </div>
+
+                <div class="blog-wrapper mobile-only">
+                    <h2>Ecocity World Summit</h2>
+                    <div class="blog-page owl-carousel">
+                        <?php if( $blog_array->have_posts() ): ?>
+                            <?php while( $blog_array->have_posts() ) : $blog_array->the_post(); ?>
+                                <?php get_template_part('template-parts/content-blog', get_post_format()); ?>
+                            <?php endwhile; ?>
+                        <?php endif; ?>
+                    </div>
+                </div>
+
+                <?php wp_reset_query();  // Restore global post data stomped by the_post(). ?>
 
                 <?php
 

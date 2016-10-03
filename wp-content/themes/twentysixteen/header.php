@@ -18,7 +18,7 @@
  $return_li="";
 
 
- foreach( $menuitems as $item ):
+foreach( $menuitems as $item ):
 				 $link = $item->url;
 				 $title = $item->title;
 				 // item does not have a parent so menu_item_parent equals 0 (false)
@@ -52,7 +52,6 @@
 		$count++;
 endforeach;
 
-
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?> class="no-js">
 <head>
@@ -63,11 +62,11 @@ endforeach;
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 	<?php endif; ?>
 	<?php wp_head(); ?>
-  <script type="text/javascript" src="<?php echo get_template_directory_uri()?>/js/scripts.mins.js"></script>
 </head>
 
 <body>
-  <div class="main-wrapper home header-light">
+
+  <div class="main-wrapper home <?php if(is_home() == 1) echo "header-light"  ?>">
 		<header class="component--header">
 			<div class="top-container desktop-only">
 				<div class="component--top-bar">
@@ -108,10 +107,10 @@ endforeach;
 				<div class="mobile-menubar mobile-only">
 					<div class="menu-head">
 						<figure>
-							<img class="mobile-only logo" src="./img/logo-stacked-white.svg" alt="Ecocity Builders" />
+							<img class="mobile-only logo" src="<?php echo get_template_directory_uri(); ?>/img/logo-stacked-white.svg" alt="Ecocity Builders" />
 						</figure>
 						<button class="mobile-only menu-button">
-							<span class="ms-icon menu-opener icon-hamburger-menu"></span>
+							<span class="ms-icon menu-opener icon-close"></span>
 						</button>
 					</div>
 					<div class="menu-content">

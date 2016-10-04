@@ -11,7 +11,11 @@
  * @since     4.0.0
  */
 ?>
-
+<?php
+if ( ! empty( $subtitle ) ) :
+	echo $before_subtitle . $subtitle . $after_subtitle;
+endif;
+?>
 <?php
 if ( ! empty( $title ) ) :
 	echo $before_title . $title . $after_title;

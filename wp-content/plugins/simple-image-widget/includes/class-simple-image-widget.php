@@ -212,6 +212,7 @@ class Simple_Image_Widget extends WP_Widget {
 				'link_text'    => '',
 				'new_window'   => '',
 				'title'        => '',
+                                'subtitle'     => '',
 				'text'         => '',
 			)
 		);
@@ -255,7 +256,10 @@ class Simple_Image_Widget extends WP_Widget {
 				<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php _e( 'Title:', 'simple-image-widget' ); ?></label>
 				<input type="text" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" value="<?php echo esc_attr( $instance['title'] ); ?>" class="widefat">
 			</p>
-
+                        <p>
+				<label for="<?php echo esc_attr( $this->get_field_id( 'subtitle' ) ); ?>"><?php _e( 'Sub-Title:', 'simple-image-widget' ); ?></label>
+				<input type="text" name="<?php echo esc_attr( $this->get_field_name( 'subtitle' ) ); ?>" id="<?php echo esc_attr( $this->get_field_id( 'subtitle' ) ); ?>" value="<?php echo esc_attr( $instance['subtitle'] ); ?>" class="widefat">
+			</p>
 			<?php if ( ! is_simple_image_widget_legacy() ) : ?>
 				<p class="simple-image-widget-control<?php echo ( $image_id ) ? ' has-image' : ''; ?>"
 					data-title="<?php esc_attr_e( 'Choose an Image', 'simple-image-widget' ); ?>"

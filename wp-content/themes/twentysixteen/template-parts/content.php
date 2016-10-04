@@ -8,10 +8,11 @@
 			<h4><?php the_date(); ?></h4>
 			<p>
 				<?php
-					the_content( sprintf(
-						__( '<div class="button-container"><button class="more-button">Learn More</button></div>', 'twentysixteen' ),
-						get_the_title()
-					) );
+                                    custom_excerpt_length(the_excerpt());
+//					the_content( sprintf(
+//						__( '<div class="button-container"><button class="more-button">Learn More</button></div>', 'twentysixteen' ),
+//						get_the_title()
+//					) );
 				?>
 			</p>
 

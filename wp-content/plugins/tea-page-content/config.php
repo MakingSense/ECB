@@ -53,6 +53,10 @@ return array(
 				'type' => 'textarea',
 				'title' => __('Content', 'tea-page-content')
 			),
+                        'page_content2' => array(
+				'type' => 'textarea',
+				'title' => __('Content text', 'tea-page-content')
+			),
 			'page_thumbnail' => array(
 				'type' => 'media',
 				'title' => __('Thumbnail', 'tea-page-content')

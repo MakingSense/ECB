@@ -72,8 +72,8 @@ endforeach;
 				<div class="component--top-bar">
 
 				  <div class="top-menu-container">
-						<?php include_once(get_template_directory() .'/template-parts/social_networks.php'); ?>
-            <?php include_once(get_template_directory() .'/template-parts/top_menu.php'); ?>
+						<?php include(get_template_directory() .'/template-parts/social_networks.php'); ?>
+            <?php include(get_template_directory() .'/template-parts/top_menu.php'); ?>
 				  </div>
 
 				  <hr>
@@ -125,8 +125,8 @@ endforeach;
 						<div class="component--top-bar">
 
 						  <div class="top-menu-container">
-								<?php include_once(get_template_directory() .'/template-parts/social_networks.php'); ?>
-                <?php include_once(get_template_directory() .'/template-parts/top_menu.php'); ?>
+								<?php include(get_template_directory() .'/template-parts/social_networks.php'); ?>
+                <?php include(get_template_directory() .'/template-parts/top_menu.php'); ?>
 						  </div>
 
 						  <hr>

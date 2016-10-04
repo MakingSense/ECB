@@ -21,7 +21,7 @@ get_header();
 
       <?php include_once(get_template_directory() .'/template-parts/jumbo.php'); ?>
 
-      <section class="content">
+
 
         <?php include_once(get_template_directory() .'/template-parts/four_pilars.php'); ?>
 
@@ -83,7 +83,7 @@ get_header();
                 <?php endif; ?>
 
                 <?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>
-               
+
                  <?php
                 // args the custom post type blog
                 $args =  array(
@@ -109,7 +109,7 @@ get_header();
                 <?php endif; ?>
 
                 <?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>
-                <?php 
+                <?php
                 //posts
                     $args = array(
                      'posts_per_page'   => 5,
@@ -118,7 +118,7 @@ get_header();
                      'order'            => 'DESC',
                      'post_type'        => 'post',
                      'post_status'      => 'publish',
-                     'suppress_filters' => true 
+                     'suppress_filters' => true
                     );
                     $blog_array = new WP_Query( $args );
                 ?>
@@ -164,9 +164,9 @@ get_header();
 
 
         get_blockhome();
-
+        include_once(get_template_directory() .'/template-parts/twitter-facebook.php');
         ?>
-      </section><!-- .section-main content -->
+
     </main><!-- .site-main -->
 </div><!-- .content-area -->
 <?php get_footer(); ?>

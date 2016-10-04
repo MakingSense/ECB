@@ -11,4 +11,3 @@
 		<?php dynamic_sidebar( 'block-home' ); ?>
 	</aside><!-- .sidebar .widget-area -->
 <?php endif; ?>
-<?php include_once(get_template_directory() .'/template-parts/twitter-facebook.php');  ?>

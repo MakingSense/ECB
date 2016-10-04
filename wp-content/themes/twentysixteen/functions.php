@@ -680,14 +680,15 @@ function get_top_navbar (){
 	$locations = get_nav_menu_locations();
 	$menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
 	$menuitems = wp_get_nav_menu_items( $menu->term_id, array( 'order' => 'DESC' ) );
-	$count = 0;
-	$submenu = false;
 	$return_li="";
-		foreach( $menuitems as $item ):
+        if (!empty($menuitems)) {
+           foreach( $menuitems as $item ):
 			$link = $item->url;
 			$title = $item->title;
-			$parent_id = $item->ID;
 			$return_li .= '<a class="menuitem" href="'.$link.'">'.$title.'</a>';
-		endforeach;
-		return $return_li;
+            endforeach;
+            return $return_li;  
+        }
+	
+        return '';	
 }

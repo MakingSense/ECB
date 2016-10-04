@@ -8,45 +8,39 @@
 			<span class="sticky-post"><?php _e( 'Featured', 'twentysixteen' ); ?></span>
 		<?php endif; ?>
 
-		<?php the_title( sprintf( '<h2 class="entry-title article"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
+		<?php the_title( sprintf( '<h3>', esc_url( get_permalink() ) ), '</h3>' ); ?>
                 
-                <?php the_date(); ?>
+               <h4> <?php the_date(); ?><h4>
 	</header><!-- .entry-header -->
 
 	<?php twentysixteen_excerpt(); ?>
 
 	<?php twentysixteen_post_thumbnail(); ?>
-	<div class="entry-content">
+	<div class="text">
 		<?php
+                    custom_excerpt_length(the_excerpt());
 			/* translators: %s: Name of current post */
-			the_content( sprintf(
-				__( 'Read More<span class="screen-reader-text"> "%s"</span>', 'twentysixteen' ),
-				get_the_title()
-			) );
+//			the_content( sprintf(
+//				__( 'Read More<span class="screen-reader-text"> "%s"</span>', 'twentysixteen' ),
+//				get_the_title()
+//			) );
 
-			wp_link_pages( array(
-				'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'twentysixteen' ) . '</span>',
-				'after'       => '</div>',
-				'link_before' => '<span>',
-				'link_after'  => '</span>',
-				'pagelink'    => '<span class="screen-reader-text">' . __( 'Page', 'twentysixteen' ) . ' </span>%',
-				'separator'   => '<span class="screen-reader-text">, </span>',
-			) );
+			
 		?>
            
 	</div><!-- .entry-content -->
         
 	<footer class="entry-footer">
 		<?php
-			edit_post_link(
-				sprintf(
-					/* translators: %s: Name of current post */
-					__( 'Edit<span class="screen-reader-text"> "%s"</span>', 'twentysixteen' ),
-					get_the_title()
-				),
-				'<span class="edit-link">',
-				'</span>'
-			);
+                    edit_post_link(
+                        sprintf(
+                          /* translators: %s: Name of current post */
+                          __( '<div><a class="button-container"><button class="more-button">"%s"</button></a></div>', 'twentysixteen' ),
+                          get_the_title()
+                        ),
+                        '<span class="edit-link">',
+                        '</span>'
+                      );       
 		?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-## -->

@@ -113,7 +113,7 @@ class OTW_Form extends OTW_Component{
 						$html .= "<label".self::format_attribute( 'for', 'id', $attributes ).">".$attributes['label']."</label>";
 					}
 					$html .= "<textarea ".self::format_attributes( array('id','name','class','style'), array(), $attributes )." ".$attributes['extra'].">".otw_stripslashes( $attributes['value'] )."</textarea>";
-					
+					$html .= "<textarea ".self::format_attributes( array('id','name','class','style'), array(), $attributes )." ".$attributes['extra'].">".otw_stripslashes( $attributes['value'] )."</textarea>";
 					if( $attributes['description'] ){
 							$html .= "<span class=\"otw-form-hint\">".$attributes['description']."</span>";
 					}

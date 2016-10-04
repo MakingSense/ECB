@@ -47,7 +47,6 @@
     $page_number = 1; //if there's no page number, set it to 1
   }
   
-  var_dump($_SESSION['date']);
 
   $results = $wpdb->get_var("
     SELECT COUNT(*) FROM {$wpdb->posts} INNER JOIN {$wpdb->term_relationships} ON ({$wpdb->posts}.ID = {$wpdb->term_relationships}.object_id)
@@ -102,7 +101,7 @@
       <h2><?php echo $categoryName; ?></h2>
       <h3><?php the_title(); ?></h3>
       <h4><?php the_time('M d Y'); ?></h4>
-      <span class="desktop-only"><?php echo get_the_content(); ?></span>
+      <span class="desktop-only"><?php custom_excerpt_length(the_excerpt()); ?></span>
     </span>
   </div>
 </article>

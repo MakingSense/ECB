@@ -79,7 +79,7 @@ function search_category_post($id){
                   WHERE
                     ecb_posts.ID = $id
                   LIMIT 1";
-             
+
     $cat_result = $wpdb->get_results( $cat_query );
     return $cat_result[0]->name;
 }
@@ -99,7 +99,7 @@ function my_custom_post_media() {
     'view_item'          => __( 'View Media' ),
     'search_items'       => __( 'Search Media' ),
     'not_found'          => __( 'No media found' ),
-    'not_found_in_trash' => __( 'No media found in the Trash' ), 
+    'not_found_in_trash' => __( 'No media found in the Trash' ),
     'parent_item_colon'  => '',
     'menu_name'          => 'Media Post'
   );
@@ -114,7 +114,7 @@ function my_custom_post_media() {
     'supports'      => array( 'title', 'editor', 'thumbnail', 'excerpt', 'comments', 'custom-fields', 'author', 'trackbacks' ),
     'has_archive'   => true,
   );
-  register_post_type( 'media', $args ); 
+  register_post_type( 'media', $args );
 }
 add_action( 'init', 'my_custom_post_media' );
 
@@ -122,7 +122,7 @@ add_action( 'init', 'my_custom_post_media' );
 function my_updated_messages( $messages ) {
   global $post, $post_ID;
   $messages['media'] = array(
-    0 => '', 
+    0 => '',
     1 => sprintf( __('Media updated. <a href="%s">View media</a>'), esc_url( get_permalink($post_ID) ) ),
     2 => __('Custom field updated.'),
     3 => __('Custom field deleted.'),
@@ -139,11 +139,11 @@ function my_updated_messages( $messages ) {
 add_filter( 'post_updated_messages', 'my_updated_messages' );
 
 
-function my_contextual_help( $contextual_help, $screen_id, $screen ) { 
+function my_contextual_help( $contextual_help, $screen_id, $screen ) {
   if ( 'media' == $screen->id ) {
 
     $contextual_help = '<h2>Media</h2>
-    <p>Post media show the articles in the website Media page. You can see a list of them on this page in reverse chronological order - the latest one we added is first.</p> 
+    <p>Post media show the articles in the website Media page. You can see a list of them on this page in reverse chronological order - the latest one we added is first.</p>
     <p>You can view/edit the details of each product by clicking on its name, or you can perform bulk actions using the dropdown menu and selecting multiple items.</p>';
 
   } elseif ( 'edit-media' == $screen->id ) {
@@ -164,7 +164,7 @@ function my_taxonomies_media() {
     'all_items'         => __( 'All Media Categories' ),
     'parent_item'       => __( 'Parent Media Category' ),
     'parent_item_colon' => __( 'Parent Media Category:' ),
-    'edit_item'         => __( 'Edit Media Category' ), 
+    'edit_item'         => __( 'Edit Media Category' ),
     'update_item'       => __( 'Update Media Category' ),
     'add_new_item'      => __( 'Add New Media Category' ),
     'new_item_name'     => __( 'New Media Category' ),
@@ -194,7 +194,7 @@ function my_custom_post_article() {
     'view_item'          => __( 'View Article' ),
     'search_items'       => __( 'Search Article' ),
     'not_found'          => __( 'No article found' ),
-    'not_found_in_trash' => __( 'No article found in the Trash' ), 
+    'not_found_in_trash' => __( 'No article found in the Trash' ),
     'parent_item_colon'  => '',
     'menu_name'          => 'Article Post'
   );
@@ -206,7 +206,7 @@ function my_custom_post_article() {
     'supports'      => array( 'title', 'editor', 'thumbnail', 'excerpt', 'comments', 'custom-fields', 'author', 'trackbacks' ),
     'has_archive'   => true,
   );
-  register_post_type( 'article', $args ); 
+  register_post_type( 'article', $args );
 }
 add_action( 'init', 'my_custom_post_article' );
 
@@ -214,7 +214,7 @@ add_action( 'init', 'my_custom_post_article' );
 function my_updated_messages_article( $messages ) {
   global $post, $post_ID;
   $messages['article'] = array(
-    0 => '', 
+    0 => '',
     1 => sprintf( __('Article updated. <a href="%s">View article</a>'), esc_url( get_permalink($post_ID) ) ),
     2 => __('Custom field updated.'),
     3 => __('Custom field deleted.'),
@@ -231,11 +231,11 @@ function my_updated_messages_article( $messages ) {
 add_filter( 'post_updated_messages', 'my_updated_messages_article' );
 
 
-function my_contextual_help_article( $contextual_help, $screen_id, $screen ) { 
+function my_contextual_help_article( $contextual_help, $screen_id, $screen ) {
   if ( 'article' == $screen->id ) {
 
     $contextual_help = '<h2>Article</h2>
-    <p>Post article show the articles in the website article page.. You can see a list of them on this page in reverse chronological order - the latest one we added is first.</p> 
+    <p>Post article show the articles in the website article page.. You can see a list of them on this page in reverse chronological order - the latest one we added is first.</p>
     <p>You can view/edit the details of each article by clicking on its name, or you can perform bulk actions using the dropdown menu and selecting multiple items.</p>';
 
   } elseif ( 'edit-article' == $screen->id ) {
@@ -256,7 +256,7 @@ function my_taxonomies_article() {
     'all_items'         => __( 'All Article Categories' ),
     'parent_item'       => __( 'Parent Article Category' ),
     'parent_item_colon' => __( 'Parent Article Category:' ),
-    'edit_item'         => __( 'Edit Article Category' ), 
+    'edit_item'         => __( 'Edit Article Category' ),
     'update_item'       => __( 'Update Article Category' ),
     'add_new_item'      => __( 'Add New Article Category' ),
     'new_item_name'     => __( 'New Article Category' ),
@@ -332,6 +332,7 @@ function twentysixteen_setup() {
 	register_nav_menus( array(
 		'primary' => __( 'Primary Menu', 'twentysixteen' ),
 		'social'  => __( 'Social Links Menu', 'twentysixteen' ),
+		'top'  => __( 'Top navbar ', 'twentysixteen' )
 	) );
 
 	/*
@@ -669,3 +670,24 @@ function twentysixteen_widget_tag_cloud_args( $args ) {
 	return $args;
 }
 add_filter( 'widget_tag_cloud_args', 'twentysixteen_widget_tag_cloud_args' );
+
+/**
+* get top nav bar
+*
+*/
+function get_top_navbar (){
+	$menu_name = 'top';
+	$locations = get_nav_menu_locations();
+	$menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
+	$menuitems = wp_get_nav_menu_items( $menu->term_id, array( 'order' => 'DESC' ) );
+	$count = 0;
+	$submenu = false;
+	$return_li="";
+		foreach( $menuitems as $item ):
+			$link = $item->url;
+			$title = $item->title;
+			$parent_id = $item->ID;
+			$return_li .= '<a class="menuitem" href="'.$link.'">'.$title.'</a>';
+		endforeach;
+		return $return_li;
+}

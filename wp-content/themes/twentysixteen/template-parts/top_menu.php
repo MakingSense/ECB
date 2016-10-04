@@ -1,6 +1,7 @@
+<?php
+
+ ?>
 <nav class="top-menu">
-  <a class="menuitem" href="#">Blog</a>
-  <a class="menuitem" href="#">Newsletter</a>
-  <a class="menuitem" href="#">Contact</a>
+  <?php echo get_top_navbar(); ?>
   <a class="menuitem mobile-only" href="#"><button class="donate-button">DONATE</button></a>
 </nav>

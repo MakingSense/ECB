@@ -9,48 +9,7 @@
  * @since Twenty Sixteen 1.0
  */
 
- $menu_name = 'primary';
- $locations = get_nav_menu_locations();
- $menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
- $menuitems = wp_get_nav_menu_items( $menu->term_id, array( 'order' => 'DESC' ) );
- $count = 0;
- $submenu = false;
- $return_li="";
-
-
-foreach( $menuitems as $item ):
-				 $link = $item->url;
-				 $title = $item->title;
-				 // item does not have a parent so menu_item_parent equals 0 (false)
-				 if ( !$item->menu_item_parent ):
-					// save this id for later comparison with sub-menu items
-					$parent_id = $item->ID;
-					$return_li .= '<li class="menuitem" role="menuitem"><a href="'.$link.'">'.$title.'</a>';
-
-				endif;
-
-				if ( $parent_id == $item->menu_item_parent ):
-					if ( !$submenu ):
-						$submenu = true;
-						$return_li .= '<ul class="sub-menu">'
-													.'<li class="title"><a href="#">'.$menuitems[ $count - 1 ]->title.'</a></li>';
-					endif;
-
-					$return_li .= '<li class="menuitem"><a href="'.$link.'">'.$title.'</a></li>';
-
-					if ( $menuitems[ $count + 1 ]->menu_item_parent != $parent_id && $submenu ):
-						$return_li .= '</ul>';
-						$submenu = false;
-					endif;
-
-				 endif;
-
-		 if ( $menuitems[ $count + 1 ]->menu_item_parent != $parent_id ):
-				$return_li .= '</li>';
-				$submenu = false;
-		endif;
-		$count++;
-endforeach;
+$primary_menu = get_primary_menu();
 
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?> class="no-js">
@@ -92,7 +51,7 @@ endforeach;
 				<div class="component--menu">
 					  <ul class="main-menu" role="menu">
 							<?php
-							echo $return_li;
+							echo $primary_menu;
 						 ?>
 						 <li class="menuitem desktop-only" role="menuitem"><button class="donate-button">DONATE</button></li>
 				   </ul>
@@ -117,7 +76,7 @@ endforeach;
 						<div class="component--menu">
 						  <ul class="main-menu" role="menu">
 								<?php
-										echo $return_li;
+										echo $primary_menu;
 								?>
 						    <li class="menuitem desktop-only" role="menuitem"><button class="donate-button">DONATE</button></li>
 						  </ul>

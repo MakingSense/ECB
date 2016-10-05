@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: PageMedia
+Template Name: Page Media
 */
 /**
  * The media template file
@@ -20,12 +20,65 @@ get_header(); ?>
     <div>
           <?php get_blockmedia() ?>
     </div>
-                
-    <main id="main" class="site-main" role="main"> 
-		
+<?php              
+$box="<ul>";
+$args = array(
+    'post_type' => 'media',
+    'meta_key'		=> 'show_list_media_page',
+	'meta_value'	=> 'Yes',
+	'posts_per_page' => 6
+	
+
+    );
 
 
-    </main><!-- .site-main -->    
+$the_query = new WP_Query( $args );?>
+
+<?php if ( $the_query->have_posts() ) : ?>
+  <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+    
+  	<?php $box.="<li><a href='#".$post->post_name."'>".get_the_title()."</a></li>";?>
+    
+    
+ <?php endwhile; ?>
+    <!-- end of the loop -->
+ 
+    <!-- pagination here -->
+ 
+    <?php wp_reset_postdata(); ?>
+
+<?php endif; ?>
+<?php $box.="</ul>";
+
+wp_reset_query();
+
+$args = array(
+    'post_type' => 'media',
+    'meta_key'		=> 'show_list_media_page',
+	'meta_value'	=> 'Yes',
+	'posts_per_page' => 6
+	
+
+    );
+
+$the_query = new WP_Query( $args );?>
+
+<div id="primary" class="content-area">
+	<main id="main" class="site-main" role="main">
+	<?php if ( $the_query->have_posts() ) : ?>
+		 	<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+			<div><?=$box?></div>
+			<div id="<?=$post->post_name?>"><?=	get_the_title()?></div>
+			<?php endwhile; ?>
+		    <!-- end of the loop -->
+		 
+		    <?php wp_reset_postdata(); ?>
+	<?php endif; ?>		
+
+        </main>
+
+
+</div><!-- .content-area -->  
 <?php get_footer(); ?>
 
 

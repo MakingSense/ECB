@@ -830,17 +830,6 @@ class acf
                                    echo "<input type='hidden' id='edit_post' value='edit_post'>";
                             }
 
-                           $posts_query=  "SELECT $wpdb->posts.ID, $wpdb->posts.guid,$wpdb->posts.post_title FROM $wpdb->posts, $wpdb->postmeta WHERE 
-                                           ($wpdb->posts.post_type='article' OR
-                                           $wpdb->posts.post_type='media' OR
-                                           $wpdb->posts.post_type='post') AND                                         
-                                           $wpdb->posts.ID = $wpdb->postmeta.post_id AND 
-                                            (
-                                           $wpdb->postmeta.meta_value='third' OR 
-                                           $wpdb->postmeta.meta_value='second' OR 
-                                           $wpdb->postmeta.meta_value='first' )";
-                           
-                                           $posts_home = $wpdb->get_results($posts_query, ARRAY_A);
 
                             $posts_query_first=  "SELECT $wpdb->posts.ID, $wpdb->posts.guid,$wpdb->posts.post_title FROM $wpdb->posts, $wpdb->postmeta WHERE 
                                            ($wpdb->posts.post_type='article' OR
@@ -880,19 +869,6 @@ class acf
                            echo "<input type='hidden' id='post_second' value='".count($posts_home_second)."'>";
                            echo "<input type='hidden' id='post_third' value='".count($posts_home_third)."'>";
 
-                           if ((count($posts_home)>=3) && ($field["type"]=="radio") && ($_GET["action"]!="edit")){
-
-                               echo '<div class="field field_type-' . $field['type'] . ' field_key-' . $field['key'] . $required_class . '" data-field_name="' . $field['name'] . '" data-field_key="' . $field['key'] . '" data-field_type="' . $field['type'] . '">';
-
-                                   echo '<p class="label">';
-                                           echo '<label for="' . $field['id'] . '">Currently there are 3 post in the HOME</label>';
-                                           for ($i=0;$i<=2;$i++){
-                                               echo "Edit post <a href='/wp-ecb/wp-admin/post.php?post=".$posts_home[$i]["ID"]."&action=edit'>".$posts_home[$i]["post_title"]."</a><br>";
-                                           }
-
-                                   echo '</p>';
-                               echo "</div>";        
-                           }else{
 
                                 echo '<div id="acf-' . $field['name'] . '" class="field field_type-' . $field['type'] . ' field_key-' . $field['key'] . $required_class . '" data-field_name="' . $field['name'] . '" data-field_key="' . $field['key'] . '" data-field_type="' . $field['type'] . '">';
 
@@ -902,10 +878,15 @@ class acf
                                         echo '</p>';
 
                                     $field['name'] = 'fields[' . $field['key'] . ']';
+
                                     do_action('acf/create_field', $field, $post_id);
+                                    $post_field = $field['value'];
                                 }
 
                                 echo '</div>';
+                                if ($field[_name]==="your_can_choose_the_post_for_home") {
+                                    
+                               
                                 echo '<script>
                                     jQuery(document).ready(function(){
                                     jQuery("#publish").on("click", function() {
@@ -917,51 +898,62 @@ class acf
                                            }
                                         echo ' 
                                         var result=false;
-                                        jQuery(".acf-radio-list input:radio" ).each(function() {
-                                           
-                                            var radio_selected = jQuery(this).val();
+                                        var radio_selected="";
+                                        var msg = "";
+                                        jQuery("#acf-your_can_choose_the_post_for_home input:radio" ).each(function() {
+//                                           console.log(jQuery(this).val());
+                                            radio_selected = jQuery(this).val();
                                             if (jQuery(this).prop("checked")) {
                                                 
                                                 switch(radio_selected){
                                                     case "first":
                                                             if ( jQuery("#post_first").val()>=1){
-                                                                alert("The post of the type FIRST already exists in the page home");
+                                                                msg = "The post of the type FIRST already exists in the page home";
                                                                 result = true;
-                                                                return false;
+                                                                
                                                             }
                                                             break;
                                                     case "second":
                                                             if ( jQuery("#post_second").val()>=1){
-                                                                alert("The post of the type SECOND already exists in the page home");
+                                                                msg = "The post of the type SECOND already exists in the page home";
                                                                 result = true;
-                                                                return false;
+                                                               
                                                             }
                                                             break;
                                                     case "third":
                                                             if ( jQuery("#post_third").val()>=1){
-                                                                alert("The post of the type THIRD already exists in the page home");
+                                                                msg = "The post of the type THIRD already exists in the page home";
                                                                 result = true;
-                                                                return false;
+                                                               
                                                             }
                                                             break;
                                                     case "disabled":
-                                                            return false;
+                                                           
                                                             break;
-                                                } 
+                                                }
+                                                return false;
                                             }
                                             
                                         });
-                                        
+
                                         if (result){
-                                            return false;
+                                            if (radio_selected=="'.$post_field.'"){
+                                                return true;
+                                            }else{
+                                                alert(msg);
+                                                return false;
+                                            }  
                                         }
+                                        
                                         
                                      
                                      });
                                     });    
                                 </script>';
 
-                            }}
+                            }
+                          }   //
+                            //              }
 				
 	}
 	

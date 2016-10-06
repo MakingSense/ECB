@@ -19,7 +19,7 @@ Template Name: Page Blog
   wp_reset_query();
   $paged = ( get_query_var( 'paged' ) ) ? absint( get_query_var( 'paged' ) ) : 1;
   $args = array(
-    'posts_per_page' => 2,//change the number the post(8) as shown in the mockup
+    'posts_per_page' => 8,//change the number the post(8) as shown in the mockup
     'paged' => $paged,
   );
 

@@ -11,39 +11,21 @@
  * @since     4.0.0
  */
 ?>
-<?php
-if ( ! empty( $subtitle ) ) :
-	echo $before_subtitle . $subtitle . $after_subtitle;
-endif;
-?>
-<?php
-if ( ! empty( $title ) ) :
-	echo $before_title . $title . $after_title;
-endif;
-?>
-
-<?php if ( ! empty( $image_id ) ) : ?>
-	<p class="simple-image">
-		<?php
-		echo $link_open;
-		echo wp_get_attachment_image( $image_id, $image_size );
-		echo $link_close;
-		?>
-	</p>
-<?php endif; ?>
-
-<?php
-if ( ! empty( $text ) ) :
-	echo wpautop( $text );
-endif;
-?>
-
-<?php if ( ! empty( $link_text ) ) : ?>
-	<p class="more">
-		<?php
-		echo $text_link_open;
-		echo $link_text;
-		echo $text_link_close;
-		?>
-	</p>
-<?php endif; ?>
+    <article class="media"> 
+      <div class="wrapper">   
+        <div class="text">
+          <?php if ( ! empty( $subtitle ) ) :?>
+	      <h2><?=$subtitle?></h2>
+		<?php endif; ?>
+        <?php if ( ! empty( $title ) ) :?>
+          <h3><?=$title?></h3>
+		<?php endif; ?>  
+		<?php if ( ! empty( $text ) ) :        ?>
+          <h4><?=$text?></h4>
+        <?php endif; ?> 
+        <?php if ( ! empty( $link_text ) ) : ?>  
+         <div class="button-container"><button onclick='window.location.href="<?=  explode('"', $text_link_open)[1];?>";' class="more-button"><?=$link_text?></button></div>
+        <?php endif; ?> 
+        </div>
+      </div>
+    </article>

@@ -10,18 +10,36 @@ class mpw_widget extends WP_Widget {
     function widget($args,$instance){
         echo $before_widget;    
         ?>
-        <div id='mpw_widget' class='widget mpw_widget'>
-            <h1><?=$instance["mpw_number"]?></h1>
-            <h4><?=$instance["mpw_texto"]?></h4>
-        </div>
-        <div id='mpw_widget' class='widget mpw_widget'>
-            <h1><?=$instance["mpw_number1"]?></h1>
-            <h4><?=$instance["mpw_texto1"]?></h4>
-        </div>
-        <div id='mpw_widget' class='widget mpw_widget'>
-            <h1><?=$instance["mpw_number2"]?></h1>
-            <h4><?=$instance["mpw_texto2"]?></h4>
-        </div>
+      <section class="stats desktop-only">
+          <article class="stat">
+            <span class="number"><?=$instance["mpw_number"]?></span>
+            <span class="text"><?=$instance["mpw_texto"]?></span>
+          </article>
+          <article class="stat">
+            <span class="number"><?=$instance["mpw_number1"]?></span>
+            <span class="text"><?=$instance["mpw_texto1"]?></span>
+          </article>
+          <article class="stat">
+            <span class="number"><?=$instance["mpw_number2"]?></span>
+            <span class="text"><?=$instance["mpw_texto2"]?></span>
+          </article>
+        </section>
+
+        <section class="stats mobile-only owl-carousel">
+          <article class="stat">
+            <span class="number"><?=$instance["mpw_number"]?><</span>
+            <span class="text"><?=$instance["mpw_texto"]?></span>
+          </article>
+          <article class="stat">
+            <span class="number"><?=$instance["mpw_number1"]?></span>
+            <span class="text"><?=$instance["mpw_texto1"]?></span>
+          </article>
+          <article class="stat">
+            <span class="number"><?=$instance["mpw_number2"]?></span>
+            <span class="text"><?=$instance["mpw_texto2"]?></span>
+          </article>
+      </section>
+      <hr>
         <?php
         echo $after_widget;
     }

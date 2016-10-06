@@ -62,12 +62,12 @@ Use it to make something cool, have fun, and share what you've learned with othe
 	font-family: sans-serif;
 	-webkit-text-size-adjust: 100%;
 	-ms-text-size-adjust: 100%;
-}
+}*/
 
 body {
 	margin: 0;
 }
-
+/*
 article,
 aside,
 details,
@@ -81,7 +81,7 @@ nav,
 section,
 summary {
 	display: block;
-}
+}*/
 
 audio,
 canvas,
@@ -262,9 +262,9 @@ optgroup {
 	font-weight: bold;
 }
 
-
+/*
 *
- * 2.0 - Genericons
+ * 2.0 - Genericons*/
  
 
 .menu-item-has-children a:after,
@@ -294,9 +294,9 @@ optgroup {
 }
 
 
-*
+/**
  * 3.0 - Typography
- 
+ */
 
 body,
 button,
@@ -443,9 +443,9 @@ big {
 }
 
 
-*
+/**
  * 4.0 - Elements
- 
+ */
 
 html {
 	-webkit-box-sizing: border-box;
@@ -456,7 +456,7 @@ html {
 *,
 *:before,
 *:after {
-	 Inherit box-sizing to make it easier to change the property for components that leverage other behavior; see http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ 
+	 /*Inherit box-sizing to make it easier to change the property for components that leverage other behavior; see http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/*/ 
 	-webkit-box-sizing: inherit;
 	-moz-box-sizing: inherit;
 	box-sizing: inherit;
@@ -464,7 +464,7 @@ html {
 
 body {
 	background: #1a1a1a;
-	 Fallback for when there is no custom background color defined. 
+	 /*Fallback for when there is no custom background color defined.*/ 
 }
 
 hr {
@@ -508,9 +508,9 @@ dd {
 
 img {
 	height: auto;
-	 Make sure images are scaled correctly. 
+	 /*Make sure images are scaled correctly.*/ 
 	max-width: 100%;
-	 Adhere to container width. 
+/*	 Adhere to container width. */
 	vertical-align: middle;
 }
 
@@ -530,7 +530,7 @@ table {
 	border-width: 1px 0 0 1px;
 	margin: 0 0 1.75em;
 	table-layout: fixed;
-	 Prevents HTML tables from becoming too wide 
+/*	 Prevents HTML tables from becoming too wide */
 	width: 100%;
 }
 
@@ -555,7 +555,7 @@ td {
 	padding: 0.4375em;
 }
 
- Placeholder text color -- selectors need to be separate to work. 
+/* Placeholder text color -- selectors need to be separate to work. */
 ::-webkit-input-placeholder {
 	color: #686868;
 	font-family: Montserrat, "Helvetica Neue", sans-serif;
@@ -570,7 +570,7 @@ td {
 	color: #686868;
 	font-family: Montserrat, "Helvetica Neue", sans-serif;
 	opacity: 1;
-	 Since FF19 lowers the opacity of the placeholder by default 
+/*	 Since FF19 lowers the opacity of the placeholder by default */
 }
 
 :-ms-input-placeholder {
@@ -578,9 +578,9 @@ td {
 	font-family: Montserrat, "Helvetica Neue", sans-serif;
 }
 
-
+/*
 *
- * 5.0 - Forms
+ * 5.0 - Forms*/
  
 
 input {
@@ -726,12 +726,12 @@ input[type="search"].search-field {
 }
 
 
-*
+/**
  * 6.0 - Navigation
  
 
 *
- * 6.1 - Links
+ * 6.1 - Links*/
  
 
 a {
@@ -783,10 +783,10 @@ a:active {
 	box-shadow: none;
 }
 
-
+/*
 *
  * 6.2 - Menus
- 
+ */
 
 .site-header-menu {
 	display: none;
@@ -1274,11 +1274,11 @@ a:active {
 }
 
 
-*
+/**
  * 7.0 - Accessibility
  
 
- Text meant only for screen readers 
+ Text meant only for screen readers */
 .says,
 .screen-reader-text {
 	clip: rect(1px, 1px, 1px, 1px);
@@ -1286,7 +1286,7 @@ a:active {
 	overflow: hidden;
 	position: absolute !important;
 	width: 1px;
-	 many screen reader and browser combinations announce broken words as they would appear visually 
+/*	 many screen reader and browser combinations announce broken words as they would appear visually */
 	word-wrap: normal !important;
 }
 
@@ -1322,9 +1322,9 @@ a:active {
 }
 
 
-*
+/**
  * 8.0 - Alignments
- 
+ */
 
 .alignleft {
 	float: left;
@@ -1355,9 +1355,9 @@ blockquote.aligncenter {
 }
 
 
-*
+/**
  * 9.0 - Clearings
- 
+ */
 
 .clear:before,
 .clear:after,
@@ -1399,10 +1399,10 @@ blockquote:after,
 	clear: both;
 }
 
-
+/*
 *
  * 10.0 - Widgets
- 
+ */
 
 .widget {
 	border-top: 4px solid #1a1a1a;
@@ -1522,9 +1522,9 @@ blockquote:after,
 }
 
 
-*
+/**
  * 11.0 - Content
- 
+ */
 
 .site {
 	background-color: #fff;
@@ -1539,8 +1539,8 @@ blockquote:after,
 .site-content {
 	word-wrap: break-word;
 }
-
- Do not show the outline on the skip link target. 
+/*
+ Do not show the outline on the skip link target. */
 #content[tabindex="-1"]:focus {
 	outline: 0;
 }
@@ -1553,10 +1553,10 @@ blockquote:after,
 	margin-bottom: 0;
 }
 
-
+/*
 *
  * 11.1 - Header
- 
+ */
 
 .site-header {
 	padding: 2.625em 7.6923%;
@@ -1576,7 +1576,7 @@ blockquote:after,
 
 .site-branding {
 	margin: 0.875em auto 0.875em 0;
-	 Avoid overflowing wide custom logo in small screens in Firefox and IEs 
+/*	 Avoid overflowing wide custom logo in small screens in Firefox and IEs */
 	max-width: 100%;
 	min-width: 0;
 	overflow: hidden;
@@ -1673,9 +1673,9 @@ blockquote:after,
 	opacity: 0.85;
 }
 
-*
+/**
  * 11.2 - Posts and pages
- 
+ */
 
 .site-main > article {
 	margin-bottom: 3.5em;
@@ -2022,10 +2022,10 @@ body:not(.search-results) .entry-summary > :last-child,
 	text-transform: uppercase;
 }
 
-*
+/**
  * IE8 and earlier will drop any block with CSS3 selectors.
  * Do not combine these styles with the next block.
- 
+ */
 .updated:not(.published) {
 	display: none;
 }
@@ -2142,8 +2142,8 @@ body.search-no-results .page-header {
 }
 
 
-*
- * 11.3 - Post Formats
+/**
+ * 11.3 - Post Formats*/
  
 
 .format-aside .entry-title,
@@ -2166,10 +2166,10 @@ body.search-no-results .page-header {
 	display: none;
 }
 
-
+/*
 *
  * 11.4 - Comments
- 
+ */
 
 .comments-area {
 	margin: 0 7.6923% 3.5em;
@@ -2386,9 +2386,9 @@ body.search-no-results .page-header {
 }
 
 
-*
+/**
  * 11.5 - Sidebar
- 
+ */
 
 .sidebar {
 	margin-bottom: 3.5em;
@@ -2396,9 +2396,9 @@ body.search-no-results .page-header {
 }
 
 
-*
+/**
  * 11.6 - Footer
- 
+ */
 
 .site-footer {
 	padding: 0 7.6923% 1.75em;
@@ -2435,8 +2435,8 @@ body.search-no-results .page-header {
 }
 
 
-*
- * 12.0 - Media
+/**
+ * 12.0 - Media*/
  
 
 .site .avatar {
@@ -2459,8 +2459,8 @@ body.search-no-results .page-header {
 .textwidget a img {
 	display: block;
 }
-
- Make sure embeds and iframes fit their containers. 
+/*
+ Make sure embeds and iframes fit their containers. */
 embed,
 iframe,
 object,
@@ -2506,10 +2506,10 @@ p > video {
 	top: 0.7142857143em;
 }
 
-
+/*
 *
  * 12.1 - Captions
- 
+ */
 
 .wp-caption {
 	margin-bottom: 1.75em;
@@ -2531,9 +2531,9 @@ p > video {
 }
 
 
-*
+/**
  * 12.2 - Galleries
- 
+ */
 
 .gallery {
 	margin: 0 -1.1666667% 1.75em;
@@ -2601,10 +2601,10 @@ p > video {
 	display: none;
 }
 
-
+/*
 *
  * 13.0 - Multisites
- 
+ */
 
 .widecolumn {
 	margin-bottom: 3.5em;
@@ -2702,16 +2702,16 @@ p > video {
 	margin-bottom: 0;
 }
 
-
+/*
 *
  * 14.0 - Media Queries
- 
+ */
 
-*
+/**
  * Does the same thing as <meta name="viewport" content="width=device-width">,
  * but in the future W3C standard way. -ms- prefix is required for IE10+ to
  * render responsive styling in Windows 8 "snapped" views; IE10+ does not honor
- * the meta tag. See https://core.trac.wordpress.org/ticket/25888.
+ * the meta tag. See https://core.trac.wordpress.org/ticket/25888.*/
  
 @-ms-viewport {
 	width: device-width;
@@ -2722,9 +2722,9 @@ p > video {
 }
 
 
-*
+/**
  * 14.1 - >= 710px
- 
+ */
 
 @media screen and (min-width: 44.375em) {
 	body:not(.custom-background-image):before,
@@ -2943,10 +2943,10 @@ p > video {
 	}
 }
 
-
+/*
 *
  * 14.2 - >= 783px
- 
+ */
 
 @media screen and (min-width: 48.9375em) {
 	body:not(.custom-background-image).admin-bar:before {
@@ -2954,10 +2954,10 @@ p > video {
 	}
 }
 
-
+/*
 *
  * 14.3 - >= 910px
- 
+ */
 
 @media screen and (min-width: 56.875em) {
 	.site-header {
@@ -3391,10 +3391,10 @@ p > video {
 	}
 }
 
-
+/*
 *
  * 14.4 - >= 985px
- 
+ */
 
 @media screen and (min-width: 61.5625em) {
 	.site-main {
@@ -3617,9 +3617,9 @@ p > video {
 }
 
 
-*
+/**
  * 14.5 - >= 1200px
- 
+ */
 
 @media screen and (min-width: 75em) {
 	body:not(.search-results) .entry-summary {
@@ -3740,9 +3740,9 @@ p > video {
 }
 
 
-*
+/**
  * 15.0 - Print
- 
+ */
 
 @media print {
 	form,
@@ -3851,7 +3851,8 @@ p > video {
 
 	body,
 	.site {
-		background: none !important;  Brute force since user agents all print differently. 
+		background: none; 
+/*                Brute force since user agents all print differently. */
 	}
 
 	body,
@@ -3860,13 +3861,15 @@ p > video {
 	.site-branding .site-title a,
 	.entry-title a,
 	.comment-author {
-		color: #1a1a1a !important;  Make sure color schemes don't affect to print 
+		color: #1a1a1a !important;  
+/*                Make sure color schemes don't affect to print */
 	}
 
 	blockquote,
 	.page-header,
 	.comments-title {
-		border-color: #1a1a1a !important;  Make sure color schemes don't affect to print 
+		border-color: #1a1a1a !important; 
+/*                Make sure color schemes don't affect to print */
 	}
 
 	blockquote,
@@ -3887,12 +3890,14 @@ p > video {
 	.site-info a,
 	.wp-caption .wp-caption-text,
 	.gallery-caption {
-		color: #686868 !important;  Make sure color schemes don't affect to print 
+		color: #686868 !important; 
+/*                Make sure color schemes don't affect to print */
 	}
 
 	code,
 	hr {
-		background-color: #d1d1d1 !important;  Make sure color schemes don't affect to print 
+		background-color: #d1d1d1 !important; 
+                /*Make sure color schemes don't affect to print*/ 
 	}
 
 	pre,
@@ -3906,11 +3911,13 @@ p > video {
 	.comment-list .pingback,
 	.comment-list .trackback,
 	.no-comments {
-		border-color: #d1d1d1 !important;  Make sure color schemes don't affect to print 
+		border-color: #d1d1d1 !important;  
+                /*Make sure color schemes don't affect to print*/ 
 	}
 
 	a {
-		color: #007acc !important;  Make sure color schemes don't affect to print 
+		color: #007acc !important;  
+/*                Make sure color schemes don't affect to print */
 	}
 
 	.entry-content a,
@@ -3919,7 +3926,8 @@ p > video {
 	.comment-content a,
 	.pingback .comment-body > a {
 		box-shadow: none;
-		border-bottom: 1px solid #007acc !important;  Make sure color schemes don't affect to print 
+		border-bottom: 1px solid #007acc !important; 
+/*                Make sure color schemes don't affect to print */
 	}
 
 	.site {
@@ -3976,4 +3984,4 @@ p > video {
 	.widecolumn {
 		padding: 0;
 	}
-}*/
+}

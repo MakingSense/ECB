@@ -529,7 +529,6 @@ function twentysixteen_scripts() {
 
 	// Theme stylesheet.
 	wp_enqueue_style( 'twentysixteen-style',  get_template_directory_uri() . '/css/styles.css' );
-        wp_enqueue_style( 'twentysixteen-style',  get_template_directory_uri() . 'style.css' );
         
 
 

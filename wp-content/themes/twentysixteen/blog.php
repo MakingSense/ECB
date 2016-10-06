@@ -29,7 +29,9 @@ Template Name: Page Blog
 <?php get_header(); ?>
 <main role="main" class="section--blog">
 
-  <h1>Blog</h1>
+  <div class="head">
+    <h1>Blog</h1>
+  </div>
   
   <section class="content">
     

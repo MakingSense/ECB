@@ -7,7 +7,7 @@ function get_pilars() {
             'text'  =>'The city is designed and developed with the underlying principle of access by proximity, providing residents with walkable access to open/green spaces, basic urban services, and affordable housing. It demonstrates environmentally friendly transport options and provides walking and transit access to close-by employment.'
         ),
         'bio_geo' => array (
-            'title' => 'Bio Geo',
+            'title' => 'Bio-Geo',
             'type_icon' =>'icon-tree',
             'text'  => 'The city commits to responsible management of resources and materials as well as the generation and use of clean, renewable energy. It maintains a level of physical conditions that ensure clean air and access to clean and safe water. It fosters healthy soil and makes sure nutritious, locally grown food is available.'
         ),

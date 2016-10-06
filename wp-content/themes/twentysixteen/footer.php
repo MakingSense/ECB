@@ -13,7 +13,7 @@
 
 	 <footer class="component--footer">
 	   <h2>Stay in Touch</h2>
-	   <p>Sign up to receive our monthly newsletter and the latest Ecocity news</p>
+	   <p>Sign up to receive our monthly newsletter and receive the latest Ecocity news</p>
       <!--Begin CTCT Sign-Up Form-->
       	<!-- EFD 1.0.0 [Mon Sep 26 08:32:50 EDT 2016] -->
          <div class="subscribe-container ctct-embed-signup" >

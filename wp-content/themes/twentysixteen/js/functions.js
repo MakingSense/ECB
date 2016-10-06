@@ -181,8 +181,19 @@
 	}
 
 	$( document ).ready( function() {
-		body = $( document.body );
+		
+		$('article.media aside ul li').click(function(){
+			$('article.media aside ul li').removeClass('active');
+			href=$(this).children().attr('href');		
+			$("article.media aside ul li a").each(function() {
+				 if($(this).attr('href')==href){
+				 	$(this).parent().addClass('active');
+				 }
+				})
 
+		})
+
+		body = $( document.body );
 		$( window )
 			.on( 'load.twentysixteen', onResizeARIA )
 			.on( 'resize.twentysixteen', function() {

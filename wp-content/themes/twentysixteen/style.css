@@ -58,16 +58,16 @@ Use it to make something cool, have fun, and share what you've learned with othe
  * Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
  */
 
-/*html {
+html {
 	font-family: sans-serif;
 	-webkit-text-size-adjust: 100%;
 	-ms-text-size-adjust: 100%;
-}*/
+}
 
 body {
 	margin: 0;
 }
-/*
+
 article,
 aside,
 details,
@@ -81,7 +81,7 @@ nav,
 section,
 summary {
 	display: block;
-}*/
+}
 
 audio,
 canvas,
@@ -262,10 +262,10 @@ optgroup {
 	font-weight: bold;
 }
 
-/*
-*
- * 2.0 - Genericons*/
- 
+
+/**
+ * 2.0 - Genericons
+ */
 
 .menu-item-has-children a:after,
 .social-navigation a:before,
@@ -456,7 +456,7 @@ html {
 *,
 *:before,
 *:after {
-	 /*Inherit box-sizing to make it easier to change the property for components that leverage other behavior; see http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/*/ 
+	/* Inherit box-sizing to make it easier to change the property for components that leverage other behavior; see http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
 	-webkit-box-sizing: inherit;
 	-moz-box-sizing: inherit;
 	box-sizing: inherit;
@@ -464,7 +464,7 @@ html {
 
 body {
 	background: #1a1a1a;
-	 /*Fallback for when there is no custom background color defined.*/ 
+	/* Fallback for when there is no custom background color defined. */
 }
 
 hr {
@@ -508,9 +508,9 @@ dd {
 
 img {
 	height: auto;
-	 /*Make sure images are scaled correctly.*/ 
+	/* Make sure images are scaled correctly. */
 	max-width: 100%;
-/*	 Adhere to container width. */
+	/* Adhere to container width. */
 	vertical-align: middle;
 }
 
@@ -530,7 +530,7 @@ table {
 	border-width: 1px 0 0 1px;
 	margin: 0 0 1.75em;
 	table-layout: fixed;
-/*	 Prevents HTML tables from becoming too wide */
+	/* Prevents HTML tables from becoming too wide */
 	width: 100%;
 }
 
@@ -570,7 +570,7 @@ td {
 	color: #686868;
 	font-family: Montserrat, "Helvetica Neue", sans-serif;
 	opacity: 1;
-/*	 Since FF19 lowers the opacity of the placeholder by default */
+	/* Since FF19 lowers the opacity of the placeholder by default */
 }
 
 :-ms-input-placeholder {
@@ -578,10 +578,10 @@ td {
 	font-family: Montserrat, "Helvetica Neue", sans-serif;
 }
 
-/*
-*
- * 5.0 - Forms*/
- 
+
+/**
+ * 5.0 - Forms
+ */
 
 input {
 	line-height: normal;
@@ -728,11 +728,11 @@ input[type="search"].search-field {
 
 /**
  * 6.0 - Navigation
- 
+ */
 
-*
- * 6.1 - Links*/
- 
+/**
+ * 6.1 - Links
+ */
 
 a {
 	color: #007acc;
@@ -783,8 +783,8 @@ a:active {
 	box-shadow: none;
 }
 
-/*
-*
+
+/**
  * 6.2 - Menus
  */
 
@@ -1159,7 +1159,7 @@ a:active {
 	right: 55px;
 }
 
- reset screen-reader-text 
+/* reset screen-reader-text */
 .pagination .current .screen-reader-text {
 	position: static !important;
 }
@@ -1276,9 +1276,9 @@ a:active {
 
 /**
  * 7.0 - Accessibility
- 
+ */
 
- Text meant only for screen readers */
+/* Text meant only for screen readers */
 .says,
 .screen-reader-text {
 	clip: rect(1px, 1px, 1px, 1px);
@@ -1286,11 +1286,11 @@ a:active {
 	overflow: hidden;
 	position: absolute !important;
 	width: 1px;
-/*	 many screen reader and browser combinations announce broken words as they would appear visually */
+	/* many screen reader and browser combinations announce broken words as they would appear visually */
 	word-wrap: normal !important;
 }
 
- must have higher specificity than alternative color schemes inline styles 
+/* must have higher specificity than alternative color schemes inline styles */
 .site .skip-link {
 	background-color: #f1f1f1;
 	box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2);
@@ -1399,8 +1399,8 @@ blockquote:after,
 	clear: both;
 }
 
-/*
-*
+
+/**
  * 10.0 - Widgets
  */
 
@@ -1433,7 +1433,7 @@ blockquote:after,
 	color: #1a1a1a;
 }
 
- Calendar widget 
+/* Calendar widget */
 .widget.widget_calendar table {
 	margin: 0;
 }
@@ -1463,7 +1463,7 @@ blockquote:after,
 	color: #fff;
 }
 
- Recent Posts widget 
+/* Recent Posts widget */
 .widget_recent_entries .post-date {
 	color: #686868;
 	display: block;
@@ -1478,7 +1478,7 @@ blockquote:after,
 	margin-bottom: 0;
 }
 
- RSS widget 
+/* RSS widget */
 .widget_rss .rsswidget img {
 	margin-top: -0.375em;
 }
@@ -1503,7 +1503,7 @@ blockquote:after,
 	margin-bottom: 0;
 }
 
- Tag Cloud widget 
+/* Tag Cloud widget */
 .tagcloud a {
 	border: 1px solid #d1d1d1;
 	border-radius: 2px;
@@ -1539,8 +1539,8 @@ blockquote:after,
 .site-content {
 	word-wrap: break-word;
 }
-/*
- Do not show the outline on the skip link target. */
+
+/* Do not show the outline on the skip link target. */
 #content[tabindex="-1"]:focus {
 	outline: 0;
 }
@@ -1553,8 +1553,8 @@ blockquote:after,
 	margin-bottom: 0;
 }
 
-/*
-*
+
+/**
  * 11.1 - Header
  */
 
@@ -1576,7 +1576,7 @@ blockquote:after,
 
 .site-branding {
 	margin: 0.875em auto 0.875em 0;
-/*	 Avoid overflowing wide custom logo in small screens in Firefox and IEs */
+	/* Avoid overflowing wide custom logo in small screens in Firefox and IEs */
 	max-width: 100%;
 	min-width: 0;
 	overflow: hidden;
@@ -2143,8 +2143,8 @@ body.search-no-results .page-header {
 
 
 /**
- * 11.3 - Post Formats*/
- 
+ * 11.3 - Post Formats
+ */
 
 .format-aside .entry-title,
 .format-image .entry-title,
@@ -2166,8 +2166,8 @@ body.search-no-results .page-header {
 	display: none;
 }
 
-/*
-*
+
+/**
  * 11.4 - Comments
  */
 
@@ -2436,8 +2436,8 @@ body.search-no-results .page-header {
 
 
 /**
- * 12.0 - Media*/
- 
+ * 12.0 - Media
+ */
 
 .site .avatar {
 	border-radius: 50%;
@@ -2459,8 +2459,8 @@ body.search-no-results .page-header {
 .textwidget a img {
 	display: block;
 }
-/*
- Make sure embeds and iframes fit their containers. */
+
+/* Make sure embeds and iframes fit their containers. */
 embed,
 iframe,
 object,
@@ -2506,8 +2506,8 @@ p > video {
 	top: 0.7142857143em;
 }
 
-/*
-*
+
+/**
  * 12.1 - Captions
  */
 
@@ -2601,8 +2601,8 @@ p > video {
 	display: none;
 }
 
-/*
-*
+
+/**
  * 13.0 - Multisites
  */
 
@@ -2702,8 +2702,8 @@ p > video {
 	margin-bottom: 0;
 }
 
-/*
-*
+
+/**
  * 14.0 - Media Queries
  */
 
@@ -2711,8 +2711,8 @@ p > video {
  * Does the same thing as <meta name="viewport" content="width=device-width">,
  * but in the future W3C standard way. -ms- prefix is required for IE10+ to
  * render responsive styling in Windows 8 "snapped" views; IE10+ does not honor
- * the meta tag. See https://core.trac.wordpress.org/ticket/25888.*/
- 
+ * the meta tag. See https://core.trac.wordpress.org/ticket/25888.
+ */
 @-ms-viewport {
 	width: device-width;
 }
@@ -2819,7 +2819,7 @@ p > video {
 		line-height: 1.25;
 	}
 
-	 restore screen-reader-text 
+	/* restore screen-reader-text */
 	.pagination .current .screen-reader-text {
 		position: absolute !important;
 	}
@@ -2943,8 +2943,8 @@ p > video {
 	}
 }
 
-/*
-*
+
+/**
  * 14.2 - >= 783px
  */
 
@@ -2954,8 +2954,8 @@ p > video {
 	}
 }
 
-/*
-*
+
+/**
  * 14.3 - >= 910px
  */
 
@@ -3391,8 +3391,8 @@ p > video {
 	}
 }
 
-/*
-*
+
+/**
  * 14.4 - >= 985px
  */
 
@@ -3851,8 +3851,7 @@ p > video {
 
 	body,
 	.site {
-		background: none; 
-/*                Brute force since user agents all print differently. */
+		background: none !important; /* Brute force since user agents all print differently. */
 	}
 
 	body,
@@ -3861,15 +3860,13 @@ p > video {
 	.site-branding .site-title a,
 	.entry-title a,
 	.comment-author {
-		color: #1a1a1a !important;  
-/*                Make sure color schemes don't affect to print */
+		color: #1a1a1a !important; /* Make sure color schemes don't affect to print */
 	}
 
 	blockquote,
 	.page-header,
 	.comments-title {
-		border-color: #1a1a1a !important; 
-/*                Make sure color schemes don't affect to print */
+		border-color: #1a1a1a !important; /* Make sure color schemes don't affect to print */
 	}
 
 	blockquote,
@@ -3890,14 +3887,12 @@ p > video {
 	.site-info a,
 	.wp-caption .wp-caption-text,
 	.gallery-caption {
-		color: #686868 !important; 
-/*                Make sure color schemes don't affect to print */
+		color: #686868 !important; /* Make sure color schemes don't affect to print */
 	}
 
 	code,
 	hr {
-		background-color: #d1d1d1 !important; 
-                /*Make sure color schemes don't affect to print*/ 
+		background-color: #d1d1d1 !important; /* Make sure color schemes don't affect to print */
 	}
 
 	pre,
@@ -3911,13 +3906,11 @@ p > video {
 	.comment-list .pingback,
 	.comment-list .trackback,
 	.no-comments {
-		border-color: #d1d1d1 !important;  
-                /*Make sure color schemes don't affect to print*/ 
+		border-color: #d1d1d1 !important; /* Make sure color schemes don't affect to print */
 	}
 
 	a {
-		color: #007acc !important;  
-/*                Make sure color schemes don't affect to print */
+		color: #007acc !important; /* Make sure color schemes don't affect to print */
 	}
 
 	.entry-content a,
@@ -3926,8 +3919,7 @@ p > video {
 	.comment-content a,
 	.pingback .comment-body > a {
 		box-shadow: none;
-		border-bottom: 1px solid #007acc !important; 
-/*                Make sure color schemes don't affect to print */
+		border-bottom: 1px solid #007acc !important; /* Make sure color schemes don't affect to print */
 	}
 
 	.site {

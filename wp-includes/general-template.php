@@ -140,9 +140,6 @@ function get_navigation( $name = null ) {
 
 	$templates = array();
 	$name = (string) $name;
-	if ( '' !== $name )
-		$templates[] = "sidebar-{$name}.php";
-
 	$templates[] = 'navigation.php';
 
 	locate_template( $templates, true );
@@ -164,9 +161,6 @@ function get_blockhome( $name = null ) {
 
 	$templates = array();
 	$name = (string) $name;
-	if ( '' !== $name )
-		$templates[] = "sidebar-{$name}.php";
-
 	$templates[] = 'body-homepage.php';
 
 	locate_template( $templates, true );
@@ -188,10 +182,29 @@ function get_blockmedia( $name = null ) {
 
 	$templates = array();
 	$name = (string) $name;
-	if ( '' !== $name )
-		$templates[] = "sidebar-{$name}.php";
-
 	$templates[] = 'body-media.php';
+
+	locate_template( $templates, true );
+}
+function get_blockmedia_reuse( $name = null ) {
+	/**
+	 * Fires before the sidebar template file is loaded.
+	 *
+	 * The hook allows a specific sidebar template file to be used in place of the
+	 * default sidebar template file. If your file is called sidebar-new.php,
+	 * you would specify the filename in the hook as get_sidebar( 'new' ).
+	 *
+	 * @since 2.2.0
+	 * @since 2.8.0 $name parameter added.
+	 *
+	 * @param string $name Name of the specific sidebar file to use.
+	 */
+	do_action( 'get_blockmedia', $name );
+
+	$templates = array();
+	$name = (string) $name;
+
+	$templates[] = 'body-media-re-use.php';
 
 	locate_template( $templates, true );
 }

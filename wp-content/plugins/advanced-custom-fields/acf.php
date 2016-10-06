@@ -859,10 +859,6 @@ class acf
                                            $wpdb->postmeta.meta_value='third'";
                            $posts_home_third = $wpdb->get_results($posts_query_third, ARRAY_A);
 
-
-//                           echo "post_first: ".count($posts_home_first);
-//                           echo "<br>post_second: ".count($posts_home_second);
-//                           echo "<br>post_third: ".count($posts_home_third );
                            //exit;
                            echo "<input type='hidden' id='count_post' value='".count($posts_home)."'>";
                            echo "<input type='hidden' id='post_first' value='".count($posts_home_first)."'>";
@@ -871,19 +867,20 @@ class acf
 
 
                                 echo '<div id="acf-' . $field['name'] . '" class="field field_type-' . $field['type'] . ' field_key-' . $field['key'] . $required_class . '" data-field_name="' . $field['name'] . '" data-field_key="' . $field['key'] . '" data-field_type="' . $field['type'] . '">';
-
+                                        echo '<br>';
                                         echo '<p class="label">';
                                                 echo '<label for="' . $field['id'] . '">' . $field['label'] . $required_label . '</label>';
                                                 echo $field['instructions'];
                                         echo '</p>';
-
+                                        
                                     $field['name'] = 'fields[' . $field['key'] . ']';
 
                                     do_action('acf/create_field', $field, $post_id);
                                     $post_field = $field['value'];
                                 }
-
+                                
                                 echo '</div>';
+                                echo '<br>';
                                 if ($field[_name]==="your_can_choose_the_post_for_home") {
                                     
                                

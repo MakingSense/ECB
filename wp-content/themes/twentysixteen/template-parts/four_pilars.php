@@ -1,3 +1,11 @@
+<?php
+  $pilar_text = array(
+    'urban_design' => 'The city is designed and developed with the underlying principle of access by proximity, providing residents with walkable access to open/green spaces, basic urban services, and affordable housing. It demonstrates environmentally friendly transport options and provides walking and transit access to close-by employment.',
+    'bio_geo' => 'The city commits to responsible management of resources and materials as well as the generation and use of clean, renewable energy. It maintains a level of physical conditions that ensure clean air and access to clean and safe water. It fosters healthy soil and makes sure nutritious, locally grown food is available.',
+    'socio_cultural' => '',
+
+ );
+ ?>
 <section class="content">
 <article class="intro">
   <h2>Four Pillars of an Ecocity</h2>
@@ -5,11 +13,11 @@
     <div class="button-container">
       <a href="#" class="active" data-jumbo-id="0">Urban Design</a>
       <p class="text active mobile-only">
-        The city is designed and developed with the underlying principle of access by proximity, providing residents with walkable access to open/green spaces, basic urban services, and affordable housing. It demonstrates environmentally friendly transport options and provides walking and transit access to close-by employment.
+        <?php echo $pilar_text['urban_design'] ?>
       </p>
       <a href="#" data-jumbo-id="1">Bio Geo</a>
       <p class="text mobile-only">
-        The city is designed and developed with the underlying principle of access by proximity, providing residents with walkable access to open/green spaces, basic urban services, and affordable housing. It demonstrates environmentally friendly transport options and provides walking and transit access to close-by employment.
+          <?php echo $pilar_text['bio_geo'] ?>
       </p>
       <a href="#" data-jumbo-id="2">Socio Cultural</a>
       <p class="text mobile-only">

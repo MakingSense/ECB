@@ -124,7 +124,7 @@ get_header();
                 ?>
 
                 <div class="blog-wrapper desktop-only">
-                    <h2>Ecocity World Summit</h2>
+                    <h2>Latest from the Blog</h2>
                     <div class="blog-page owl-carousel">
                         <?php if( $blog_array->have_posts() ): ?>
                             <?php while( $blog_array->have_posts() ) : $blog_array->the_post(); ?>

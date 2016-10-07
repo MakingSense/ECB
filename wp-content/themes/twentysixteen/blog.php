@@ -39,7 +39,7 @@ Template Name: Page Blog
 
     <h2><?php _e('All articles'); ?></h2>
     <form  id="filter-form">
-        <?php wp_dropdown_categories(array('name' => 'category')); ?>
+        <?php wp_dropdown_categories(array('name' =>'category')); ?>
         <?php wp_dropdown_users(array('name' => 'author')); ?>
         
         <select name='date' id="date-filter" class="filter-blog">

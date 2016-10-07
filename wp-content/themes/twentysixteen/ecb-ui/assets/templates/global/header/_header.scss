@@ -1,0 +1,181 @@
+@import "includes/menu/menu";
+@import "includes/top-bar/top-bar";
+
+.component--header {
+  margin: 16px 14px;
+  max-height: 246px;
+  z-index: 9;
+
+  a {
+    color: black;
+  }
+
+  .donate-button {
+    background: #bdf6c8;
+    margin-left: 15px;
+
+    &:hover {
+      background: #01d2a3;
+    }
+
+    &:active {
+      background: #01d2a3;
+    }
+  }
+
+  figure {
+    margin: 0;
+
+    .logo {
+      width: 127px;
+
+      &.logo-black {
+        display: block;
+      }
+
+      &.logo-white {
+        display: none;
+      }
+    }
+  }
+
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+
+    h2 {
+      font-size: 25px;
+
+      .eco {
+        color: #01d2a3;
+      }
+    }
+  }
+
+  .menu-button {
+    background: white;
+    margin: -10px;
+
+    .ms-icon {
+      font-size: 45px;
+    }
+  }
+
+  .mobile-menubar {
+    display: none;
+  }
+
+  &:before {
+    content: ' ';
+    height: 100%;
+    width: 100%;
+    background: white;
+    opacity: 0;
+    position: fixed;
+    top: -100%;
+    left: 0;
+    transition: all 0.2s ease;
+  }
+
+
+  /****************
+   *  Menu Open
+   ****************/
+
+  &.menu-open {
+    position: relative;
+
+    .nav-container > .menu-button {
+      display: none;
+    }
+
+    &:before {
+      content: ' ';
+      height: 100%;
+      width: 100%;
+      background: black;
+      opacity: 0.82;
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+    .mobile-menubar {
+      display: block;
+      position: absolute;
+      width: 100%;
+      left: 0;
+
+      .menu-head {
+        display: flex;
+        justify-content: space-between;
+
+        .menu-button{
+          color: white;
+          background: none;
+        }
+      }
+
+      .menu-content {
+        font-family: 'flamabold';
+        letter-spacing: 1.2px;
+        font-size: 18px;
+        display: flex;
+        flex-direction: column;
+
+        a {
+          color: white;
+        }
+
+        hr {
+          display: none;
+        }
+      }
+    }
+  }  
+}
+
+.header-light .component--header {
+  figure {
+    .logo {
+
+      &.logo-black {
+        display: none;
+      }
+
+      &.logo-white {
+        display: block;
+      }
+    }
+  }
+
+  hr {
+    background: white;
+  }
+}
+
+@include respond-to('isdesktop') {
+  .component--header {
+    margin: 16px 30px;
+
+    figure {
+      margin-top: 15px;
+      
+      .logo {
+        width: 330px;
+      }
+    }
+
+  }
+
+
+  .header-light .component--header {
+    h2 {
+      color: white;
+    }
+
+    a {
+      color: white;
+    }
+  }
+}

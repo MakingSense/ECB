@@ -1,0 +1,150 @@
+.component--footer {
+  background: #4a4a4a;
+  color: white;
+  padding: 15px 15px 45px 15px;
+
+  h2 {
+    color: white;
+  }
+
+  p, a, span {
+    font-size: 16px;
+    color: white;
+  }
+
+  .contact-container {
+    :nth-child(1) {
+      width: 100%;
+      display: block;
+    }
+  }
+
+  .subscribe-container {
+    margin: 5px 0;
+
+    label {
+      input {
+        &:focus::-webkit-input-placeholder{
+          color: transparent;
+        }
+
+        &:focus::-moz-placeholder{
+          color: transparent;
+        }
+
+        &:focus::-ms-placeholder{
+          color: transparent;
+        }
+      }
+    }
+
+    .subscribe-button {
+      background: white;
+      width: 120px;
+    }
+
+    .submit-message {
+      font-style: italic;
+      text-align: center;
+      width: 100%;
+      display: inline-block;
+      visibility: hidden;
+      padding: 10px;
+    }
+  }
+
+  .component--social-menu {
+    margin: 10px 0;
+
+    .menuitem {
+      .ms-icon {
+        margin: 0 4px;
+        font-size: 18px;
+      }
+    }
+  }
+
+  label {
+    border: 1px solid white;
+    border-radius: 6px;
+    padding: 8px;
+    margin-right: 4px;
+    display: inline-block;
+    min-width: 202px;
+
+    input {
+      background: transparent;
+      border: none;
+    }
+  }
+
+  hr {
+    border-bottom: 2px solid;
+    margin: 12px 0;
+    height: 0;
+  }
+
+  .pipe:after {
+    content: ' | '
+  }
+
+  .bottom-container {
+    display: flex;
+    justify-content: space-between;
+    .legal-container {
+
+      a {
+        font-size: 14px;
+        letter-spacing: -0.1px;
+
+        &:hover {
+          font-family: 'flamamedium';
+        }
+      }
+
+      span:last-child{
+        display: block;
+      }
+    }
+  }
+
+  .component--social-menu {
+    margin: 10px 0 20px 0;
+  }
+}
+
+@include respond-to('isdesktop') {
+  .component--footer {
+    padding: 23px 88px;
+
+    label {
+      input {
+        min-width: 300px;
+      }
+    }
+
+    .contact-container {
+      :nth-child(1) {
+        width: auto;
+        display: inline;
+      }
+    }
+
+    .subscribe-container {
+      margin-bottom: 45px;
+
+      .submit-message {
+        text-align: left;
+        width: auto;
+      }
+    }
+
+    .bottom-container {
+      .legal-container {
+        span:last-child{
+          display: inline;
+        }
+      }
+    }
+  }
+}

@@ -8,7 +8,7 @@
   require_once('../../../wp-load.php');
   global $wpdb;
 
-  $item_per_page = 2;
+  $item_per_page = 8;
 
   if( !isset( $_SESSION['cats'] ) ){
     $_SESSION['cats'] = "-1"; //Set a default category to display on page load
@@ -53,8 +53,8 @@
     INNER JOIN {$wpdb->term_taxonomy} ON ({$wpdb->term_relationships}.term_taxonomy_id = {$wpdb->term_taxonomy}.term_taxonomy_id)
     WHERE ((". $_SESSION['cats']." = '-1' OR {$wpdb->term_taxonomy}.term_id = ". $_SESSION['cats'].")
        AND (". $_SESSION['author']." = '-1' OR {$wpdb->posts}.post_author = ". $_SESSION['author'].")
-    AND {$wpdb->term_taxonomy}.taxonomy = 'category'
-    AND {$wpdb->posts}.post_type = 'post'
+    AND ({$wpdb->term_taxonomy}.taxonomy = 'category' OR {$wpdb->term_taxonomy}.taxonomy = 'article_category')
+    AND ({$wpdb->posts}.post_type = 'post' OR {$wpdb->posts}.post_type = 'article')
     AND {$wpdb->posts}.post_status = 'publish')"
   );
 
@@ -71,8 +71,8 @@
     INNER JOIN {$wpdb->term_taxonomy} ON ({$wpdb->term_relationships}.term_taxonomy_id = {$wpdb->term_taxonomy}.term_taxonomy_id)
     WHERE ((". $_SESSION['cats']." = '-1' OR {$wpdb->term_taxonomy}.term_id IN(". $_SESSION['cats']."))
         AND (". $_SESSION['author']." = '-1' OR {$wpdb->posts}.post_author = ". $_SESSION['author'].")
-    AND {$wpdb->term_taxonomy}.taxonomy = 'category'
-    AND {$wpdb->posts}.post_type = 'post'
+    AND ({$wpdb->term_taxonomy}.taxonomy = 'category' OR {$wpdb->term_taxonomy}.taxonomy = 'article_category')
+    AND ({$wpdb->posts}.post_type = 'post' OR {$wpdb->posts}.post_type = 'article')
     AND {$wpdb->posts}.post_status = 'publish')
     ORDER BY {$wpdb->posts}.post_date  ". $_SESSION['date']." LIMIT ".$page_position.", ".$item_per_page."; 
   ";

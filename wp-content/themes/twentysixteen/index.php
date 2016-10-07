@@ -86,7 +86,7 @@ get_header();
 
                  <?php
                 // args the custom post type blog
-                $args =  array(
+                $article_query =  array(
                     'post_type' => array ('media', 'article', 'post'),
                         'numberposts'	=> -1,
                     'meta_query' => array(
@@ -98,7 +98,7 @@ get_header();
                 );
 
                 // query
-                $the_query = new WP_Query( $args );
+                $the_query = new WP_Query( $aeticle_query );
                 ?>
                 <?php if( $the_query->have_posts() ): ?>
                         <ul>

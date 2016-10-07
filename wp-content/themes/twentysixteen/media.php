@@ -17,68 +17,131 @@ Template Name: Page Media
  * @since Twenty Sixteen 1.0
  */
 get_header(); ?>  
-    <div>
-          <?php get_blockmedia() ?>
-    </div>
-<?php              
-$box="<ul>";
-$args = array(
-    'post_type' => 'media',
-    'meta_key'		=> 'show_list_media_page',
-	'meta_value'	=> 'Yes',
-	'posts_per_page' => 6
-	
+ <!-- build:include ../global/header/header.html --><!-- /build -->
+	  <main role="main" class="section--media"> 
+	   <section class="content">
+	   <?php get_blockmedia() ?>
 
-    );
+			<?php              
+			$box="<aside class='desktop-only'><ul>";
+			$args = array(
+			    'post_type' => 'media',
+			    'meta_key'		=> 'show_list_media_page',
+				'meta_value'	=> 'Yes',
+				'posts_per_page' => 6
+			    );
+
+			$the_query = new WP_Query( $args );?>
+			<?php if ( $the_query->have_posts() ) : ?>
+				  <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+			  		<?php $box.="<li><a href='#".$post->post_name."'>".get_the_title()."</a></li>";?>
+				 <?php endwhile; ?>
+		    <?php wp_reset_postdata(); ?>
+			<?php endif; ?>
+			<?php $box.="</ul></aside>";
+			wp_reset_query();
+
+			$the_query = new WP_Query( $args );?>
 
 
-$the_query = new WP_Query( $args );?>
+			<section class="medias">
+			<?php if ( $the_query->have_posts() ) : ?>
+		 		<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+                                <hr>
+		 		<article class="media">	
+					<?=$box?>
+					<div class="text" id="<?=$post->post_name?>">
+						<h2><?=	get_the_title()?></h2>
+						<p><?=get_the_content()?>
+						<?php if(get_field('image_feature',get_the_ID())){?>
+							<div class="video">
+                				<img src="<?=get_field('image_feature',get_the_ID())?>?txtsize=33&txt=350%C3%97150&w=556&h=377"/>
+              				</div>
 
-<?php if ( $the_query->have_posts() ) : ?>
-  <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
-    
-  	<?php $box.="<li><a href='#".$post->post_name."'>".get_the_title()."</a></li>";?>
-    
-    
- <?php endwhile; ?>
-    <!-- end of the loop -->
- 
-    <!-- pagination here -->
- 
-    <?php wp_reset_postdata(); ?>
+					<?php } ?>
 
-<?php endif; ?>
-<?php $box.="</ul>";
+					<?php if(get_field('video',get_the_ID())){?>
+							<iframe width="420" height="315"
+								src="<?=get_field('video',get_the_ID())?>">
+							</iframe>
+							
 
-wp_reset_query();
+					<?php } ?>
 
-$args = array(
-    'post_type' => 'media',
-    'meta_key'		=> 'show_list_media_page',
-	'meta_value'	=> 'Yes',
-	'posts_per_page' => 6
-	
+					<?php if((get_field('image_1',get_the_ID()))&& (get_field('image_2',get_the_ID())) ){?>
+					<div class="video-collection desktop-only">
+                		<div class="video">
+                		<?php if(get_field('link_image_1',get_the_ID())){?>
+                		<a href="<?=get_field('link_image_1',get_the_ID())?>" target="_blank">
+                		<?php }?>
+                		<img src="<?=get_field('image_1',get_the_ID())?>?txtsize=33&txt=350%C3%97150&w=268&h=180">
+                		<?php if(get_field('link_image_1',get_the_ID())){?>
+                		</a>
+                		<?php }?>
+                		</div>
+                		<div class="video">
+                		<?php if(get_field('link_image_2',get_the_ID())){?>
+                		<a href="<?=get_field('link_image_2',get_the_ID())?>" target="_blank">
+                		<?php }?>                		
+                		<img src="<?=get_field('image_2',get_the_ID())?>?txtsize=33&txt=350%C3%97150&w=268&h=180">
+             			<?php if(get_field('link_image_2',get_the_ID())){?>
+                		</a>
+                		<?php }?>                		
+                		</div>
+              		</div>
 
-    );
+	              <div class="video-collection mobile-only owl-carousel">
+	                <div class="video">
+                	<?php if(get_field('link_image_1',get_the_ID())){?>
+                	<a href="<?=get_field('link_image_1',get_the_ID())?>" target="_blank">
+                	<?php }?>	                
+	                <img src="<?=get_field('image_1',get_the_ID())?>?txtsize=33&txt=350%C3%97150&w=268&h=180">
+                	<?php if(get_field('link_image_1',get_the_ID())){?>
+                	</a>
+                	<?php }?>	                
+	                </div>
+	                <div class="video">
+                	<?php if(get_field('link_image_2',get_the_ID())){?>
+                	<a href="<?=get_field('link_image_2',get_the_ID())?>" target="_blank">
+                	<?php }?>    	                
+	                <img src="<?=get_field('image_2',get_the_ID())?>?txtsize=33&txt=350%C3%97150&w=268&h=180">
+	       			<?php if(get_field('link_image_2',get_the_ID())){?>
+               		</a>
+               		<?php }?>     
+	                </div>
+	              </div>
+								
 
-$the_query = new WP_Query( $args );?>
+					<?php } ?>
+					<?php if(get_field('form',get_the_ID())=='Yes'){?>
+					 <form class="apply-container">
+		                <label>
+		                  <input type="text" name="email" placeholder="Email">
+		                </label>
+		                <button class="submit-button">Submit</button>
+		                <span class="submit-message">Submit Message</span>
+		              </form>
+		            <?php }?>  
 
-<div id="primary" class="content-area">
-	<main id="main" class="site-main" role="main">
-	<?php if ( $the_query->have_posts() ) : ?>
-		 	<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
-			<div><?=$box?></div>
-			<div id="<?=$post->post_name?>"><?=	get_the_title()?></div>
+					</p>	
+					</div>
+
+			          
+        		</article>
+        
+      		
 			<?php endwhile; ?>
-		    <!-- end of the loop -->
 		 
 		    <?php wp_reset_postdata(); ?>
-	<?php endif; ?>		
+			<?php endif; ?>
 
-        </main>
+		</section>
+	</section>	
+
+	</main>
 
 
-</div><!-- .content-area -->  
+ 
 <?php get_footer(); ?>
 
 

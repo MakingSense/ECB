@@ -13,10 +13,10 @@
 
 	 <footer class="component--footer">
 	   <h2>Stay in Touch</h2>
-	   <p>Sign up to receive our monthly newsletter and the latest Ecocity news</p>
+	   <p>Sign up to receive our monthly newsletter and receive the latest Ecocity news</p>
       <!--Begin CTCT Sign-Up Form-->
       	<!-- EFD 1.0.0 [Mon Sep 26 08:32:50 EDT 2016] -->
-         <div class="suscribe-container ctct-embed-signup" >
+         <div class="subscribe-container ctct-embed-signup" >
              <span id="success_message" style="display:none;">
                  <div style="text-align:center;">Thanks for signing up!</div>
              </span>
@@ -32,7 +32,7 @@
                      <label data-id="Email Address:label" data-name="email" class="ctct-form-required">
                          <input data-id="Email Address:input" type="text" name="email" value="" maxlength="80" placeholder="Email">
                      </label>
-                 <button type="submit" class="suscribe-button Button ctct-button Button--block Button-secondary" data-enabled="enabled">Subscribe</button>
+                 <button type="submit" class="subscribe-button Button ctct-button Button--block Button-secondary" data-enabled="enabled">Subscribe</button>
              </form>
          </div>
       <!--End CTCT Sign-Up Form-->
@@ -54,7 +54,7 @@
 	   <span class="contact-container">
 	     <span class="pipe">Ecocity Builders</span>
 	     <span class="pipe">399 15th Street, Suite 208</span>
-	     <span class="pipe">Oklahoma, CA 94612</span>
+	     <span class="pipe">Oakland, CA 94612</span>
 	     <span>510-452-9522</span>
 	   </span>
 

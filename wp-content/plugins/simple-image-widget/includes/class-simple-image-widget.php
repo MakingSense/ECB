@@ -117,7 +117,7 @@ class Simple_Image_Widget extends WP_Widget {
 				// The link classes should only be added to the text link.
 				if ( ! empty( $instance['link_classes'] ) ) {
 					$instance['text_link_open'] = sprintf(
-						'<a href="%1$s" class="%3$s"%2$s>',
+//						'<a href="%1$s" class="%3$s"%2$s>',
 						esc_url( $instance['link'] ),
 						$target,
 						esc_attr( $instance['link_classes'] )

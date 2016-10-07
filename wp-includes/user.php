@@ -1061,7 +1061,7 @@ function wp_dropdown_users( $args = '' ) {
 		} else {
 			$id = $r['id'] ? " id='" . esc_attr( $r['id'] ) . "'" : " id='$name'";
 		}
-		$output = "<select name='{$name}'{$id} class='" . $r['class'] . " filter-blog'>\n\t<option value='-1'>Author</option>\n";
+		$output = "<select name='{$name}'{$id} class='" . $r['class'] . " filter-blog'>\n\t<option value='-1'>All</option>\n";
 
 		if ( $show_option_all ) {
 			$output .= "\t<option value='0'>$show_option_all</option>\n";

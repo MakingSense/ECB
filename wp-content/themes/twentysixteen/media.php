@@ -113,13 +113,15 @@ get_header(); ?>
 								
 
 					<?php } ?>
-					<?php if(get_field('form',get_the_ID())=='Yes'){?>
-					 <form class="apply-container">
+					<?php if( (get_field('form',get_the_ID())=='Yes')&& (get_field('email_to_send',get_the_ID())) && (get_field('text_button',get_the_ID())) && (get_field('placeholder',get_the_ID())) ) {?>
+					 <form id="form-<?=get_the_ID();?>"class="apply-container">
 		                <label>
-		                  <input type="text" name="email" placeholder="Email">
+		                  <input type="text" name="email" placeholder="<?=get_field('placeholder',get_the_ID())?>">
 		                </label>
-		                <button class="submit-button">Submit</button>
+		                <button class="submit-button media-submit-button"><?=get_field('text_button',get_the_ID())?></button>
 		                <span class="submit-message">Submit Message</span>
+		                <input type="hidden" name="to_send" value="<?=get_field('email_to_send',get_the_ID());?>"/>
+		                <input type="hidden" name="url" value="<?=get_home_url();?>"/>
 		              </form>
 		            <?php }?>  
 

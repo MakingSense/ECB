@@ -47,6 +47,7 @@ get_header(); ?>
 			<section class="medias">
 			<?php if ( $the_query->have_posts() ) : ?>
 		 		<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+                                <hr>
 		 		<article class="media">	
 					<?=$box?>
 					<div class="text" id="<?=$post->post_name?>">
@@ -128,7 +129,7 @@ get_header(); ?>
 			          
         		</article>
         
-      		  <hr>
+      		
 			<?php endwhile; ?>
 		 
 		    <?php wp_reset_postdata(); ?>

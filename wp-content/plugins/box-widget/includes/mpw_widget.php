@@ -27,7 +27,7 @@ class mpw_widget extends WP_Widget {
 
         <section class="stats mobile-only owl-carousel">
           <article class="stat">
-            <span class="number"><?=$instance["mpw_number"]?><</span>
+            <span class="number"><?=$instance["mpw_number"]?></span>
             <span class="text"><?=$instance["mpw_texto"]?></span>
           </article>
           <article class="stat">
@@ -39,7 +39,7 @@ class mpw_widget extends WP_Widget {
             <span class="text"><?=$instance["mpw_texto2"]?></span>
           </article>
       </section>
-      <hr>
+    
         <?php
         echo $after_widget;
     }

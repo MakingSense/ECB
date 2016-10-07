@@ -1,6 +1,6 @@
 <article id="post-<?php the_ID(); ?>" class="right-aligned">
 
-	<h2><?php search_category_post($post->ID) ?></h2>
+	<h2>Featured Project</h2>
 	<div class="wrapper">
 		<?php twentysixteen_post_thumbnail(); ?>
 		<div class="text">

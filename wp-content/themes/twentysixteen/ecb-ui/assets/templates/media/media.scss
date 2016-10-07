@@ -24,7 +24,7 @@
         background-size: cover;
         z-index: -1;
       }
-      
+
       .text {
         background: rgba(229, 253, 121, 0.85);
         padding: 15px 9px;
@@ -75,7 +75,7 @@
         border-right: 2px solid black;
         text-align: center;
         padding: 20px 0;
-        flex-basis: 33%;
+        width: 100%;
 
         &:last-child {
           border: none;

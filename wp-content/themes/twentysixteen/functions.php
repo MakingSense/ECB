@@ -752,3 +752,26 @@ function get_primary_menu() {
 
      return $return_li;
 }
+
+function send_mail_ajax(){
+  if((!isset($_POST['email']))||(trim($_POST['email']==""))||(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))){
+    echo "email incorrecto";
+    die();
+  }
+
+  if((!isset($_POST['text']))||(trim($_POST['text']==""))){
+    echo "input incorrecto";
+    die();
+  }
+
+  $headers = 'From: ecb@ecb.com'. "\r\n" .
+      'MIME-Version: 1.0'. "\r\n" .
+       'Reply-To:'.$_POST['email'] . "\r\n" .
+      'Content-type: text/html; charset=utf-8';
+  $status=wp_mail($_POST['email'], "form media page",$_POST['text'],$headers );    
+  die();   
+
+}
+
+add_action('wp_ajax_nopriv_send_mail_ajax', 'send_mail_ajax'); 
+add_action('wp_ajax_send_mail_ajax', 'send_mail_ajax');

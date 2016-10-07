@@ -42,9 +42,9 @@
         <p class="quote"><?= $quote ?></p>
 
         <div class="images-container owl-carousel">
-          <?php foreach ($images_carrousel as $image) { ?>
+          <?php foreach ($images_carrousel as $image) : ?>
             <div><img src="<?= $image ?>" /></div>
-          <?php } ?>
+          <?php endforeach; ?>
         </div>
 
         <p><?= $content_2 ?></p>
@@ -57,9 +57,9 @@
         </article>
 
         <div class="image-container">
-          <?php foreach ($images_sidebar as $image) { ?>
+          <?php foreach ($images_sidebar as $image) : ?>
             <img src="<?= $image ?>" />
-          <?php } ?>
+          <?php endforeach; ?>
         </div>
       </aside>
     </div>

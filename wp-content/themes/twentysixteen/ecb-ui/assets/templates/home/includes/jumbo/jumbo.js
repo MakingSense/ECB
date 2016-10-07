@@ -32,9 +32,7 @@
 
   function autochangeJumboImage(){
     var index = parseInt($jumboSelectorButtons.filter('.active').data('jumbo-id'));
-    console.log(index);
     index = (index < $jumboSelectorButtons.length - 1) ? index+1 : 0;
-    console.log(index);
     changeJumboActive(null, index);
   }
   

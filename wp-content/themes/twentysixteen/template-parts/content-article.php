@@ -10,7 +10,7 @@
 
 		<?php the_title( sprintf( '<h3>', esc_url( get_permalink() ) ), '</h3>' ); ?>
                 
-               <h4> <?php the_date(); ?><h4>
+    <h4><?php the_date(); ?><h4>
 	</header><!-- .entry-header -->
 
 	<?php twentysixteen_excerpt(); ?>
@@ -18,29 +18,26 @@
 	<?php twentysixteen_post_thumbnail(); ?>
 	<div class="text">
 		<?php
-                    custom_excerpt_length(the_excerpt());
+      custom_excerpt_length(the_excerpt());
 			/* translators: %s: Name of current post */
-//			the_content( sprintf(
-//				__( 'Read More<span class="screen-reader-text"> "%s"</span>', 'twentysixteen' ),
-//				get_the_title()
-//			) );
-
-			
-		?>
-           
+      //			the_content( sprintf(
+      //				__( 'Read More<span class="screen-reader-text"> "%s"</span>', 'twentysixteen' ),
+      //				get_the_title()
+      //			) );
+		?> 
 	</div><!-- .entry-content -->
         
 	<footer class="entry-footer">
 		<?php
-                    edit_post_link(
-                        sprintf(
-                          /* translators: %s: Name of current post */
-                          __( '<div><a class="button-container"><button class="more-button">"%s"</button></a></div>', 'twentysixteen' ),
-                          get_the_title()
-                        ),
-                        '<span class="edit-link">',
-                        '</span>'
-                      );       
+      edit_post_link(
+          sprintf(
+            /* translators: %s: Name of current post */
+            __( '<div><a class="button-container"><button class="more-button">"%s"</button></a></div>', 'twentysixteen' ),
+            get_the_title()
+          ),
+          '<span class="edit-link">',
+          '</span>'
+        );       
 		?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-## -->

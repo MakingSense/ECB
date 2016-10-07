@@ -773,5 +773,11 @@ function send_mail_ajax(){
 
 }
 
+function secure_array_push (&$array, $element) {
+    if ($element) {
+      array_push($array, $element);
+    }
+  }
+
 add_action('wp_ajax_nopriv_send_mail_ajax', 'send_mail_ajax'); 
 add_action('wp_ajax_send_mail_ajax', 'send_mail_ajax');

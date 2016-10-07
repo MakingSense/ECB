@@ -13,7 +13,8 @@
 ?>
     <article class="media"> 
       <div class="wrapper">   
-          <div class="text" style="background: url(<?php echo wp_get_attachment_url( $image_id); ?>);">
+          <div class="text-before" style="background: url(<?php echo wp_get_attachment_url( $image_id); ?>);"></div>
+          <div class="text">
           <?php if ( ! empty( $subtitle ) ) :?>
 	      <h2><?=$subtitle?></h2>
 		<?php endif; ?>

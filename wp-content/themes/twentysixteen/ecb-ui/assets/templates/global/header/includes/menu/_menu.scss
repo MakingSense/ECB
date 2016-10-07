@@ -1,0 +1,104 @@
+.component--menu {
+  display: flex;
+
+  .main-menu {
+    margin: 45px 0 50px 0;
+    padding: 0;
+
+    li {
+      display: flex;
+      flex-direction: column;
+      z-index: 1;
+
+      .sub-menu {
+        display: none;
+      }
+
+      a {
+        padding: 12px;
+
+        &:before {
+          color: white;
+          content: "\25B8";
+          margin-right: 7px;
+        }
+      }
+
+    }
+  }
+}
+
+@include respond-to('isdesktop') {
+  .component--menu {
+    .main-menu {
+      display: flex;
+      position: static;
+      margin: 0;
+
+      & > li {
+        list-style: none;
+        display: flex;
+        font-size: 18px;
+        position: relative;
+        a {
+          &:before {
+            content: none;
+          }
+          padding: 12px;
+        }
+
+        &:hover {
+          z-index: 2;
+
+          .sub-menu {
+            background-color:rgba(0, 0, 0, 0.7);
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            padding: 20px 0 12px 0;
+            margin: -20px 0 0 0;
+            top: 0;
+
+            li:first-child {
+              margin-bottom: 10px;
+              list-style: none;
+              white-space: nowrap;
+
+              a {
+                font-family: 'flamabold';
+                color: white;
+              }
+            }
+
+            li:not(:first-child) {
+              font-family: 'flamamedium';
+              list-style: none;
+
+              a {
+                color: white;
+              }
+
+              &:hover {
+                background: white;
+
+                a {
+                  color: black;
+                }
+              }
+            }
+          }
+        }
+      }
+
+    }
+
+    .menu-button {
+      background: white;
+      margin: -10px;
+
+      .ms-icon {
+        font-size: 45px;
+      }
+    }
+  }
+}

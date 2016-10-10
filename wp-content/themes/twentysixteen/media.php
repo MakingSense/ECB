@@ -17,12 +17,11 @@ Template Name: Page Media
  * @since Twenty Sixteen 1.0
  */
 get_header(); ?>  
- <!-- build:include ../global/header/header.html --><!-- /build -->
-	  <main role="main" class="section--media"> 
+	  <main role="main" class="section--media">
 	   <section class="content">
 	   <?php get_blockmedia() ?>
 
-			<?php              
+			<?php
 			$box="<aside class='desktop-only'><ul>";
 			$args = array(
 			    'post_type' => 'media',
@@ -48,7 +47,7 @@ get_header(); ?>
 			<?php if ( $the_query->have_posts() ) : ?>
 		 		<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
                                 <hr>
-		 		<article class="media">	
+		 		<article class="media">
 					<?=$box?>
 					<div class="text" id="<?=$post->post_name?>">
 						<h2><?=	get_the_title()?></h2>
@@ -64,7 +63,7 @@ get_header(); ?>
 							<iframe width="420" height="315"
 								src="<?=get_field('video',get_the_ID())?>">
 							</iframe>
-							
+
 
 					<?php } ?>
 
@@ -82,11 +81,11 @@ get_header(); ?>
                 		<div class="video">
                 		<?php if(get_field('link_image_2',get_the_ID())){?>
                 		<a href="<?=get_field('link_image_2',get_the_ID())?>" target="_blank">
-                		<?php }?>                		
+                		<?php }?>
                 		<img src="<?=get_field('image_2',get_the_ID())?>?txtsize=33&txt=350%C3%97150&w=268&h=180">
              			<?php if(get_field('link_image_2',get_the_ID())){?>
                 		</a>
-                		<?php }?>                		
+                		<?php }?>
                 		</div>
               		</div>
 
@@ -94,23 +93,23 @@ get_header(); ?>
 	                <div class="video">
                 	<?php if(get_field('link_image_1',get_the_ID())){?>
                 	<a href="<?=get_field('link_image_1',get_the_ID())?>" target="_blank">
-                	<?php }?>	                
+                	<?php }?>
 	                <img src="<?=get_field('image_1',get_the_ID())?>?txtsize=33&txt=350%C3%97150&w=268&h=180">
                 	<?php if(get_field('link_image_1',get_the_ID())){?>
                 	</a>
-                	<?php }?>	                
+                	<?php }?>
 	                </div>
 	                <div class="video">
                 	<?php if(get_field('link_image_2',get_the_ID())){?>
                 	<a href="<?=get_field('link_image_2',get_the_ID())?>" target="_blank">
-                	<?php }?>    	                
+                	<?php }?>
 	                <img src="<?=get_field('image_2',get_the_ID())?>?txtsize=33&txt=350%C3%97150&w=268&h=180">
 	       			<?php if(get_field('link_image_2',get_the_ID())){?>
                		</a>
-               		<?php }?>     
+               		<?php }?>
 	                </div>
 	              </div>
-								
+
 
 					<?php } ?>
 					<?php if( (get_field('form',get_the_ID())=='Yes')&& (get_field('email_to_send',get_the_ID())) && (get_field('text_button',get_the_ID())) && (get_field('placeholder',get_the_ID())) ) {?>
@@ -123,27 +122,25 @@ get_header(); ?>
 		                <input type="hidden" name="to_send" value="<?=get_field('email_to_send',get_the_ID());?>"/>
 		                <input type="hidden" name="url" value="<?=get_home_url();?>"/>
 		              </form>
-		            <?php }?>  
+		            <?php }?>
 
-					</p>	
+					</p>
 					</div>
 
-			          
+
         		</article>
-        
-      		
+
+
 			<?php endwhile; ?>
-		 
+
 		    <?php wp_reset_postdata(); ?>
 			<?php endif; ?>
 
 		</section>
-	</section>	
+	</section>
 
 	</main>
 
 
- 
+
 <?php get_footer(); ?>
-
-

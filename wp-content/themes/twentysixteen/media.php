@@ -18,73 +18,75 @@ Template Name: Page Media
  */
 get_header(); ?>  
  <!-- build:include ../global/header/header.html --><!-- /build -->
-	  <main role="main" class="section--media"> 
+
+<?php
+
+
+	$media_posts=get_field('media_posts',get_the_ID());
+
+	if(get_field('navigation_visible',get_the_ID())=="Yes"){
+		$box="<aside class='desktop-only'><ul>";
+		foreach($media_posts as $mp ){
+			$box.="<li><a href='#".$mp->post_name."'>".get_the_title($mp->ID)."</a></li>";
+		}
+		$box.="</ul></aside>";
+
+		wp_reset_query();
+
+
+	}
+?>
+    <main role="main" class="section--media"> 
 	   <section class="content">
 	   <?php get_blockmedia() ?>
-
-			<?php              
-			$box="<aside class='desktop-only'><ul>";
-			$args = array(
-			    'post_type' => 'media',
-			    'meta_key'		=> 'show_list_media_page',
-				'meta_value'	=> 'Yes',
-				'posts_per_page' => 6
-			    );
-
-			$the_query = new WP_Query( $args );?>
-			<?php if ( $the_query->have_posts() ) : ?>
-				  <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
-			  		<?php $box.="<li><a href='#".$post->post_name."'>".get_the_title()."</a></li>";?>
-				 <?php endwhile; ?>
-		    <?php wp_reset_postdata(); ?>
-			<?php endif; ?>
-			<?php $box.="</ul></aside>";
-			wp_reset_query();
-
-			$the_query = new WP_Query( $args );?>
-
-
 			<section class="medias">
-			<?php if ( $the_query->have_posts() ) : ?>
-		 		<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
-                                <hr>
+			<?php foreach ($media_posts as $mp) {?>
+                <hr>
 		 		<article class="media">	
-					<?=$box?>
-					<div class="text" id="<?=$post->post_name?>">
-						<h2><?=	get_the_title()?></h2>
-						<p><?=get_the_content()?>
-						<?php if(get_field('image_feature',get_the_ID())){?>
+					<?php
+					if(get_field('navigation_visible',get_the_ID())=="Yes"){
+						echo $box;
+					}	
+					?>
+					<div class="text" id="<?=$mp->post_name?>">
+						<h2><?=	get_the_title($mp->ID)?></h2>
+						<p><?php 
+							$content = apply_filters('the_content', $mp->post_content);
+  							$content = str_replace(']]>', ']]&gt;', $content);
+  							echo $content;	
+							?>
+						<?php if(get_field('image_feature', $mp->ID)){?>
 							<div class="video">
-                				<img src="<?=get_field('image_feature',get_the_ID())?>?txtsize=33&txt=350%C3%97150&w=556&h=377"/>
+                				<img src="<?=get_field('image_feature',$mp->ID)?>?txtsize=33&txt=350%C3%97150&w=556&h=377"/>
               				</div>
 
 					<?php } ?>
 
-					<?php if(get_field('video',get_the_ID())){?>
+					<?php if(get_field('video',$mp->ID)){?>
 							<iframe width="420" height="315"
-								src="<?=get_field('video',get_the_ID())?>">
+								src="<?=get_field('video',$mp->ID)?>">
 							</iframe>
 							
 
 					<?php } ?>
 
-					<?php if((get_field('image_1',get_the_ID()))&& (get_field('image_2',get_the_ID())) ){?>
+					<?php if((get_field('image_1',$mp->ID))&& (get_field('image_2',$mp->ID)) ){?>
 					<div class="video-collection desktop-only">
                 		<div class="video">
-                		<?php if(get_field('link_image_1',get_the_ID())){?>
+                		<?php if(get_field('link_image_1',$mp->ID)){?>
                 		<a href="<?=get_field('link_image_1',get_the_ID())?>" target="_blank">
                 		<?php }?>
-                		<img src="<?=get_field('image_1',get_the_ID())?>?txtsize=33&txt=350%C3%97150&w=268&h=180">
-                		<?php if(get_field('link_image_1',get_the_ID())){?>
+                		<img src="<?=get_field('image_1',$mp->ID)?>?txtsize=33&txt=350%C3%97150&w=268&h=180">
+                		<?php if(get_field('link_image_1',$mp->ID)){?>
                 		</a>
                 		<?php }?>
                 		</div>
                 		<div class="video">
-                		<?php if(get_field('link_image_2',get_the_ID())){?>
-                		<a href="<?=get_field('link_image_2',get_the_ID())?>" target="_blank">
+                		<?php if(get_field('link_image_2',$mp->ID)){?>
+                		<a href="<?=get_field('link_image_2',$mp->ID)?>" target="_blank">
                 		<?php }?>                		
-                		<img src="<?=get_field('image_2',get_the_ID())?>?txtsize=33&txt=350%C3%97150&w=268&h=180">
-             			<?php if(get_field('link_image_2',get_the_ID())){?>
+                		<img src="<?=get_field('image_2',$mp->ID)?>?txtsize=33&txt=350%C3%97150&w=268&h=180">
+             			<?php if(get_field('link_image_2',$mp->ID)){?>
                 		</a>
                 		<?php }?>                		
                 		</div>
@@ -92,20 +94,20 @@ get_header(); ?>
 
 	              <div class="video-collection mobile-only owl-carousel">
 	                <div class="video">
-                	<?php if(get_field('link_image_1',get_the_ID())){?>
-                	<a href="<?=get_field('link_image_1',get_the_ID())?>" target="_blank">
+                	<?php if(get_field('link_image_1',$mp->ID)){?>
+                	<a href="<?=get_field('link_image_1',$mp->ID)?>" target="_blank">
                 	<?php }?>	                
-	                <img src="<?=get_field('image_1',get_the_ID())?>?txtsize=33&txt=350%C3%97150&w=268&h=180">
-                	<?php if(get_field('link_image_1',get_the_ID())){?>
+	                <img src="<?=get_field('image_1',$mp->ID)?>?txtsize=33&txt=350%C3%97150&w=268&h=180">
+                	<?php if(get_field('link_image_1',$mp->ID)){?>
                 	</a>
                 	<?php }?>	                
 	                </div>
 	                <div class="video">
-                	<?php if(get_field('link_image_2',get_the_ID())){?>
+                	<?php if(get_field('link_image_2',$mp->ID)){?>
                 	<a href="<?=get_field('link_image_2',get_the_ID())?>" target="_blank">
                 	<?php }?>    	                
-	                <img src="<?=get_field('image_2',get_the_ID())?>?txtsize=33&txt=350%C3%97150&w=268&h=180">
-	       			<?php if(get_field('link_image_2',get_the_ID())){?>
+	                <img src="<?=get_field('image_2',$mp->ID)?>?txtsize=33&txt=350%C3%97150&w=268&h=180">
+	       			<?php if(get_field('link_image_2',$mp->ID)){?>
                		</a>
                		<?php }?>     
 	                </div>
@@ -113,14 +115,14 @@ get_header(); ?>
 								
 
 					<?php } ?>
-					<?php if( (get_field('form',get_the_ID())=='Yes')&& (get_field('email_to_send',get_the_ID())) && (get_field('text_button',get_the_ID())) && (get_field('placeholder',get_the_ID())) ) {?>
+					<?php if( (get_field('form',$mp->ID)=='Yes')&& (get_field('email_to_send',$mp->ID)) && (get_field('text_button',$mp->ID)) && (get_field('placeholder',$mp->ID)) ) {?>
 					 <form id="form-<?=get_the_ID();?>"class="apply-container">
 		                <label>
-		                  <input type="text" name="email" placeholder="<?=get_field('placeholder',get_the_ID())?>">
+		                  <input type="text" name="email" placeholder="<?=get_field('placeholder',$mp->ID)?>">
 		                </label>
-		                <button class="submit-button media-submit-button"><?=get_field('text_button',get_the_ID())?></button>
+		                <button class="submit-button media-submit-button"><?=get_field('text_button',$mp->ID)?></button>
 		                <span class="submit-message">Submit Message</span>
-		                <input type="hidden" name="to_send" value="<?=get_field('email_to_send',get_the_ID());?>"/>
+		                <input type="hidden" name="to_send" value="<?=get_field('email_to_send',$mp->ID);?>"/>
 		                <input type="hidden" name="url" value="<?=get_home_url();?>"/>
 		              </form>
 		            <?php }?>  
@@ -132,10 +134,10 @@ get_header(); ?>
         		</article>
         
       		
-			<?php endwhile; ?>
+			<?php } ?>
 		 
 		    <?php wp_reset_postdata(); ?>
-			<?php endif; ?>
+			
 
 		</section>
 	</section>	

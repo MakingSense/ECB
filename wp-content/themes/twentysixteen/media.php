@@ -38,7 +38,73 @@ get_header(); ?>
 ?>
     <main role="main" class="section--media"> 
 	   <section class="content">
-	   <?php get_blockmedia() ?>
+		  <aside id="block-media" class="block widget-area" role="complementary">
+			<section id="simpleimage-2" class="widget widget_simpleimage">
+			    <article class="media"> 
+				    <div class="wrapper">   
+				        <div class="text-before" style="background: url(http://localhost/wp-ecb/wp-content/uploads/2016/10/20582997_8_ecocity_1_600_900.jpg);"></div>
+				    	<div class="text">
+				        	<h2><?=get_field('subtitule',get_the_ID())?></h2>
+						    <h3><?=get_field('title',get_the_ID())?></h3>
+						    <h4><?=get_field('date',get_the_ID())?></h4>     
+			         		<div class="button-container">
+			         			<button onclick="window.location.href=&quot;<?=get_field('link_url',get_the_ID())?>&quot;;" class="more-button"><?=get_field('link_text',get_the_ID())?></button>
+			         		</div>
+				         
+				       	</div>
+				    </div>
+	    		</article>
+			</section>
+			<section class="stats desktop-only">
+	        	<article class="stat">
+	            	<span class="number"><?=get_field('value_1',get_the_ID())?></span>
+	            	<span class="text"><?=get_field('text_1',get_the_ID())?></span>
+	         	</article>
+	         	<article class="stat">
+	            	<span class="number"><?=get_field('value_2',get_the_ID())?></span>
+	            	<span class="text"><?=get_field('text_2',get_the_ID())?></span>
+	          	</article>
+	            <article class="stat">
+	            	<span class="number"><?=get_field('value_3',get_the_ID())?></span>
+	            	<span class="text"><?=get_field('text_3',get_the_ID())?></span>
+	          	</article>
+	        </section>
+	        <section class="stats mobile-only owl-carousel owl-loaded owl-drag">
+    	        <div class="owl-stage-outer">
+    	        	<div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: 0s;">
+    	        		<div class="owl-item">
+    	        			<article class="stat">
+	            				<span class="number"><?=get_field('value_1',get_the_ID())?></span>
+	            				<span class="text"><?=get_field('text_1',get_the_ID())?></span>
+			        		</article>
+			        	</div>
+			        	<div class="owl-item">
+			        		<article class="stat">
+			            		<span class="number"><?=get_field('value_2',get_the_ID())?></span>
+	            				<span class="text"><?=get_field('text_2',get_the_ID())?></span>
+			          		</article>
+			          	</div>
+			          	<div class="owl-item">
+			          		<article class="stat">
+			            		<span class="number"><?=get_field('value_3',get_the_ID())?></span>
+	            				<span class="text"><?=get_field('text_3',get_the_ID())?></span>
+			          		</article>
+			          	</div>
+			        </div>
+			    </div>
+			    <div class="owl-nav">
+			    	<div class="owl-prev">
+			    		<span class="ms-icon icon-arrow-left"></span>
+			    	</div>
+			    	<div class="owl-next">
+			    		<span class="ms-icon icon-arrow-right"></span>
+			    	</div>
+			    </div>
+			<div class="owl-dots disabled">
+				
+			</div>
+		</section>
+	</aside>
 			<section class="medias">
 			<?php foreach ($media_posts as $mp) {?>
                 <hr>

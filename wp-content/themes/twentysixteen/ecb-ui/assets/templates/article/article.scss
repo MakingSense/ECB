@@ -169,10 +169,15 @@
           position: absolute;
           min-width: 234px;
           margin-top: 20px;
-          margin-left: 640px;
+          margin-left: 65%;
+          max-width: 35%;
 
           .image {
             margin-bottom: 50px;
+
+            img {
+              width: 100%;
+            }
           }
         }
       }

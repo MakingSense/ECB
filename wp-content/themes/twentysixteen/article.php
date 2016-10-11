@@ -1,108 +1,78 @@
+
 <?php
 /*
 Template Name: Page Article
 */
-/**
- * The media template file
- *
- * This is the most generic template file in a WordPress theme
- * and one of the two required files for a theme (the other being style.css).
- * It is used to display a page when nothing more specific matches a query.
- * E.g., it puts together the home page when no home.php file exists.
- *
- * @link http://codex.wordpress.org/Template_Hierarchy
- *
- * @package WordPress
- * @subpackage Twenty_Sixteen
- * @since Twenty Sixteen 1.0
- */
-get_header();
+  get_header();
+  wp_reset_postdata();
 
-wp_reset_postdata();
- ?>  
-	<main role="main" class="section--media"> 
-	   <section class="content">
-	   <fieldset style="border:1px solid">
-	   <div><h1><?=get_the_title(); ?></h1></div>
-	   <div><p><?php the_content(); ?></p></div>
-	   </fieldset>
-	   <fieldset style="border:1px solid">
-	   	<legend>Author data</legend>
-	   	<div>
-	   	<label>Foto</label>
-	   	<p><?= get_avatar($post->post_author);?></p>
-	   	<label>Biografia</label>
-	   	<p><?=nl2br(get_the_author_meta("description", $post->post_author))?></p>
+  $title = get_the_title();
+  $category = 'ECOCITY WORLD SUMMIT';
+  $date = 'June 17, 2016  | Sven Eberlein';
+  $quote = get_field('quote',get_the_ID());
+  $content_1 = get_the_content();
+  $content_2 = get_field('content_2',get_the_ID());
 
-	   	</div>
-	   </fieldset>
-	   <fieldset style="border:1px solid">
-	   	<legend>quote</legend>
-	   	<?php if(get_field('quote',get_the_ID())) {?>
-	   		<p><?=get_field('quote',get_the_ID())?></p>
-	   	<?php } ?>
+  $images_carrousel = [];
+  secure_array_push($images_carrousel, get_field('image_1',get_the_ID()));
+  secure_array_push($images_carrousel, get_field('image_2',get_the_ID()));
+  secure_array_push($images_carrousel, get_field('image_3',get_the_ID()));
+  secure_array_push($images_carrousel, get_field('image_4',get_the_ID()));
 
-	   </fieldset>
-	   <fieldset style="border:1px solid">
-	   <legend>Images Carrousel</legend>
-		<?php if(get_field('image_1',get_the_ID())){?>
-		<div class="video">
-    		<img src="<?=get_field('image_1',get_the_ID())?>?txtsize=33&txt=350%C3%97150&w=556&h=377"/>
-    	</div>
+  $images_sidebar = [];
+  secure_array_push($images_sidebar, get_field('image_sidebar_1',get_the_ID()));
+  secure_array_push($images_sidebar, get_field('image_sidebar_2',get_the_ID()));
+  secure_array_push($images_sidebar, get_field('image_sidebar_3',get_the_ID()));
 
-		<?php } ?>
-		<?php if(get_field('image_2',get_the_ID())){?>
-		<div class="video">
-    		<img src="<?=get_field('image_2',get_the_ID())?>?txtsize=33&txt=350%C3%97150&w=556&h=377"/>
-    	</div>
+  $author = (object)[
+    'avatar' => get_avatar($post->post_author),
+    'description' => nl2br(get_the_author_meta("description", $post->post_author))
+  ];
+?>  
 
-		<?php } ?>
-		<?php if(get_field('image_3',get_the_ID())){?>
-		<div class="video">
-    		<img src="<?=get_field('image_3',get_the_ID())?>?txtsize=33&txt=350%C3%97150&w=556&h=377"/>
-    	</div>
+<main role="main" class="section--article">
+  <section class="content">
 
-		<?php } ?>		
-		<?php if(get_field('image_4',get_the_ID())){?>
-		<div class="video">
-    		<img src="<?=get_field('image_4',get_the_ID())?>?txtsize=33&txt=350%C3%97150&w=556&h=377"/>
-    	</div>
+    <div class="wrapper">
+      <div class="text">
+        <header>
+          <h2><?= $category ?></h2>
+          <h1><?= $title ?></h1>
+          <h4><?= $date ?></h4>
+          <?php include(get_template_directory() .'/template-parts/social_networks.php'); ?>
+        </header>
 
-		<?php } ?>		
+        <p><?= $content_1 ?></p>
+        <p class="quote"><?= $quote ?></p>
 
-	   </fieldset>
-	   <fieldset style="border:1px solid">
-	   <legend>Content 2</legend>
-	   	<?php if(get_field('content_2',get_the_ID())) {?>
-	   		<p><?=get_field('content_2',get_the_ID())?></p>
-	   	<?php } ?>
+        <div class="images-container owl-carousel">
+          <?php foreach ($images_carrousel as $image) : ?>
+            <div><img src="<?= $image ?>" /></div>
+          <?php endforeach; ?>
+        </div>
 
-	   </fieldset>
+        <p><?= $content_2 ?></p>
+      </div>
 
-	   	   <fieldset style="border:1px solid">
-	   <legend>Images Sidebar</legend>
-		<?php if(get_field('image_sidebar_1',get_the_ID())){?>
-		<div class="video">
-    		<img src="<?=get_field('image_sidebar_1',get_the_ID())?>?txtsize=33&txt=350%C3%97150&w=556&h=377"/>
-    	</div>
+      <aside>
+        <article>
+          <?= $author->avatar ?>
+          <?= $author->description ?>
+        </article>
 
-		<?php } ?>
-		<?php if(get_field('image_sidebar_2',get_the_ID())){?>
-		<div class="video">
-    		<img src="<?=get_field('image_sidebar_2',get_the_ID())?>?txtsize=33&txt=350%C3%97150&w=556&h=377"/>
-    	</div>
+        <div class="image-container">
+          <?php foreach ($images_sidebar as $image) : ?>
+            <img src="<?= $image ?>" />
+          <?php endforeach; ?>
+        </div>
+      </aside>
+    </div>
 
-		<?php } ?>
-		<?php if(get_field('image_sidebar_3',get_the_ID())){?>
-		<div class="video">
-    		<img src="<?=get_field('image_sidebar_3',get_the_ID())?>?txtsize=33&txt=350%C3%97150&w=556&h=377"/>
-    	</div>
+  </section>    
+    <hr>
+</main>
 
-		<?php } ?>		
-
-
-	   </section>
-	</main>   
 <?php
-	get_footer(); ?>
+  get_footer(); 
+?>
 

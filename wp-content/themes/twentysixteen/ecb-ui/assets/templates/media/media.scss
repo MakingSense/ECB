@@ -20,8 +20,6 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: url('../img/city.jpg');
-        background-size: cover;
         z-index: -1;
       }
 
@@ -133,7 +131,7 @@
           }
 
           .video {
-            width: 100%; 
+            width: 100%;
           }
 
           .video-collection {
@@ -211,7 +209,7 @@
 
 @include respond-to('isdesktop') {
   .section--media {
-    
+
     article.media {
       .wrapper {
         .text {
@@ -248,7 +246,7 @@
 
         .text {
           padding: 30px 75px;
-          flex: 1 0 0; 
+          flex: 1 0 0;
 
           h2 {
             font-size: 24px;

@@ -82,6 +82,8 @@ Template Name: Page Article
 				<article class="article featured">
                                     <div class="wrapper" href="<?= get_the_permalink($mp->ID)?>">
                                         <div class="text">
+                                            <div><img src="<?php $thumb = wp_get_attachment_image_src( get_post_thumbnail_id($mp->ID), 'post'); 
+                                            echo $thumb[0];?>"></img></div>
                                             <h4><?=  search_category_post($mp->ID)?></h4>
                                             <h3 class="tpc-title"><?=get_the_title($mp->ID)?></h3>
                                             <h4><?=  get_the_date()?></h4>

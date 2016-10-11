@@ -9,7 +9,7 @@
     }));
 
     section.find('.aside.images-container.owl-carousel.mobile-only').owlCarousel(getCarouselConfig({
-      items: 2,
+      items: 2
     }));
   }
 })();

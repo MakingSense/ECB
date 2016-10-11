@@ -115,6 +115,15 @@
       }
     }
 
+    .article-container.owl-carousel {
+      width: 86%;
+      margin-left: 7%;
+      
+      .owl-stage-outer {
+        margin: 40px;
+      }
+    }
+
   }
 
   .wrapper {

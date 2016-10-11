@@ -55,6 +55,7 @@
 ?>  
 
 <main role="main" class="section--article">
+
   <section class="content">
 
     <div class="wrapper">
@@ -98,16 +99,17 @@
         </div>
       </div>
 
-      <aside style="padding-bottom: <?= (count($article->images_sidebar) * 350 + 700).'px' ?>">
+      <aside>
         <article class="author">
           <figure><?= $article->author->avatar ?></figure>
           <p><?= $article->author->description ?></p>
         </article>
+        <div class="desktop-only" style="padding-bottom: <?= (count($article->images_sidebar) * 350 + 700).'px' ?>"></div>
       </aside>
     </div>
 
-  </section>    
     <hr>
+
     <section class="component--featured">
       <h2>You May Also Like</h2>
                 
@@ -126,9 +128,25 @@
             </article>
           <?php endforeach; ?>
         </section>
+
+        <section class="article-container owl-carousel mobile-only">
+          <?php foreach ($article->related_articles as $mp) : $related = $article->getArticleById($mp->ID) ?>
+            <article class="article featured">
+              <a class="wrapper" href="<?= $related->link ?>" />
+                <div class="text" style="background-image: <?= ($related->image) ? 'url('. $related->image . ')' : '';  ?>; ">
+                  <h4><?= $related->category ?></h4>
+                  <h3 class="tpc-title"><?= $related->title ?></h3>
+                  <h4><?= $related->date ?></h4>
+                  <h4><?= $related->author ?></h4>
+                </div>
+              </a>
+            </article>
+          <?php endforeach; ?>
+        </section>
       </div>
       
     </section>
+  </section>    
 
     <?php wp_reset_postdata(); ?>
 </main>

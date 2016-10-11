@@ -3,10 +3,13 @@
   setCarousels();
 
   function setCarousels() {
-    console.log(section.find('.images-container.owl-carousel'));
-    section.find('.images-container.owl-carousel').owlCarousel(getCarouselConfig({
+    section.find('.main.images-container.owl-carousel').owlCarousel(getCarouselConfig({
       items: 1,
       nav: true
+    }));
+
+    section.find('.aside.images-container.owl-carousel.mobile-only').owlCarousel(getCarouselConfig({
+      items: 2,
     }));
   }
 })();

@@ -12,7 +12,7 @@
 
       $this->title = get_the_title();
       $this->category = 'ECOCITY WORLD SUMMIT';
-      $this->date = 'June 17, 2016  | Sven Eberlein';
+      $this->date = get_the_date('M d, Y');
       $this->quote = get_field('quote',get_the_ID());
       $this->content_1 = get_the_content();
       $this->content_2 = get_field('content_2',get_the_ID());
@@ -38,6 +38,9 @@
    
   $article = new Article;
   $post_articles=get_field('post_articles',get_the_ID());
+  echo "<pre>";
+  print_r($article);
+  
 
 ?>  
 
@@ -49,7 +52,7 @@
         <header>
           <h2><?= $article->category ?></h2>
           <h1><?= $article->title ?></h1>
-          <h4><?= $article->date ?></h4>
+          <h4><?= $article->date. " | ". $article->author->display_name ?></h4>
           <?php include(get_template_directory() .'/template-parts/social_networks.php'); ?>
         </header>
 

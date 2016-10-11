@@ -88,7 +88,7 @@
         </div>
       </div>
 
-      <aside>
+      <aside style="padding-bottom: <?= (count($article->images_sidebar) * 350 + 700).'px' ?>">
         <article class="author">
           <figure><?= $article->author->avatar ?></figure>
           <p><?= $article->author->description ?></p>

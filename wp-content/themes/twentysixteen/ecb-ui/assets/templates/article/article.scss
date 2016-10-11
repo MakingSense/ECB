@@ -25,7 +25,6 @@
     .quote {
       font-family: 'flamamedium';
       font-size: 20px;
-      margin: 30px;
       position: relative;
       display: inline-block;
 
@@ -160,6 +159,10 @@
               }
             }
           }
+        }
+
+        .quote {
+          margin: 30px;
         }
 
         .aside.images-container {

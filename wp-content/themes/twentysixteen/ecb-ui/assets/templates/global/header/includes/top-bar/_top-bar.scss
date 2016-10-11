@@ -1,0 +1,75 @@
+.component--top-bar {
+
+  .top-menu-container {
+    display: flex;
+    flex-direction: column-reverse;
+    
+    .component--social-menu {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+
+      .menuitem {
+        margin-right: 5px;
+        .ms-icon {
+          font-size:34px;
+        }
+      }
+    }
+
+    .top-menu {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 20px;
+
+      .menuitem {
+        font-size: 14px;
+        padding: 5px 30px;
+        letter-spacing: 1.2px;
+        font-size: 18px;
+
+        .donate-button {
+          margin: 10px 0 15px 0;
+          color: black;
+        }
+      }
+    }
+  }
+}
+
+.header-light .top-bar {
+  hr {
+    background: white;
+  }
+}
+
+@include respond-to('isdesktop') {
+  .component--top-bar {
+
+    .top-menu-container {
+      justify-content: space-between;
+      flex-direction: row;
+      
+      .component--social-menu {
+        .menuitem {
+          .ms-icon {
+            font-size: 18px;
+          }
+        }
+      }
+
+      .top-menu {
+        flex-direction: row;
+        justify-content: space-between;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 0;
+
+        .menuitem {
+          font-size: 1em;
+          padding: 5px 8px;
+        }
+      }
+    }
+  }
+}

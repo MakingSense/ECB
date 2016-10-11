@@ -179,6 +179,154 @@ function my_taxonomies_media() {
 add_action( 'init', 'my_taxonomies_media', 0 );
 
 /**
+
+ * New function for Custom post type article en backend.
+ */
+
+function my_custom_post_article() {
+  $labels = array(
+    'name'               => _x( 'Article', 'post type general name' ),
+    'singular_name'      => _x( 'Article', 'post type singular name' ),
+    'add_new'            => _x( 'Add New', 'book' ),
+    'add_new_item'       => __( 'Add New Article' ),
+    'edit_item'          => __( 'Edit Article' ),
+    'new_item'           => __( 'New Article' ),
+    'all_items'          => __( 'All Article' ),
+    'view_item'          => __( 'View Article' ),
+    'search_items'       => __( 'Search Article' ),
+    'not_found'          => __( 'No article found' ),
+    'not_found_in_trash' => __( 'No article found in the Trash' ),
+    'parent_item_colon'  => '',
+    'menu_name'          => 'Article Post'
+  );
+  $args = array(
+    'labels'        => $labels,
+    'description'   => 'Published Post in Article Page the Ecocity Builder ',
+    'public'        => true,
+    'menu_position' => 6,
+    'supports'      => array( 'title', 'editor', 'thumbnail', 'excerpt', 'comments', 'custom-fields', 'author', 'trackbacks' ),
+    'has_archive'   => true,
+  );
+  register_post_type( 'article', $args );
+}
+add_action( 'init', 'my_custom_post_article' );
+
+
+function my_updated_messages_article( $messages ) {
+  global $post, $post_ID;
+  $messages['article'] = array(
+    0 => '',
+    1 => sprintf( __('Article updated. <a href="%s">View article</a>'), esc_url( get_permalink($post_ID) ) ),
+    2 => __('Custom field updated.'),
+    3 => __('Custom field deleted.'),
+    4 => __('Article updated.'),
+    5 => isset($_GET['revision']) ? sprintf( __('Article restored to revision from %s'), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
+    6 => sprintf( __('Article published. <a href="%s">View article</a>'), esc_url( get_permalink($post_ID) ) ),
+    7 => __('Article saved.'),
+    8 => sprintf( __('Article submitted. <a target="_blank" href="%s">Preview article</a>'), esc_url( add_query_arg( 'preview', 'true', get_permalink($post_ID) ) ) ),
+    9 => sprintf( __('Article scheduled for: <strong>%1$s</strong>. <a target="_blank" href="%2$s">Preview article</a>'), date_i18n( __( 'M j, Y @ G:i' ), strtotime( $post->post_date ) ), esc_url( get_permalink($post_ID) ) ),
+    10 => sprintf( __('Article draft updated. <a target="_blank" href="%s">Preview article</a>'), esc_url( add_query_arg( 'preview', 'true', get_permalink($post_ID) ) ) ),
+  );
+  return $messages;
+}
+add_filter( 'post_updated_messages', 'my_updated_messages_article' );
+
+
+function my_contextual_help_article( $contextual_help, $screen_id, $screen ) {
+  if ( 'article' == $screen->id ) {
+
+    $contextual_help = '<h2>Article</h2>
+    <p>Post article show the articles in the website article page.. You can see a list of them on this page in reverse chronological order - the latest one we added is first.</p>
+    <p>You can view/edit the details of each article by clicking on its name, or you can perform bulk actions using the dropdown menu and selecting multiple items.</p>';
+
+  } elseif ( 'edit-article' == $screen->id ) {
+
+    $contextual_help = '<h2>Editing articles</h2>
+    <p>This page allows you to view/modify articles details. Please make sure to fill out the available boxes with the appropriate details (article image, author) and <strong>not</strong> add these details to the article description.</p>';
+
+  }
+  return $contextual_help;
+}
+add_action( 'contextual_help', 'my_contextual_help_article', 10, 3 );
+
+function my_taxonomies_article() {
+  $labels = array(
+    'name'              => _x( 'Article Categories', 'taxonomy general name' ),
+    'singular_name'     => _x( 'Article Category', 'taxonomy singular name' ),
+    'search_items'      => __( 'Search Article Categories' ),
+    'all_items'         => __( 'All Article Categories' ),
+    'parent_item'       => __( 'Parent Article Category' ),
+    'parent_item_colon' => __( 'Parent Article Category:' ),
+    'edit_item'         => __( 'Edit Article Category' ),
+    'update_item'       => __( 'Update Article Category' ),
+    'add_new_item'      => __( 'Add New Article Category' ),
+    'new_item_name'     => __( 'New Article Category' ),
+    'menu_name'         => __( 'Article Categories' ),
+  );
+  $args = array(
+    'labels' => $labels,
+    'hierarchical' => true,
+  );
+  register_taxonomy( 'article_category', 'article', $args );
+}
+add_action( 'init', 'my_taxonomies_article', 0 );
+
+/*
+* Custom Post Staff
+*/
+
+function my_custom_post_staff() {
+  $labels = array(
+    'name'               => _x( 'Staff Member', 'post type general name' ),
+    'singular_name'      => _x( 'Staff Member', 'post type singular name' ),
+    'add_new'            => _x( 'Add New', 'book' ),
+    'add_new_item'       => __( 'Add New Staff Member' ),
+    'edit_item'          => __( 'Edit Staff Member' ),
+    'new_item'           => __( 'New Staff Member' ),
+    'all_items'          => __( 'All Staff Members' ),
+    'view_item'          => __( 'View Staff Member' ),
+    'search_items'       => __( 'Search Staff Member' ),
+    'not_found'          => __( 'No Staff Member found' ),
+    'not_found_in_trash' => __( 'No Staff Member found in the Trash' ),
+    'parent_item_colon'  => '',
+    'menu_name'          => 'Staff Member Post'
+  );
+  $args = array(
+    'labels'        => $labels,
+    'description'   => 'Published Post in Staff Member Page the Ecocity Builder ',
+    'public'        => true,
+    'menu_position' => 6,
+    'supports'      => array( 'title', 'editor', 'thumbnail'),
+    'has_archive'   => true,
+  );
+  register_post_type( 'staff', $args );
+}
+add_action( 'init', 'my_custom_post_staff' );
+
+
+function my_updated_messages_staff( $messages ) {
+  global $post, $post_ID;
+  $messages['staff'] = array(
+    0 => '',
+    1 => sprintf( __('Staff Member updated. <a href="%s">View Staff Member</a>'), esc_url( get_permalink($post_ID) ) ),
+    2 => __('Custom field updated.'),
+    3 => __('Custom field deleted.'),
+    4 => __('Staff Member updated.'),
+    5 => isset($_GET['revision']) ? sprintf( __('Staff Member restored to revision from %s'), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
+    6 => sprintf( __('Staff Member published. <a href="%s">View Staff Member</a>'), esc_url( get_permalink($post_ID) ) ),
+    7 => __('Staff Member saved.'),
+    8 => sprintf( __('Staff Member submitted. <a target="_blank" href="%s">Preview Staff Member</a>'), esc_url( add_query_arg( 'preview', 'true', get_permalink($post_ID) ) ) ),
+    9 => sprintf( __('Staff Member scheduled for: <strong>%1$s</strong>. <a target="_blank" href="%2$s">Preview Staff Member</a>'), date_i18n( __( 'M j, Y @ G:i' ), strtotime( $post->post_date ) ), esc_url( get_permalink($post_ID) ) ),
+    10 => sprintf( __('Staff Member draft updated. <a target="_blank" href="%s">Preview Staff Member</a>'), esc_url( add_query_arg( 'preview', 'true', get_permalink($post_ID) ) ) ),
+  );
+  return $messages;
+}
+add_filter( 'post_updated_messages', 'my_updated_messages_staff' );
+
+
+
+/**
+
  * Twenty Sixteen only works in WordPress 4.4 or later.
  */
 if ( version_compare( $GLOBALS['wp_version'], '4.4-alpha', '<' ) ) {

@@ -1,33 +1,41 @@
-
 <?php
-/*
-Template Name: Page Article
-*/
+  /**
+   * Template Name: Page Article
+   */
+
   get_header();
   wp_reset_postdata();
 
-  $title = get_the_title();
-  $category = 'ECOCITY WORLD SUMMIT';
-  $date = 'June 17, 2016  | Sven Eberlein';
-  $quote = get_field('quote',get_the_ID());
-  $content_1 = get_the_content();
-  $content_2 = get_field('content_2',get_the_ID());
+  class Article {
+    public function __construct(){
 
-  $images_carrousel = [];
-  secure_array_push($images_carrousel, get_field('image_1',get_the_ID()));
-  secure_array_push($images_carrousel, get_field('image_2',get_the_ID()));
-  secure_array_push($images_carrousel, get_field('image_3',get_the_ID()));
-  secure_array_push($images_carrousel, get_field('image_4',get_the_ID()));
+      $this->title = get_the_title();
+      $this->category = 'ECOCITY WORLD SUMMIT';
+      $this->date = 'June 17, 2016  | Sven Eberlein';
+      $this->quote = get_field('quote',get_the_ID());
+      $this->content_1 = get_the_content();
+      $this->content_2 = get_field('content_2',get_the_ID());
 
-  $images_sidebar = [];
-  secure_array_push($images_sidebar, get_field('image_sidebar_1',get_the_ID()));
-  secure_array_push($images_sidebar, get_field('image_sidebar_2',get_the_ID()));
-  secure_array_push($images_sidebar, get_field('image_sidebar_3',get_the_ID()));
+      $this->images_carrousel = [];
+      for ($index = 1; $index < 5; $index ++) {
+        secure_array_push($this->images_carrousel, get_field('image_' . $index, get_the_ID()));
+      }
 
-  $author = (object)[
-    'avatar' => get_avatar($post->post_author),
-    'description' => nl2br(get_the_author_meta("description", $post->post_author))
-  ];
+      $this->images_sidebar = [];
+      for ($index = 1; $index < 4; $index ++) {
+        $image_src = get_field('image_sidebar_' . $index, get_the_ID());
+        $imageObject = (object) array('src' => $image_src, 'description' => 'Insert Description');
+        secure_array_push($this->images_sidebar, $imageObject, $image_src);
+      }
+
+      $this->author = (object)[
+        'avatar' => get_avatar($post->post_author),
+        'description' => nl2br(get_the_author_meta("description", $post->post_author))
+      ];
+    }
+  }
+   
+  $article = new Article;
 ?>  
 
 <main role="main" class="section--article">
@@ -36,35 +44,49 @@ Template Name: Page Article
     <div class="wrapper">
       <div class="text">
         <header>
-          <h2><?= $category ?></h2>
-          <h1><?= $title ?></h1>
-          <h4><?= $date ?></h4>
+          <h2><?= $article->category ?></h2>
+          <h1><?= $article->title ?></h1>
+          <h4><?= $article->date ?></h4>
           <?php include(get_template_directory() .'/template-parts/social_networks.php'); ?>
         </header>
 
-        <p><?= $content_1 ?></p>
-        <p class="quote"><?= $quote ?></p>
+        <p><?= $article->content_1 ?></p>
+        <p class="quote"><?= $article->quote ?></p>
 
-        <div class="images-container owl-carousel">
-          <?php foreach ($images_carrousel as $image) : ?>
-            <div><img src="<?= $image ?>" /></div>
+        <div class="carousel-wrapper">
+          <div class="main images-container owl-carousel">
+            <?php foreach ($article->images_carrousel as $article->image) : ?>
+              <div class="image"><img src="<?= $article->image ?>" /></div>
+            <?php endforeach; ?>
+          </div>
+        </div>
+
+        <div class="aside images-container desktop-only">
+          <?php foreach ($article->images_sidebar as $article->image) : ?>
+            <div class="image">
+              <img src="<?= $article->image->src ?>" />
+              <p><?= $article->image->description ?></p>
+            </div>
           <?php endforeach; ?>
         </div>
 
-        <p><?= $content_2 ?></p>
+        <p><?= $article->content_2 ?></p>
+        
+        <div class="aside images-container mobile-only owl-carousel">
+          <?php foreach ($article->images_sidebar as $article->image) : ?>
+            <div class="image">
+              <img src="<?= $article->image->src ?>" />
+              <p><?= $article->image->description ?></p>
+            </div>
+          <?php endforeach; ?>
+        </div>
       </div>
 
       <aside>
-        <article>
-          <?= $author->avatar ?>
-          <?= $author->description ?>
+        <article class="author">
+          <figure><?= $article->author->avatar ?></figure>
+          <p><?= $article->author->description ?></p>
         </article>
-
-        <div class="image-container">
-          <?php foreach ($images_sidebar as $image) : ?>
-            <img src="<?= $image ?>" />
-          <?php endforeach; ?>
-        </div>
       </aside>
     </div>
 

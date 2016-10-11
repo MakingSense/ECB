@@ -24,14 +24,104 @@
 
     .quote {
       font-family: 'flamamedium';
+      font-size: 20px;
+      position: relative;
+      display: inline-block;
+
+      &:before {
+        content: '“';
+        position: absolute;
+        font-size: 150px;
+        top: 0;
+        left: -20%;
+        color: #bdf6c8;
+        opacity: 0.5;
+        font-family: serif;
+        z-index: -1;
+        line-height: 65px;
+      }
+
+      &:after {
+        content: '”';
+        position: absolute;
+        font-size: 150px;
+        top: 100%;
+        left: 80%;
+        color: #bdf6c8;
+        opacity: 0.5;
+        font-family: serif;
+        z-index: -1;
+        line-height: 65px;
+      }
     }
+
+    .author {
+      display: flex;
+
+      img {
+        border-radius: 50%;
+      }
+
+      p {
+        font-size: 14px;
+        font-style: italic;
+        color: #4a4a4a;
+      }
+    }
+
+    .aside.images-container.mobile-only {
+      p {
+        color: #4a4a4a;
+        font-size: 14px;
+      }
+
+      .image {
+        margin: 0 1%;
+        display: block;
+      }
+
+      .owl-stage-outer {
+        width: 130%;
+        margin-left: -25%;
+      }
+
+      .owl-nav { 
+
+        & > * {
+          background-color: rgba(255, 255, 255, 0.5);
+          width: 20%;
+        }
+      }
+    
+    }
+  
+
+    .carousel-wrapper {
+      .owl-carousel {
+        height: 200px;
+        .owl-stage-outer {
+          position: relative;
+
+          .image {
+            margin: 0 auto;
+            width: 300px;
+            overflow: hidden;
+
+            img {
+              height: 200px;
+            }
+          }
+        }
+      }
+    }
+
   }
 
-  .owl-carousel {
-    .owl-stage-outer {
-      width: 845px;
-    }
+  .wrapper {
+    position: relative;
   }
+
+
 }
 
 @include respond-to('isdesktop') {
@@ -47,11 +137,59 @@
       display: flex;
 
       .text {
-        flex-basis: 75%;
+        flex-basis: 65%;
+
+        .carousel-wrapper {
+          height: 493px;
+          
+          .owl-carousel {
+            position: absolute;
+            height: 493px;
+            width: 100%;
+            
+            .owl-stage-outer {
+              
+              .image {
+                max-height: 493px;
+                width: auto;
+
+                img {
+                  height: 493px;
+                }
+              }
+            }
+          }
+        }
+
+        .quote {
+          margin: 30px;
+        }
+
+        .aside.images-container {
+          position: absolute;
+          min-width: 234px;
+          margin-top: 20px;
+          margin-left: 640px;
+
+          .image {
+            margin-bottom: 50px;
+          }
+        }
       }
 
       aside {
-        flex-basis: 25%;
+        margin-left: 86px;
+        flex-basis: 35%;
+        min-width: 234px;
+        padding-top: 216px;
+
+        .author {
+          flex-direction: column;
+
+          figure {
+            margin: 0 auto;
+          }
+        }
       }
     }
 

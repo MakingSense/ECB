@@ -6,6 +6,7 @@
   get_header();
   wp_reset_postdata();
 
+
   class Article {
     public function __construct(){
 
@@ -36,6 +37,8 @@
   }
    
   $article = new Article;
+  $post_articles=get_field('post_articles',get_the_ID());
+
 ?>  
 
 <main role="main" class="section--article">
@@ -92,6 +95,37 @@
 
   </section>    
     <hr>
+    <section class="component--featured">
+        <h2>You May Also Like</h2>
+                  
+        <div class="article-wrapper">
+		<section class="article-container desktop-only">
+			<?php if ($post_articles): ?>
+                             <?php foreach ($post_articles as $mp) {?>
+				<article class="article featured">
+                                    <div class="wrapper" href="<?= get_the_permalink($mp->ID)?>">
+                                        <div class="text">
+                                            <div><img src="<?php $thumb = wp_get_attachment_image_src( get_post_thumbnail_id($mp->ID), 'post'); 
+                                            echo $thumb[0];?>"></img></div>
+                                            <h4><?=  search_category_post($mp->ID)?></h4>
+                                            <h3 class="tpc-title"><?=get_the_title($mp->ID)?></h3>
+                                            <h4><?=  get_the_date()?></h4>
+                                            <h4><?= get_the_author()?></h4>
+                                        </div>
+						
+                                    </div>
+				</article>
+                                <?php } ?>
+                        <?php endif; ?>
+                               
+		              
+		</section>
+	</div>
+
+		 
+        
+    </section>
+    <?php wp_reset_postdata(); ?>
 </main>
 
 <?php

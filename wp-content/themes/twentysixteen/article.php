@@ -31,15 +31,15 @@
 
       $this->author = (object)[
         'avatar' => get_avatar($post->post_author),
-        'description' => nl2br(get_the_author_meta("description", $post->post_author))
+        'description' => nl2br(get_the_author_meta("description", $post->post_author)),
+		'display_name' => nl2br(get_the_author_meta("display_name", $post->post_author))
       ];
     }
   }
    
   $article = new Article;
   $post_articles=get_field('post_articles',get_the_ID());
-  echo "<pre>";
-  print_r($article);
+
   
 
 ?>  

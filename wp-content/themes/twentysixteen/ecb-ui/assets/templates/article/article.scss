@@ -1,0 +1,61 @@
+.section--article {
+  a {
+    color: black;
+  }
+
+  .content {
+    h1 {
+      font-size: 28px;
+      font-family: 'flamabold';
+    }
+
+    h2 {
+      font-size: 14px;
+    }
+
+    h4 {
+      font-size: 14px;
+      font-style: italic;
+    }
+
+    p {
+      font-family: 'flamabasic';
+    }
+
+    .quote {
+      font-family: 'flamamedium';
+    }
+  }
+
+  .owl-carousel {
+    .owl-stage-outer {
+      width: 845px;
+    }
+  }
+}
+
+@include respond-to('isdesktop') {
+
+.section--article {
+  .content {
+    h1 {
+      font-size: 34px;
+      font-family: 'flamabold';
+    }
+
+    .wrapper {
+      display: flex;
+
+      .text {
+        flex-basis: 75%;
+      }
+
+      aside {
+        flex-basis: 25%;
+      }
+    }
+
+  }
+}
+  
+}

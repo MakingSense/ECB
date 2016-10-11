@@ -68,7 +68,8 @@ Template Name: Page Article
       </aside>
     </div>
 
-  </section>
+  </section>    
+    <hr>
 </main>
 
 <?php

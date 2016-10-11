@@ -77,7 +77,7 @@ function get_category_parents( $id, $link = false, $separator = '/', $nicename =
  * @return array Array of WP_Term objects, one for each category assigned to the post.
  */
 function get_the_category( $id = false ) {
-	$categories = get_the_terms( $id, array('category', 'article_category') );
+	$categories = get_the_terms( $id, 'category' );
 	if ( ! $categories || is_wp_error( $categories ) )
 		$categories = array();
 
@@ -375,7 +375,7 @@ function wp_dropdown_categories( $args = '' ) {
 		'class'             => 'postform',
 		'depth'             => 0,
 		'tab_index'         => 0,
-		'taxonomy'          => array ('category', 'article_category'),
+		'taxonomy'          => 'category',
 		'hide_if_empty'     => false,
 		'option_none_value' => -1,
 		'value_field'       => 'term_id',

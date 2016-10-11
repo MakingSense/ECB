@@ -43,7 +43,7 @@
       return $post = (object) [
         'title' => get_the_title($id),
         'category' => search_category_post($id),
-        'date' => get_the_date($id),
+        'date' => get_the_date(),
         'image' => wp_get_attachment_image_src(get_post_thumbnail_id($id), 'post')[0],
         'author' => get_the_author($id),
         'link' => get_the_permalink($id)
@@ -121,8 +121,7 @@
                 <div class="text" style="background-image: <?= ($related->image) ? 'url('. $related->image . ')' : '';  ?>; ">
                   <h4><?= $related->category ?></h4>
                   <h3 class="tpc-title"><?= $related->title ?></h3>
-                  <h4><?= $related->date ?></h4>
-                  <h4><?= $related->author ?></h4>
+                  <h4><?= $related->date ?> | <?= $related->author ?></h4>
                 </div>
               </a>
             </article>

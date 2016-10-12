@@ -1,7 +1,6 @@
-<article id="post-<?php the_ID(); ?>" class="right-aligned">
-  <h2>Featured Project</h2>
+<article id="post-<?php the_ID(); ?>" class="block-second">
+  <h2>Urbinsight</h2>
   <div class="wrapper">
-    <?php twentysixteen_post_thumbnail(); ?>
     <div class="text">
       <?php the_title( sprintf( '<h3>', esc_url( get_permalink() ) ), '</h3>' ); ?>
       <h4><?php the_date(); ?></h4>

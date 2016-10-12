@@ -1,5 +1,5 @@
-<article id="post-<?php the_ID(); ?>" class="left-aligned">
-  <h2><?php search_category_post($post->ID) ?></h2>
+<article id="post-<?php the_ID(); ?>" class="block-first">
+  <h2>Ecocity World Summit</h2>
   <div class="wrapper">
     <?php twentysixteen_post_thumbnail(); ?>
     <div class="text">

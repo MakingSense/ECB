@@ -832,28 +832,27 @@ class acf
 
 
                             $posts_query_first=  "SELECT $wpdb->posts.ID, $wpdb->posts.guid,$wpdb->posts.post_title FROM $wpdb->posts, $wpdb->postmeta WHERE 
-                                           ($wpdb->posts.post_type='article' OR
-                                           $wpdb->posts.post_type='media' OR
+                                           ($wpdb->posts.post_type='media' OR
                                            $wpdb->posts.post_type='post') AND                                         
                                            $wpdb->posts.ID = $wpdb->postmeta.post_id AND 
-                                           
-                                           $wpdb->postmeta.meta_value='first' ";
+                                           $wpdb->posts.post_status ='publish' AND 
+                                           $wpdb->postmeta.meta_value='first'  ";
                            
                                            $posts_home_first = $wpdb->get_results($posts_query_first, ARRAY_A);
 
                            $posts_query_second=  "SELECT $wpdb->posts.ID, $wpdb->posts.guid,$wpdb->posts.post_title FROM $wpdb->posts, $wpdb->postmeta WHERE 
-                                           ($wpdb->posts.post_type='article' OR
-                                           $wpdb->posts.post_type='media' OR
-                                           $wpdb->posts.post_type='post') AND                                         
+                                           ($wpdb->posts.post_type='media' OR
+                                           $wpdb->posts.post_type='post') AND  
+                                           $wpdb->posts.post_status ='publish' AND 
                                            $wpdb->posts.ID = $wpdb->postmeta.post_id AND 
                                            
                                            $wpdb->postmeta.meta_value='second' ";
                            $posts_home_second = $wpdb->get_results($posts_query_second, ARRAY_A);
 
                            $posts_query_third=  "SELECT $wpdb->posts.ID, $wpdb->posts.guid,$wpdb->posts.post_title FROM $wpdb->posts, $wpdb->postmeta WHERE 
-                                           ($wpdb->posts.post_type='article' OR
-                                           $wpdb->posts.post_type='media' OR
-                                           $wpdb->posts.post_type='post') AND                                         
+                                           ($wpdb->posts.post_type='media' OR
+                                           $wpdb->posts.post_type='post') AND 
+                                           $wpdb->posts.post_status ='publish' AND 
                                            $wpdb->posts.ID = $wpdb->postmeta.post_id AND 
                                           
                                            $wpdb->postmeta.meta_value='third'";

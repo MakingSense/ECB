@@ -29,13 +29,14 @@
         secure_array_push($this->images_sidebar, $imageObject, $image_src);
       }
 
+
       $this->author = (object)[
         'description' => nl2br(get_the_author_meta("description", $post->post_author)),
-		    'display_name' => nl2br(get_the_author_meta("display_name", $post->post_author))
+        'display_name' => nl2br(get_the_author(get_the_ID()))
       ];
 
-      if($post->post_author!=0)
-        $this->date = get_the_date('M d, Y') ." | ". $this->author.display_name;
+      if(trim($this->author->display_name)!="")
+        $this->date = get_the_date('M d, Y') ." | ". $this->author->display_name;
       else
         $this->date = get_the_date('M d, Y');
 
@@ -69,10 +70,14 @@
           <h4><?= $article->date?></h4>
           <?php include(get_template_directory() .'/template-parts/social_networks.php'); ?>
         </header>
-
+        <?php if(trim($article->content_1)) { ?>
         <p><?= $article->content_1 ?></p>
+        <?php } ?>
+        <?php if(trim($article->quote)!="") { ?>
         <p class="quote"><?= $article->quote ?></p>
+        <?php } ?>
 
+        <?php if(count($article->images_carrousel) > 0) { ?>
         <div class="carousel-wrapper">
           <div class="main images-container owl-carousel">
             <?php foreach ($article->images_carrousel as $article->image) : ?>
@@ -80,7 +85,8 @@
             <?php endforeach; ?>
           </div>
         </div>
-
+        <?php } ?>
+        <?php if(count($article->images_sidebar) > 0) { ?>
         <div class="aside images-container desktop-only">
           <?php foreach ($article->images_sidebar as $article->image) : ?>
             <div class="image">
@@ -89,9 +95,12 @@
             </div>
           <?php endforeach; ?>
         </div>
+        <?php } ?>
 
+        <?php if(trim($article->content_2 )!="") { ?>
         <p><?= $article->content_2 ?></p>
-        
+        <?php } ?>
+        <?php if(count($article->images_sidebar) > 0) { ?>
         <div class="aside images-container mobile-only owl-carousel">
           <?php foreach ($article->images_sidebar as $article->image) : ?>
             <div class="image">
@@ -100,6 +109,7 @@
             </div>
           <?php endforeach; ?>
         </div>
+        <?php } ?>
       </div>
 
       <aside>
@@ -112,12 +122,12 @@
         <div class="desktop-only" style="padding-bottom: <?= (count($article->images_sidebar) * 350 + 700).'px' ?>"></div>
       </aside>
     </div>
-
+    <?php if(is_array($article->related_articles)) { ?>
     <hr>
 
     <section class="component--featured">
       <h2>You May Also Like</h2>
-                
+
       <div class="article-wrapper">
         <section class="article-container desktop-only">
           <?php foreach ($article->related_articles as $mp) : $related = $article->getArticleById($mp->ID) ?>
@@ -150,6 +160,8 @@
       </div>
       
     </section>
+   <?php } ?>
+ 
   </section>    
 
     <?php wp_reset_postdata(); ?>

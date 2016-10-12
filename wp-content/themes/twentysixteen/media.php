@@ -16,7 +16,7 @@ Template Name: Page Media
  * @subpackage Twenty_Sixteen
  * @since Twenty Sixteen 1.0
  */
-get_header(); ?>  
+get_header(); ?>
  <!-- build:include ../global/header/header.html --><!-- /build -->
 
 <?php
@@ -36,23 +36,23 @@ get_header(); ?>
 
 	}
 ?>
-    <main role="main" class="section--media"> 
+    <main role="main" class="section--media">
 	   <section class="content">
 		  <aside id="block-media" class="block widget-area" role="complementary">
 			<section id="simpleimage-2" class="widget widget_simpleimage">
-			    <article class="media"> 
-				    <div class="wrapper">   
-				        <div class="text-before" style="background: url(<?=get_field('image',get_the_ID())?>);"></div>
+			    <article class="media">
+				    <div class="wrapper">
+				        <div class="text-before" style="background: url(<?=get_field('image',get_the_ID())?>); background-size: cover;"></div>
 				    	<div class="text">
 				        	<h2><?=get_field('subtitule',get_the_ID())?></h2>
 						    <h3><?=get_field('title',get_the_ID())?></h3>
-						    <h4><?=get_field('date',get_the_ID())?></h4>     
+						    <h4><?=get_field('date',get_the_ID())?></h4>
 			         		<?php if(get_field('link_url',get_the_ID())) {?>
 			         		<div class="button-container">
 			         			<button onclick="window.location.href=&quot;<?=get_field('link_url',get_the_ID())?>&quot;;" class="more-button"><?=get_field('link_text',get_the_ID())?></button>
 			         		</div>
 			         		<?php } ?>
-				         
+
 				       	</div>
 				    </div>
 	    		</article>
@@ -109,25 +109,25 @@ get_header(); ?>
 			    	</div>
 			    </div>
 			<div class="owl-dots disabled">
-				
+
 			</div>
 		</section>
 	</aside>
 			<section class="medias">
 			<?php foreach ($media_posts as $mp) {?>
                 <hr>
-		 		<article class="media">	
+		 		<article class="media">
 					<?php
 					if(get_field('navigation_visible',get_the_ID())=="Yes"){
 						echo $box;
-					}	
+					}
 					?>
 					<div class="text" id="<?=$mp->post_name?>">
 						<h2><?=	get_the_title($mp->ID)?></h2>
-						<p><?php 
+						<p><?php
 							$content = apply_filters('the_content', $mp->post_content);
   							$content = str_replace(']]>', ']]&gt;', $content);
-  							echo $content;	
+  							echo $content;
 							?>
 						<?php if(get_field('image_feature', $mp->ID)){?>
 							<div class="video">
@@ -140,7 +140,7 @@ get_header(); ?>
 							<iframe width="420" height="315"
 								src="<?=get_field('video',$mp->ID)?>">
 							</iframe>
-							
+
 
 					<?php } ?>
 
@@ -158,11 +158,11 @@ get_header(); ?>
                 		<div class="video">
                 		<?php if(get_field('link_image_2',$mp->ID)){?>
                 		<a href="<?=get_field('link_image_2',$mp->ID)?>" target="_blank">
-                		<?php }?>                		
+                		<?php }?>
                 		<img src="<?=get_field('image_2',$mp->ID)?>?txtsize=33&txt=350%C3%97150&w=268&h=180">
              			<?php if(get_field('link_image_2',$mp->ID)){?>
                 		</a>
-                		<?php }?>                		
+                		<?php }?>
                 		</div>
               		</div>
 
@@ -170,23 +170,23 @@ get_header(); ?>
 	                <div class="video">
                 	<?php if(get_field('link_image_1',$mp->ID)){?>
                 	<a href="<?=get_field('link_image_1',$mp->ID)?>" target="_blank">
-                	<?php }?>	                
+                	<?php }?>
 	                <img src="<?=get_field('image_1',$mp->ID)?>?txtsize=33&txt=350%C3%97150&w=268&h=180">
                 	<?php if(get_field('link_image_1',$mp->ID)){?>
                 	</a>
-                	<?php }?>	                
+                	<?php }?>
 	                </div>
 	                <div class="video">
                 	<?php if(get_field('link_image_2',$mp->ID)){?>
                 	<a href="<?=get_field('link_image_2',get_the_ID())?>" target="_blank">
-                	<?php }?>    	                
+                	<?php }?>
 	                <img src="<?=get_field('image_2',$mp->ID)?>?txtsize=33&txt=350%C3%97150&w=268&h=180">
 	       			<?php if(get_field('link_image_2',$mp->ID)){?>
                		</a>
-               		<?php }?>     
+               		<?php }?>
 	                </div>
 	              </div>
-								
+
 
 					<?php } ?>
 					<?php if( (get_field('form',$mp->ID)=='Yes')&& (get_field('email_to_send',$mp->ID)) && (get_field('text_button',$mp->ID)) && (get_field('placeholder',$mp->ID)) ) {?>
@@ -199,27 +199,25 @@ get_header(); ?>
 		                <input type="hidden" name="to_send" value="<?=get_field('email_to_send',$mp->ID);?>"/>
 		                <input type="hidden" name="url" value="<?=get_home_url();?>"/>
 		              </form>
-		            <?php }?>  
+		            <?php }?>
 
-					</p>	
+					</p>
 					</div>
 
-			          
+
         		</article>
-        
-      		
+
+
 			<?php } ?>
-		 
+
 		    <?php wp_reset_postdata(); ?>
-			
+
 
 		</section>
-	</section>	
+	</section>
 
 	</main>
 
 
- 
+
 <?php get_footer(); ?>
-
-

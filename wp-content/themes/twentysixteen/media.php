@@ -53,8 +53,8 @@ get_header(); ?>
             <div class="wrapper">
                 <div class="text-before" style="background: url(<?= $media->image ?>); background-size: cover;"></div>
               <div class="text">
-                <h2><?= $media->title ?></h2>
-                <h3><?= $media->subtitle ?></h3>
+                <h2><?= $media->subtitle ?></h2>
+                <h3><?= $media->title ?></h3>
                 <h4><?= $media->date ?></h4>
                   <?php if($media->link->url) :?>
                     <div class="button-container">
@@ -96,7 +96,7 @@ get_header(); ?>
             echo $media->generateAsideMenu();
           }
           ?>
-          <div class="text" id="<?=$mp->post_name?>">
+          <div class="text <?= (!$media->isNavigationVisible) ? 'full': ''; ?>" id="<?=$mp->post_name?>">
             <h2><?= get_the_title($mp->ID)?></h2>
             <p><?php
               $content = apply_filters('the_content', $mp->post_content);

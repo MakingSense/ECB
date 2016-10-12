@@ -4,13 +4,8 @@
   wp_reset_postdata();
   ?>
 
-
-  
-
 <main role="main" class="section--article">
-
   <section class="content">
-
     <div class="wrapper">
       <div class="text">
         <header>
@@ -18,14 +13,8 @@
           <h4><?= get_the_date('M d, Y');?></h4>
           <?php include(get_template_directory() .'/template-parts/social_networks.php'); ?>
         </header>
-
         <p><?= get_the_content() ?></p>
- 
-        
-    <hr>
-
   </section>    
-
     <?php wp_reset_postdata(); ?>
 </main>
 

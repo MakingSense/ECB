@@ -113,6 +113,11 @@
             background: rgba(0, 209, 163, 0.85);
             padding-bottom: 40px;
 
+            h3 {
+              height: 185px;
+              overflow: hidden;
+            }
+
             &:before {
               position: absolute;
               content: ' ';
@@ -298,6 +303,7 @@
             .text {
               h3 {
                 font-size: 26px;
+                height: 102px;
               }
             }
           }

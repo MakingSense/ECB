@@ -26,7 +26,7 @@
       $this->images_sidebar = [];
       for ($index = 1; $index < 4; $index ++) {
         $image_src = get_field('image_sidebar_' . $index, get_the_ID());
-        $imageObject = (object) array('src' => $image_src, 'description' => 'Insert Description');
+        $imageObject = (object) array('src' => $image_src, 'description' => get_field('text_sidebar_' . $index, get_the_ID()));
         secure_array_push($this->images_sidebar, $imageObject, $image_src);
       }
 

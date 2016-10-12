@@ -194,8 +194,6 @@ get_header(); ?>
 
 
 
-	}
-?>
     <main role="main" class="section--media"> 
 	   <section class="content">
 		  <aside id="block-media" class="block widget-area" role="complementary">
@@ -273,6 +271,7 @@ get_header(); ?>
 			</div>
 		</section>
 	</aside>
+		<?php if(is_array(media_posts)) { ?>
 			<section class="medias">
 			<?php foreach ($media_posts as $mp) {?>
                 <hr>
@@ -374,6 +373,7 @@ get_header(); ?>
 			
 
 		</section>
+	<?php } ?>	
 	</section>	
 
 	</main>

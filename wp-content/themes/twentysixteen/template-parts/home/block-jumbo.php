@@ -89,3 +89,4 @@ function get_pilars() {
       </div>
     </div>
   </article>
+  <hr class="thin-divider">

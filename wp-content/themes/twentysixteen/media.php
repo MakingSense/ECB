@@ -53,8 +53,8 @@ get_header(); ?>
             <div class="wrapper">
                 <div class="text-before" style="background: url(<?= $media->image ?>); background-size: cover;"></div>
               <div class="text">
-                <h2><?= $media->title ?></h2>
-                <h3><?= $media->subtitle ?></h3>
+                <h2><?= $media->subtitle ?></h2>
+                <h3><?= $media->title ?></h3>
                 <h4><?= $media->date ?></h4>
                   <?php if($media->link->url) :?>
                     <div class="button-container">
@@ -96,7 +96,7 @@ get_header(); ?>
             echo $media->generateAsideMenu();
           }
           ?>
-          <div class="text" id="<?=$mp->post_name?>">
+          <div class="text <?= (!$media->isNavigationVisible) ? 'full': ''; ?>" id="<?=$mp->post_name?>">
             <h2><?= get_the_title($mp->ID)?></h2>
             <p><?php
               $content = apply_filters('the_content', $mp->post_content);
@@ -194,8 +194,6 @@ get_header(); ?>
 
 
 
-	}
-?>
     <main role="main" class="section--media"> 
 	   <section class="content">
 		  <aside id="block-media" class="block widget-area" role="complementary">
@@ -273,6 +271,7 @@ get_header(); ?>
 			</div>
 		</section>
 	</aside>
+		<?php if(is_array(media_posts)) { ?>
 			<section class="medias">
 			<?php foreach ($media_posts as $mp) {?>
                 <hr>
@@ -374,10 +373,9 @@ get_header(); ?>
 			
 
 		</section>
+	<?php } ?>	
 	</section>	
 
 	</main>
 
-
- 
 <?php get_footer(); ?>

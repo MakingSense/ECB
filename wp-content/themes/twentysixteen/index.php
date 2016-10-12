@@ -1,142 +1,82 @@
 <?php
-/**
- * The main template file
- *
- * This is the most generic template file in a WordPress theme
- * and one of the two required files for a theme (the other being style.css).
- * It is used to display a page when nothing more specific matches a query.
- * E.g., it puts together the home page when no home.php file exists.
- *
- * @link http://codex.wordpress.org/Template_Hierarchy
- *
- * @package WordPress
- * @subpackage Twenty_Sixteen
- * @since Twenty Sixteen 1.0
- */
-get_header();
+  /**
+   *  Main Template File
+   */
+  get_header();
+
+  class Home {    
+    public function __construct(){
+      $this->block_first = new WP_Query($this->getArgsByType('first'));
+      $this->block_second = new WP_Query($this->getArgsByType('second'));
+      $this->block_third = new WP_Query($this->getArgsByType('third'));
+      $this->block_blog = new WP_Query([
+       'posts_per_page'   => 5,
+       'orderby'          => 'date',
+       'order'            => 'DESC',
+       'post_type'        => 'post',
+       'post_status'      => 'publish',
+       'suppress_filters' => true
+      ]);
+    }
+
+    private function getArgsByType($type) {
+      return [
+        'post_type' => ['media', 'post'],
+        'numberposts'   => -1,
+        'meta_query' => [['value' => $type]],
+      ];
+    }
+  }
+
+  $home = new Home;  
 ?>
 
-<div id="primary" class="">
-    <main id="main" class="site-main section--home" role="main">
+<div id="primary">
+  <main id="main" class="site-main section--home" role="main">
 
-        <?php include_once(get_template_directory() .'/template-parts/jumbo.php'); ?>
-        <?php include_once(get_template_directory() .'/template-parts/four_pilars.php'); ?>
-        <?php if (have_posts()) : ?>
+    <?php include_once(get_template_directory() .'/template-parts/home/block-jumbo.php'); ?>
+      
+    <?php if (have_posts()) : ?>
+      <?php if (is_home() && !is_front_page()) : ?>
+        <h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
+      <?php endif; ?>
+      
+      <?php while( $home->block_first->have_posts() ) : $home->block_first->the_post(); ?>
+        <?php get_template_part('template-parts/home/block-first', get_post_format());?>
+      <?php endwhile; ?>
 
-            <?php if (is_home() && !is_front_page()) : ?>
-                <header>
-                    <h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-                </header>
-            <?php endif; ?>
-            <?php
-                // args the custom post type blog
-                $args =  array(
-                    'post_type' => array ('media', 'post'),
-                    'numberposts'	=> -1,
-                    'meta_query' => array(
-                        array(
-                            'value' => 'first',
-                        ),
+      <?php while( $home->block_second->have_posts() ) : $home->block_second->the_post(); ?>
+        <?php get_template_part('template-parts/home/block-second', get_post_format()); ?>
+      <?php endwhile; ?>
 
-                    ),
-                );
-                // query
-                $the_query = new WP_Query( $args );
-                ?>
-                <?php if( $the_query->have_posts() ): ?>
-                    <?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
-                             <?php get_template_part('template-parts/content', get_post_format());?>
-                    <?php endwhile; ?>
-                <?php endif; ?>
+      <?php while( $home->block_third->have_posts() ) : $home->block_third->the_post(); ?>
+        <?php get_template_part('template-parts/home/block-third', get_post_format());?>
+      <?php endwhile; ?>
 
-                <?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>
+      <div class="blog-wrapper desktop-only">
+        <h2>Latest from the Blog</h2>
+        <div class="blog-page owl-carousel">
+          <?php while( $home->block_blog->have_posts() ) : $home->block_blog->the_post(); ?>
+            <?php get_template_part('template-parts/home/block-blog', get_post_format()); ?>
+          <?php endwhile; ?>
+        </div>
+      </div>
 
-            <?php
-                // media_args the custom post type media
-                $media_args =  array(
-                    'post_type' => array ('media', 'post'),
-                        'numberposts'	=> -1,
-                    'meta_query' => array(
-                        array(
-                            'value' => 'second',
-                        ),
+      <div class="blog-wrapper mobile-only">
+        <h2>Ecocity World Summit</h2>
+        <div class="blog-page owl-carousel">
+          <?php while( $home->block_blog->have_posts() ) : $home->block_blog->the_post(); ?>
+            <?php get_template_part('template-parts/home/block-blog', get_post_format()); ?>
+          <?php endwhile; ?>
+        </div>
+      </div>
 
-                    ),
-                );
-                // media_query
-                $media_query = new WP_Query( $media_args );
-                ?>
-                <?php if( $media_query->have_posts() ): ?>
-                    <?php while( $media_query->have_posts() ) : $media_query->the_post(); ?>
-                             <?php get_template_part('template-parts/content-media', get_post_format()); ?>
-                    <?php endwhile; ?>
-                <?php endif; ?>
-                <?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>
-            <?php
-                // args the custom post type blog
-                $article_query =  array(
-                    'post_type' => array ('media', 'post'),
-                        'numberposts'	=> -1,
-                    'meta_query' => array(
-                        array(
-                            'value' => 'third',
-                        ),
+    <?php else : get_template_part('template-parts/home/block-first', 'none');
+      endif;
+      get_blockhome();
+      include_once(get_template_directory() .'/template-parts/home/block-social.php');
+    ?>
+  </main>
+</div>
 
-                    ),
-                );
-                // query
-                $the_query = new WP_Query( $article_query );
-                ?>
-                <?php if( $the_query->have_posts() ): ?>
-                        <ul>
-                        <?php while( $the_query->have_posts() ) : $the_query->the_post(); ?>
-                                 <?php get_template_part('template-parts/content-article', get_post_format());?>
-                        <?php endwhile; ?>
-                        </ul>
-                <?php endif; ?>
-                <?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>
-                <?php
-                //posts
-                    $args = array(
-                     'posts_per_page'   => 5,
-                     'offset'           => 0,
-                     'orderby'          => 'date',
-                     'order'            => 'DESC',
-                     'post_type'        => 'post',
-                     'post_status'      => 'publish',
-                     'suppress_filters' => true
-                    );
-                    $blog_array = new WP_Query( $args );
-                ?>
-                <div class="blog-wrapper desktop-only">
-                    <h2>Latest from the Blog</h2>
-                    <div class="blog-page owl-carousel">
-                        <?php if( $blog_array->have_posts() ): ?>
-                            <?php while( $blog_array->have_posts() ) : $blog_array->the_post(); ?>
-                                <?php get_template_part('template-parts/content-blog', get_post_format()); ?>
-                            <?php endwhile; ?>
-                        <?php endif; ?>
-                    </div>
-                </div>
-                <div class="blog-wrapper mobile-only">
-                    <h2>Ecocity World Summit</h2>
-                    <div class="blog-page owl-carousel">
-                        <?php if( $blog_array->have_posts() ): ?>
-                            <?php while( $blog_array->have_posts() ) : $blog_array->the_post(); ?>
-                                <?php get_template_part('template-parts/content-blog', get_post_format()); ?>
-                            <?php endwhile; ?>
-                        <?php endif; ?>
-                    </div>
-                </div>
-                <?php wp_reset_query();  // Restore global post data stomped by the_post(). ?>
-        <?php
-        else :
-            get_template_part('template-parts/content', 'none');
-
-        endif;
-        get_blockhome();
-        include_once(get_template_directory() .'/template-parts/twitter-facebook.php');
-        ?>
-    </main><!-- .site-main -->
-</div><!-- .content-area -->
 <?php get_footer(); ?>

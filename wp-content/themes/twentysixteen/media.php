@@ -188,17 +188,17 @@ get_header(); ?>
 	              </div>
 								
 
-					<?php } ?>
-					<?php if( (get_field('form',$mp->ID)=='Yes')&& (get_field('email_to_send',$mp->ID)) && (get_field('text_button',$mp->ID)) && (get_field('placeholder',$mp->ID)) ) {?>
-					 <form id="form-<?=get_the_ID();?>"class="apply-container">
+			<?php } ?>
+			<?php if( (get_field('form',$mp->ID)=='Yes')&& (get_field('email_to_send',$mp->ID)) && (get_field('text_button',$mp->ID)) && (get_field('placeholder',$mp->ID)) ) {?>
+                            <form id="form-<?=get_the_ID();?>"class="apply-container">
 		                <label>
 		                  <input type="text" name="email" placeholder="<?=get_field('placeholder',$mp->ID)?>">
 		                </label>
-		                <button class="submit-button media-submit-button"><?=get_field('text_button',$mp->ID)?></button>
+		                <button submit="<?=get_home_url();?>" class="submit-button media-submit-button"><?=get_field('text_button',$mp->ID)?></button>
 		                <span class="submit-message">Submit Message</span>
 		                <input type="hidden" name="to_send" value="<?=get_field('email_to_send',$mp->ID);?>"/>
 		                <input type="hidden" name="url" value="<?=get_home_url();?>"/>
-		              </form>
+		            </form>
 		            <?php }?>  
 
 					</p>	

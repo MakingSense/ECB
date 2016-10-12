@@ -15,4 +15,4 @@ dev/js/vendor/
 dev/fonts/
 dev/*.html
 
-../../../uploads/
+../../../../uploads/

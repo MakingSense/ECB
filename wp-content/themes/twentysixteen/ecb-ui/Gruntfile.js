@@ -295,20 +295,20 @@ module.exports = function (grunt) {
 
 
     // Push everything to FTP server
-    'sftp-deploy': {
-      build: {
-        auth: {
-          host: '',
-          port: 22,
-          authKey: 'key1' // Config credentials in .ftppass file
-        },
-        cache: 'sftpCache.json',
-        src: '<%= config.folder_build %>',
-        dest: '',
-        concurrency: 4,
-        progress: true
-      }
-    },
+    // 'sftp-deploy': {
+    //   build: {
+    //     auth: {
+    //       host: '',
+    //       port: 22,
+    //       authKey: 'key1' // Config credentials in .ftppass file
+    //     },
+    //     cache: 'sftpCache.json',
+    //     src: '<%= config.folder_build %>',
+    //     dest: '',
+    //     concurrency: 4,
+    //     progress: true
+    //   }
+    // },
 
     // Generate Sass Documentation
     sassdoc: {
@@ -335,7 +335,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-kraken');
-  grunt.loadNpmTasks('grunt-sftp-deploy');
+  //grunt.loadNpmTasks('grunt-sftp-deploy');
   grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-postcss');
   grunt.loadNpmTasks('grunt-processhtml');

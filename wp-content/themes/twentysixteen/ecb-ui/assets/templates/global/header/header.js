@@ -5,8 +5,9 @@
     component.toggleClass('menu-open');
   });
 
-  component.find('.mobile-menubar li > a').on('click', function (ev) {
+  component.find('.mobile-menubar .main-menu > li > a').on('click', function (ev) {
     $(this).siblings('.sub-menu').slideToggle();
+    ev.preventDefault();
   });
   
 })();

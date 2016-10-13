@@ -739,7 +739,7 @@ function secure_array_push (&$array, $element, $condition = 'undefined') {
 add_action('wp_ajax_nopriv_send_mail_ajax', 'send_mail_ajax');
 add_action('wp_ajax_send_mail_ajax', 'send_mail_ajax');
 
-add_action( 'admin_init', 'hide_editor' );
+/*add_action( 'admin_init', 'hide_editor' );
 
 function hide_editor() {
   // Get the Post ID.
@@ -753,11 +753,11 @@ function hide_editor() {
   if($template_file == 'media.php' || $template_file == 'staff.php'){ // the filename of the page template
     remove_post_type_support('page', 'editor');
   }
-}
+}*/
 
 function custom_remove() {
-remove_meta_box('add-post-type-media', 'nav-menus', 'side');
-remove_meta_box('Media', 'nav-menus', 'side');
-
+	remove_meta_box('add-post-type-media', 'nav-menus', 'side');
+	remove_meta_box('Media', 'nav-menus', 'side');
 }
+
 add_action('admin_head-nav-menus.php', 'custom_remove');

@@ -3,7 +3,7 @@
   .top-menu-container {
     display: flex;
     flex-direction: column-reverse;
-    
+
     .component--social-menu {
       display: flex;
       flex-direction: row;
@@ -26,7 +26,6 @@
         font-size: 14px;
         padding: 5px 30px;
         letter-spacing: 1.2px;
-        font-size: 18px;
 
         .donate-button {
           margin: 10px 0 15px 0;
@@ -49,7 +48,7 @@
     .top-menu-container {
       justify-content: space-between;
       flex-direction: row;
-      
+
       .component--social-menu {
         .menuitem {
           .ms-icon {
@@ -66,7 +65,7 @@
         margin-bottom: 0;
 
         .menuitem {
-          font-size: 1em;
+          font-size: 14px;
           padding: 5px 8px;
         }
       }

@@ -24,7 +24,7 @@ get_header(); ?>
           'value' => get_field('value_' . $index, get_the_ID()), 
           'text' => get_field('text_' . $index, get_the_ID())
         ];
-        secure_array_push($this->articles, $articleObject, $articleObject->src);
+        secure_array_push($this->articles, $articleObject, $articleObject->value);
       }
 
       $this->media_posts = get_field('media_posts',get_the_ID());
@@ -75,8 +75,7 @@ get_header(); ?>
           </article>
         <?php endforeach; ?>
       </section>
-
-      <section class="stats desktop-only owl-carousel">
+      <section class="stats mobile-only owl-carousel">
         <?php foreach ($media->articles as $article) : ?>
           <article class="stat">
             <span class="number"><?= $article->value ?></span>
@@ -85,8 +84,7 @@ get_header(); ?>
         <?php endforeach; ?>
       </section>
   </aside>
-
-<?php if(is_array($media->media_posts)) { ?>
+  <?php if(is_array($media->media_posts)) : ?>	
   <section class="medias">
       <?php foreach ($media->media_posts as $mp) {?>
         <hr>
@@ -177,13 +175,20 @@ get_header(); ?>
 
           </p>
           </div>
+
             </article>
+
 
       <?php } ?>
 
         <?php wp_reset_postdata(); ?>
+
+
     </section>
-    <?php } ?>
+	<?php endif;?>
+	
   </section>
-</main>
+
+  </main>
+
 <?php get_footer(); ?>

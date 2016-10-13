@@ -59,7 +59,7 @@
 ?>  
 
 <main role="main" class="section--article">
-
+  <div class="hr-wrapper"><hr class="slim"></div>
   <section class="content">
 
     <div class="wrapper">

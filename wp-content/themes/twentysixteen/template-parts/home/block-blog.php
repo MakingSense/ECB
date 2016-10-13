@@ -7,7 +7,7 @@
       <?php
         edit_post_link(
           sprintf(
-            __( '<div><a class="button-container"><button class="more-button">Learn More</button></a></div>', 'twentysixteen' ),
+            __( '<div><a class="button-container" href="'.get_permalink().'"><button class="more-button">Read More</button></a></div>', 'twentysixteen' ),
             get_the_title()
           ),
           '<span class="edit-link">',

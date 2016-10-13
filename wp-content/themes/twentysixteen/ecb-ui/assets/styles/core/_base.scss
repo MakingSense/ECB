@@ -58,6 +58,10 @@ hr {
   margin: 0 0 20px;
   border: none;
   border-bottom: 1px dashed;
+
+  &.slim {
+    height: 5px;
+  }
 }
 
 button {

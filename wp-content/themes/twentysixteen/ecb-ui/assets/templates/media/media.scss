@@ -12,6 +12,8 @@
     .wrapper {
       display: flex;
       flex-direction: column;
+      position: relative;
+      margin: 0px -14px;
 
       .text-before {
         position: absolute;
@@ -256,11 +258,12 @@
     article.media {
       .wrapper {
         flex-direction: row-reverse;
+        margin: 0px -75px;
 
         .text {
           padding: 30px 75px;
           min-height: 312px;
-          flex: 1 0 0;
+          flex: 1 0 auto;
 
           h2 {
             margin-top: 0;

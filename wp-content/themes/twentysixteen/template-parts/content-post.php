@@ -4,7 +4,7 @@
   wp_reset_postdata();
   ?>
 
-<main role="main" class="section--article">
+<main role="main" class="section--post-generic">
   <section class="content">
     <div class="wrapper">
       <div class="text">

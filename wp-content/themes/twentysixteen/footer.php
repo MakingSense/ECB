@@ -85,14 +85,18 @@
 
 </div><!-- .main-wrapper  -->
 
-<script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
-<script type='text/javascript'>(function($) {window.fnames = new Array();
-    window.ftypes = new Array();fnames[0]='EMAIL';
-    ftypes[0]='email';fnames[1]='FNAME';
-    ftypes[1]='text';fnames[2]='LNAME';
-    ftypes[2]='text';}(jQuery));var $mcj = jQuery.noConflict(true);
-
+<script type='text/javascript'>
+   var localizedErrMap = {};
+   localizedErrMap['required'] = 		'This field is required.';
+   localizedErrMap['ca'] = 			'An unexpected error occurred while attempting to send email.';
+   localizedErrMap['email'] = 			'Please enter your email address in name@email.com format.';
+   localizedErrMap['list'] = 			'Please select at least one email list.';
+   localizedErrMap['generic'] = 		'This field is invalid.';
+   localizedErrMap['shared'] = 		'Sorry, we could not complete your sign-up. Please contact us to resolve this.';
+   var postURL = 'https://visitor2.constantcontact.com/api/signup';
 </script>
+<script type='text/javascript' src='https://static.ctctcdn.com/h/contacts-embedded-signup-assets/1.0.2/js/signup-form.js'></script>
+<!--End CTCT Sign-Up Form-->
 <script type="text/javascript" src="<?php echo get_template_directory_uri()?>/js/vendor/jquery.min.js"></script>
 <script type="text/javascript" src="<?php echo get_template_directory_uri()?>/js/vendor/owl.carousel.min.js"></script>
 <script type="text/javascript" src="<?php echo get_template_directory_uri()?>/js/scripts.min.js"></script>

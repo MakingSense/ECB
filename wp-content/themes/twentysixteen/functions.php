@@ -754,3 +754,10 @@ function hide_editor() {
     remove_post_type_support('page', 'editor');
   }
 }
+
+function custom_remove() {
+remove_meta_box('add-post-type-media', 'nav-menus', 'side');
+remove_meta_box('Media', 'nav-menus', 'side');
+
+}
+add_action('admin_head-nav-menus.php', 'custom_remove');

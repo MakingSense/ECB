@@ -4,7 +4,8 @@
   var $jumboSelectorButtons = $jumboSelector.find('.button-container').children('a');
 
   setTimeout(removeJumboGrayscale, 2000);
-  setInterval(autochangeJumboImage, 7000);
+  setInterval(autochangeJumboImage, 10000);
+
   $jumboSelectorButtons.on('click', changeJumboActive);
 
   function changeJumboActive(e, newIndex){

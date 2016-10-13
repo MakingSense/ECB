@@ -6,8 +6,12 @@
   });
 
   component.find('.mobile-menubar .main-menu > li > a').on('click', function (ev) {
-    $(this).siblings('.sub-menu').slideToggle();
-    ev.preventDefault();
+    var $this = $(this);
+    $this.siblings('.sub-menu').slideToggle();
+
+    if ( $this.find('.sub-menu').length ) {
+      ev.preventDefault();
+    }
   });
   
 })();

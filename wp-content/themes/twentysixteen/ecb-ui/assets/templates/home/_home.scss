@@ -307,6 +307,12 @@
 
           .wrapper {
             .text {
+              & > span {
+                text-transform: uppercase;
+                min-height: 21px;
+                display: block;
+              }
+
               h3 {
                 font-size: 26px;
                 height: 102px;

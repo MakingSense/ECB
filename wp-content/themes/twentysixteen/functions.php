@@ -297,7 +297,8 @@ function twentysixteen_setup() {
 		'primary' => __( 'Primary Menu', 'twentysixteen' ),
 		'social'  => __( 'Social Links Menu', 'twentysixteen' ),
 		'top'  => __( 'Top navbar ', 'twentysixteen' ),
-                'media' => __('Media Menu', 'Twentysixteen')
+    'media' => __('Media Menu', 'twentysixteen'),
+		'donate_menu' => __('Donate button', 'twentysixteen')
 	) );
 
 	/*
@@ -456,7 +457,7 @@ function twentysixteen_scripts() {
 
 	// Theme stylesheet.
 	wp_enqueue_style( 'twentysixteen-style',  get_template_directory_uri() . '/css/styles.css' );
-        
+
 
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -627,8 +628,34 @@ function get_top_navbar (){
 			$title = $item->title;
 			$return_li .= '<a class="menuitem" href="'.$link.'">'.$title.'</a>';
     endforeach;
+
+		//<a class="menuitem mobile-only" href="#"><button class="donate-button">DONATE</button></a>
+		$return_li .= get_donate_menu(true);
+
     return $return_li;
 
+}
+
+function get_donate_menu ($isMobile) {
+		$menu_name = 'donate_menu';
+		$locations = get_nav_menu_locations();
+		$menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
+		$menuitems = wp_get_nav_menu_items( $menu->term_id, array( 'order' => 'DESC' ) );
+		$return_li="";
+
+		if ( empty($menuitems) ){
+			return "";
+		}
+
+		$link = $menuitems[0]->url;
+		$title = $menuitems[0]->title;
+		if ( empty($isMobile) ) {
+			return  '<button class="donate-button">'
+							.'<a href="'.$link.'">'.$title.'</a>'
+							.'</button>';
+		}else{
+			return '<a class="menuitem mobile-only" href="'.$link.'"><button class="donate-button">'.$title.'</button></a>';
+		}
 }
 
 function get_primary_menu() {
@@ -650,8 +677,7 @@ function get_primary_menu() {
             if ( !$item->menu_item_parent ):
              // save this id for later comparison with sub-menu items
              $parent_id = $item->ID;
-             $return_li .= '<li class="menuitem" role="menuitem"><a href="'.$link.'">'.$title.'</a>';
-
+						 $return_li .= '<li class="menuitem" role="menuitem"><a href="'.$link.'">'.$title.'</a>';
            endif;
 
            if ( $parent_id == $item->menu_item_parent ):
@@ -677,7 +703,11 @@ function get_primary_menu() {
        $count++;
    endforeach;
 
-     return $return_li;
+	$return_li .= '<li class="menuitem desktop-only" role="menuitem">'
+								.get_donate_menu (false)
+								.'</li>';
+
+  return $return_li;
 }
 
 function send_mail_ajax(){
@@ -695,8 +725,8 @@ function send_mail_ajax(){
       'MIME-Version: 1.0'. "\r\n" .
        'Reply-To:'.$_POST['email'] . "\r\n" .
       'Content-type: text/html; charset=utf-8';
-  $status=wp_mail($_POST['email'], "form media page",$_POST['text'],$headers );    
-  die();   
+  $status=wp_mail($_POST['email'], "form media page",$_POST['text'],$headers );
+  die();
 
 }
 
@@ -706,7 +736,7 @@ function secure_array_push (&$array, $element, $condition = 'undefined') {
   }
 }
 
-add_action('wp_ajax_nopriv_send_mail_ajax', 'send_mail_ajax'); 
+add_action('wp_ajax_nopriv_send_mail_ajax', 'send_mail_ajax');
 add_action('wp_ajax_send_mail_ajax', 'send_mail_ajax');
 
 add_action( 'admin_init', 'hide_editor' );
@@ -719,7 +749,7 @@ function hide_editor() {
   // Hide the editor on a page with a specific page template
   // Get the name of the Page Template file.
   $template_file = get_post_meta($post_id, '_wp_page_template', true);
-  
+
   if($template_file == 'media.php' || $template_file == 'staff.php'){ // the filename of the page template
     remove_post_type_support('page', 'editor');
   }

@@ -32,30 +32,29 @@ Template Name: Page Blog
   <div class="head">
     <h1>Blog</h1>
   </div>
-  
+
   <section class="content">
-    
+
     <?php get_navigation(); ?>
 
-    <h2><?php _e('All articles'); ?></h2>
+    <h1><?php _e('All articles'); ?></h1>
     <form  id="filter-form">
         <?php wp_dropdown_categories(array('name' =>'category')); ?>
         <?php wp_dropdown_users(array('name' => 'author')); ?>
-        
+
         <select name='date' id="date-filter" class="filter-blog">
             <option value='DESC'>Newest First</option>
             <option value='ASC'>Oldest First</option>
          </select>
         <input id="btn-filter-blog" type="submit" name="submit" value="mostrar categorias" hidden/>
-        
+
     </form>
-    
+
     <section class="article-container" id="results">
       <!-- Articles injected here with ajax -->
     </section>
 
-  </section>    
+  </section>
 </main>
 
 <?php get_footer(); ?>
-

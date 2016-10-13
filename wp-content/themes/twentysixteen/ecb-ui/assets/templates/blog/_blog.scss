@@ -7,15 +7,15 @@
     display: flex;
     padding: 10px 14px;
     align-items: center;
+    h1 {
+      padding: 0 16px;
+    }
   }
 
   h1 {
-    font-size: 18px;
-  }
-
-  h2 {
     font-family: 'flamamedium';
     font-size: 24px;
+    padding: 26px 16px 0;
   }
 
   form {
@@ -63,6 +63,13 @@
     .head {
       height: 103px;
       padding: 20px 75px;
+      h1 {
+        padding: 26px 16px 0;
+      }
+    }
+
+    h1 {
+      padding: 46px 16px 0;
     }
 
     form {

@@ -456,7 +456,7 @@ function twentysixteen_scripts() {
 
 	// Theme stylesheet.
 	wp_enqueue_style( 'twentysixteen-style',  get_template_directory_uri() . '/css/styles.css' );
-        
+
 
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -695,8 +695,8 @@ function send_mail_ajax(){
       'MIME-Version: 1.0'. "\r\n" .
        'Reply-To:'.$_POST['email'] . "\r\n" .
       'Content-type: text/html; charset=utf-8';
-  $status=wp_mail($_POST['email'], "form media page",$_POST['text'],$headers );    
-  die();   
+  $status=wp_mail($_POST['email'], "form media page",$_POST['text'],$headers );
+  die();
 
 }
 
@@ -706,7 +706,7 @@ function secure_array_push (&$array, $element, $condition = 'undefined') {
   }
 }
 
-add_action('wp_ajax_nopriv_send_mail_ajax', 'send_mail_ajax'); 
+add_action('wp_ajax_nopriv_send_mail_ajax', 'send_mail_ajax');
 add_action('wp_ajax_send_mail_ajax', 'send_mail_ajax');
 
 add_action( 'admin_init', 'hide_editor' );
@@ -719,8 +719,15 @@ function hide_editor() {
   // Hide the editor on a page with a specific page template
   // Get the name of the Page Template file.
   $template_file = get_post_meta($post_id, '_wp_page_template', true);
-  
+
   if($template_file == 'media.php' || $template_file == 'staff.php'){ // the filename of the page template
     remove_post_type_support('page', 'editor');
   }
 }
+
+function custom_remove() {
+remove_meta_box('add-post-type-media', 'nav-menus', 'side');
+remove_meta_box('Media', 'nav-menus', 'side');
+
+}
+add_action('admin_head-nav-menus.php', 'custom_remove');

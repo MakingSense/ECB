@@ -109,7 +109,7 @@ get_header(); ?>
           <?php } ?>
 
           <?php if(get_field('video',$mp->ID)){?>
-              <iframe width="420" height="315"
+              <iframe width="420" height="315" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""
                 src="<?=get_field('video',$mp->ID)?>">
               </iframe>
 

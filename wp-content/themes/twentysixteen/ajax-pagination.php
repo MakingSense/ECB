@@ -96,10 +96,10 @@
 ?>
 
 <article class="article blog">
-  <div class="wrapper" href="#">
+  <div class="wrapper">
     <span class="text">
       <h2><?php echo $categoryName; ?></h2>
-      <h3><?php the_title(); ?></h3>
+      <a href="<?=get_the_permalink();?>"><h3><?php the_title(); ?></h3></a>
       <h4><?php the_time('M d Y'); ?></h4>
       <span class="desktop-only"><?php custom_excerpt_length(the_excerpt()); ?></span>
     </span>

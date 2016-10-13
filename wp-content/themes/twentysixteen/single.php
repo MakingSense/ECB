@@ -17,7 +17,7 @@ get_header(); ?>
 
 			// Include the single post content template.
 			if($post->post_type=="post")
-				get_template_part( 'template-parts/content', 'article' );
+				get_template_part( 'template-parts/content', 'post' );
 			else
 				get_template_part( 'template-parts/content', 'single' );
 

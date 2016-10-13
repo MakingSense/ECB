@@ -16,10 +16,6 @@
         <p><?= get_the_content() ?></p>
       </div>
     </div>
-  </section>    
+  </section>
     <?php wp_reset_postdata(); ?>
 </main>
-
-<?php
-  get_footer(); 
-?>

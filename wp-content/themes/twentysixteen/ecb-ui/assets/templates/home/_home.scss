@@ -216,6 +216,7 @@
       .text-container {
 
         & .text {
+          font-size: 18px;
           display: none;
           opacity: 0;
           line-height: 1.33;
@@ -361,6 +362,12 @@
             flex-direction: row;
             a {
               margin: 8px;
+              &:first-of-type {
+                margin-left: 0;
+              }
+              &:last-of-type {
+                margin-right: 0;
+              }
             }
           }
         }

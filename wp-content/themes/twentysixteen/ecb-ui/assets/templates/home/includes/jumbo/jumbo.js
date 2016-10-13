@@ -3,8 +3,10 @@
   var $jumboSelector = $('.component--jumbo-selector');
   var $jumboSelectorButtons = $jumboSelector.find('.button-container').children('a');
 
-  setTimeout(removeJumboGrayscale, 2000);
-  setInterval(autochangeJumboImage, 10000);
+  $(document).ready(function(){
+    setTimeout(removeJumboGrayscale, 4000);
+    setInterval(autochangeJumboImage, 10000);
+  });
 
   $jumboSelectorButtons.on('click', changeJumboActive);
 

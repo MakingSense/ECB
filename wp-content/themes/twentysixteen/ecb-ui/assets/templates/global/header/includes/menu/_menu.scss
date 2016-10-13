@@ -12,6 +12,10 @@
 
       .sub-menu {
         display: none;
+
+        .title {
+          display: none;
+        }
       }
 
       a {
@@ -60,6 +64,7 @@
             top: 0;
 
             li:first-child {
+              display: flex;
               margin-bottom: 10px;
               list-style: none;
               white-space: nowrap;

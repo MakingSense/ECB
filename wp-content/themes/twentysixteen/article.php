@@ -84,7 +84,7 @@
 
         <aside>
           <?php if($post->post_author !=0) { ?>
-            <article class="author">
+            <article class="author desktop-only">
               <figure><?= get_avatar($post->post_author) ?></figure>
               <p><?= $article->author->description ?></p>
             </article>
@@ -132,6 +132,15 @@
             <?php endforeach; ?>
           </div>
           <?php } ?>
+
+          <aside>
+            <?php if($post->post_author !=0) { ?>
+              <article class="author mobile-only">
+                <figure><?= get_avatar($post->post_author) ?></figure>
+                <p><?= $article->author->description ?></p>
+              </article>
+            <?php } ?>
+          </aside>
         </aside>
       </section>
 

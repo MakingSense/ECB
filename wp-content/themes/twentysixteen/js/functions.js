@@ -181,17 +181,6 @@
 	}
 
 	$( document ).ready( function() {
-		
-		$('article.media aside ul li').click(function(){
-			$('article.media aside ul li').removeClass('active');
-			href=$(this).children().attr('href');		
-			$("article.media aside ul li a").each(function() {
-				 if($(this).attr('href')==href){
-				 	$(this).parent().addClass('active');
-				 }
-			})
-
-		})
 
 		$('button.media-submit-button').click(function(event){
 			event.preventDefault();
@@ -207,7 +196,7 @@
 				$.post( ajaxUrl, data)
   					.done(function( response ) {
     				$('#'+id_form +' span.submit-message').css('visibility','visible');
-  				});	
+  				});
 
 			}
 

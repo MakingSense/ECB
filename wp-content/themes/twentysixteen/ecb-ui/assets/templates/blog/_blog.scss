@@ -54,7 +54,11 @@
     text-align: center;
     width: 100%;
     margin: 1em;
-    color: black;
+    a {
+      color: black;
+      font-size: 20px;
+      text-decoration: underline;
+    }
   }
 }
 
@@ -68,7 +72,7 @@
       }
     }
 
-    article.blog { 
+    article.blog {
       .text {
         height: 309px;
       }

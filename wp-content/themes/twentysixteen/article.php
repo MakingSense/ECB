@@ -109,15 +109,18 @@
           <?php if(trim($article->content_2 )!="") { ?>
             <p><?= $article->content_2 ?></p>
           <?php } ?>
+        </article>
+
+        <article>
           <?php if(count($article->images_sidebar) > 0) { ?>
-            <div class="images-container mobile-only owl-carousel">
+            <aside class="aside images-container owl-carousel mobile-only">
               <?php foreach ($article->images_sidebar as $article->image) : ?>
                 <div class="image">
                   <img src="<?= $article->image->src ?>" />
                   <p><?= $article->image->description ?></p>
                 </div>
               <?php endforeach; ?>
-            </div>
+            </aside>
           <?php } ?>
         </article>
 
@@ -149,7 +152,7 @@
     <hr>
 
     <section class="component--featured">
-      <h2>You May Also Like</h2>
+      <h1>You May Also Like</h1>
 
       <div class="article-wrapper">
         <section class="article-container desktop-only">

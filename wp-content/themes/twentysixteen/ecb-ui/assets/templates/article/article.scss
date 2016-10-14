@@ -27,36 +27,41 @@
       font-size: 20px;
       position: relative;
       display: inline-block;
+      quotes: "“" "”" "‘" "’";
+      margin: 30px;
 
       &:before {
-        content: '“';
+        content: open-quote;
         position: absolute;
-        font-size: 150px;
+        font-size: 120px;
         top: 0;
-        left: -20%;
+        right: 95%;
         color: #bdf6c8;
-        opacity: 0.5;
         font-family: serif;
         z-index: -1;
-        line-height: 65px;
+        line-height: 45px;
       }
 
       &:after {
-        content: '”';
+        content: close-quote;
         position: absolute;
-        font-size: 150px;
+        font-size: 120px;
         top: 100%;
-        left: 80%;
+        left: 95%;
         color: #bdf6c8;
-        opacity: 0.5;
         font-family: serif;
         z-index: -1;
-        line-height: 65px;
+        line-height: 45px;
       }
     }
 
     .author {
       display: flex;
+
+      figure {
+        margin: 14px 14px 0 0;
+        min-width: 71px;
+      }
 
       img {
         border-radius: 50%;
@@ -69,42 +74,43 @@
       }
     }
 
-    .aside.images-container {
-      .image {
-        height: 234px;
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-      }
-
-      .mobile-only {
-        p {
-          color: #4a4a4a;
-          font-size: 14px;
-        }
-
+    aside {
+      .images-container {
         .image {
-          margin: 0 1%;
-          display: block;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+          p {
+            color: #4a4a4a;
+            font-size: 14px;
+          }
         }
 
-        .owl-stage-outer {
-          width: 130%;
-          margin-left: -25%;
-        }
+        .mobile-only {
+          .image {
+            height: 234px;
+            margin: 0 1%;
+            display: block;
+          }
 
-        .owl-nav { 
+          .owl-stage-outer {
+            width: 130%;
+            margin-left: -25%;
+          }
 
-          & > * {
-            background-color: rgba(255, 255, 255, 0.5);
-            width: 20%;
+          .owl-nav {
+
+            & > * {
+              background-color: rgba(255, 255, 255, 0.5);
+              width: 20%;
+            }
           }
         }
       }
     }
-  
+
 
     .carousel-wrapper {
       .owl-carousel {
@@ -128,7 +134,7 @@
     .article-container.owl-carousel {
       width: 86%;
       margin-left: 7%;
-      
+
       .owl-stage-outer {
         margin: 40px;
       }
@@ -138,6 +144,7 @@
 
   .wrapper {
     position: relative;
+    padding-top: 17px;
   }
 
 
@@ -154,20 +161,30 @@
 
     .wrapper {
       display: flex;
+      flex-direction: column;
+      padding-top: 30px;
 
-      .text {
+      section {
+        display: flex;
         flex-basis: 65%;
+        padding-bottom: 28px;
+
+        article {
+          &.text {
+            width: 65%;
+          }
+        }
 
         .carousel-wrapper {
           height: 493px;
-          
+
           .owl-carousel {
             position: absolute;
             height: 493px;
             width: 100%;
-            
+
             .owl-stage-outer {
-              
+
               .image {
                 max-height: 493px;
                 width: auto;
@@ -181,34 +198,44 @@
         }
 
         .quote {
-          margin: 30px;
-        }
-
-        .aside.images-container {
-          position: absolute;
-          min-width: 234px;
-          margin-top: 20px;
-          margin-left: 65%;
-          max-width: 35%;
-
-          .image {
-            margin-bottom: 50px;
-
-            img {
-              width: 100%;
-            }
+          margin: 30px 65px;
+          &:before {
+            font-size: 150px;
+            line-height: 65px;
+          }
+          &:after {
+            font-size: 150px;
+            line-height: 65px;
           }
         }
       }
 
       aside {
-        margin-left: 86px;
+        display: flex;
+        flex-direction: row-reverse;
         flex-basis: 35%;
-        min-width: 234px;
-        padding-top: 216px;
+        width: 35%;
+
+        .images-container {
+          padding: 16px;
+          max-width: 270px;
+          display: flex;
+          flex-direction: column;
+
+          .image {
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 30px;
+            img {
+              width: 100%;
+            }
+          }
+        }
 
         .author {
           flex-direction: column;
+          padding: 16px;
+          max-width: 270px;
 
           figure {
             margin: 0 auto;
@@ -219,5 +246,5 @@
 
   }
 }
-  
+
 }

@@ -8,7 +8,7 @@
 
 
   class Article {
-    
+
     public function __construct(){
 
       $this->title = get_the_title();
@@ -54,29 +54,45 @@
       ];
     }
   }
-   
+
   $article = new Article;
-?>  
+?>
 
 <main role="main" class="section--article">
   <div class="hr-wrapper"><hr class="slim"></div>
   <section class="content">
 
     <div class="wrapper">
-      <div class="text">
-        <header>
+      <section>
+        <article class="text">
           <h2><?= $article->category ?></h2>
           <h1><?= $article->title ?></h1>
           <h4><?= $article->date?></h4>
           <?php include(get_template_directory() .'/template-parts/social_networks.php'); ?>
-        </header>
-        <?php if(trim($article->content_1)) { ?>
-        <p><?= $article->content_1 ?></p>
-        <?php } ?>
-        <?php if(trim($article->quote)!="") { ?>
-        <p class="quote"><?= $article->quote ?></p>
-        <?php } ?>
+        </article>
+      </section>
 
+      <section>
+        <article class="text">
+          <?php if(trim($article->content_1)) { ?>
+            <p><?= $article->content_1 ?></p>
+          <?php } ?>
+          <?php if(trim($article->quote)!="") { ?>
+            <p class="quote"><?= $article->quote ?></p>
+          <?php } ?>
+        </article>
+
+        <aside>
+          <?php if($post->post_author !=0) { ?>
+            <article class="author desktop-only">
+              <figure><?= get_avatar($post->post_author) ?></figure>
+              <p><?= $article->author->description ?></p>
+            </article>
+          <?php } ?>
+        </aside>
+      </section>
+
+      <section>
         <?php if(count($article->images_carrousel) > 0) { ?>
         <div class="carousel-wrapper">
           <div class="main images-container owl-carousel">
@@ -86,41 +102,48 @@
           </div>
         </div>
         <?php } ?>
-        <?php if(count($article->images_sidebar) > 0) { ?>
-        <div class="aside images-container desktop-only">
-          <?php foreach ($article->images_sidebar as $article->image) : ?>
-            <div class="image">
-              <img src="<?= $article->image->src ?>" />
-              <p><?= $article->image->description ?></p>
-            </div>
-          <?php endforeach; ?>
-        </div>
-        <?php } ?>
+      </section>
 
-        <?php if(trim($article->content_2 )!="") { ?>
-        <p><?= $article->content_2 ?></p>
-        <?php } ?>
-        <?php if(count($article->images_sidebar) > 0) { ?>
-        <div class="aside images-container mobile-only owl-carousel">
-          <?php foreach ($article->images_sidebar as $article->image) : ?>
-            <div class="image">
-              <img src="<?= $article->image->src ?>" />
-              <p><?= $article->image->description ?></p>
+      <section>
+        <article class="text">
+          <?php if(trim($article->content_2 )!="") { ?>
+            <p><?= $article->content_2 ?></p>
+          <?php } ?>
+          <?php if(count($article->images_sidebar) > 0) { ?>
+            <div class="images-container mobile-only owl-carousel">
+              <?php foreach ($article->images_sidebar as $article->image) : ?>
+                <div class="image">
+                  <img src="<?= $article->image->src ?>" />
+                  <p><?= $article->image->description ?></p>
+                </div>
+              <?php endforeach; ?>
             </div>
-          <?php endforeach; ?>
-        </div>
-        <?php } ?>
-      </div>
-
-      <aside>
-      <?php if($post->post_author !=0) { ?>
-        <article class="author">
-          <figure><?= get_avatar($post->post_author) ?></figure>
-          <p><?= $article->author->description ?></p>
+          <?php } ?>
         </article>
-      <?php } ?>  
-        <div class="desktop-only" style="padding-bottom: <?= (count($article->images_sidebar) * 350 + 700).'px' ?>"></div>
-      </aside>
+
+        <aside>
+          <?php if(count($article->images_sidebar) > 0) { ?>
+          <div class="images-container desktop-only">
+            <?php foreach ($article->images_sidebar as $article->image) : ?>
+              <div class="image">
+                <img src="<?= $article->image->src ?>" />
+                <p><?= $article->image->description ?></p>
+              </div>
+            <?php endforeach; ?>
+          </div>
+          <?php } ?>
+
+          <aside>
+            <?php if($post->post_author !=0) { ?>
+              <article class="author mobile-only">
+                <figure><?= get_avatar($post->post_author) ?></figure>
+                <p><?= $article->author->description ?></p>
+              </article>
+            <?php } ?>
+          </aside>
+        </aside>
+      </section>
+
     </div>
     <?php if(is_array($article->related_articles)) { ?>
     <hr>
@@ -158,15 +181,15 @@
           <?php endforeach; ?>
         </section>
       </div>
-      
+
     </section>
    <?php } ?>
- 
-  </section>    
+
+  </section>
 
     <?php wp_reset_postdata(); ?>
 </main>
 
 <?php
-  get_footer(); 
+  get_footer();
 ?>

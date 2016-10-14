@@ -13,7 +13,15 @@
 	};
 
 	$(document).ready(function() {
+                $(document).ready(function () {
 
+                    $(".post-type input").on('click', function(){
+                        if ($(".post-type input:checked").length > 3) {
+                            alert("You can only select 3 post or pages to show in the blog page");
+                            return false;
+                        }
+                    })
+                })
 		var $document = $(this);
 		var $widgets_area = $('#widgets-right');
 

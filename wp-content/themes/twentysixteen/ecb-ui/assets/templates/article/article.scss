@@ -27,31 +27,31 @@
       font-size: 20px;
       position: relative;
       display: inline-block;
+      quotes: "“" "”" "‘" "’";
+      margin: 30px;
 
       &:before {
-        content: '“';
+        content: open-quote;
         position: absolute;
-        font-size: 150px;
+        font-size: 120px;
         top: 0;
-        left: -20%;
+        right: 95%;
         color: #bdf6c8;
-        opacity: 0.5;
         font-family: serif;
         z-index: -1;
-        line-height: 65px;
+        line-height: 45px;
       }
 
       &:after {
-        content: '”';
+        content: close-quote;
         position: absolute;
-        font-size: 150px;
+        font-size: 120px;
         top: 100%;
-        left: 80%;
+        left: 95%;
         color: #bdf6c8;
-        opacity: 0.5;
         font-family: serif;
         z-index: -1;
-        line-height: 65px;
+        line-height: 45px;
       }
     }
 
@@ -198,13 +198,21 @@
         }
 
         .quote {
-          margin: 30px;
+          margin: 30px 65px;
+          &:before {
+            font-size: 150px;
+            line-height: 65px;
+          }
+          &:after {
+            font-size: 150px;
+            line-height: 65px;
+          }
         }
       }
 
       aside {
         display: flex;
-        justify-content: flex-end;
+        flex-direction: row-reverse;
         flex-basis: 35%;
         width: 35%;
 

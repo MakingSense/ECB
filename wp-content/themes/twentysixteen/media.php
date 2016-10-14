@@ -51,7 +51,7 @@ get_header(); ?>
       <section id="simpleimage-2" class="widget widget_simpleimage">
           <article class="media">
             <div class="wrapper">
-                <div class="text-before" style="background: url(<?= $media->image ?>); background-size: cover;"></div>
+                <div class="text-before" style="background-image: url(<?= $media->image ?>);"></div>
               <div class="text">
                 <h2><?= $media->subtitle ?></h2>
                 <h3><?= $media->title ?></h3>

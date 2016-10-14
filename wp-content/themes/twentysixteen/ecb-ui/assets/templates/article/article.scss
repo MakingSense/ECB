@@ -69,42 +69,44 @@
       }
     }
 
-    .aside.images-container {
-      .image {
-        height: 234px;
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-      }
-
-      .mobile-only {
-        p {
-          color: #4a4a4a;
-          font-size: 14px;
-        }
-
+    aside {
+      .images-container {
         .image {
-          margin: 0 1%;
-          display: block;
+          height: 234px;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
         }
 
-        .owl-stage-outer {
-          width: 130%;
-          margin-left: -25%;
-        }
+        .mobile-only {
+          p {
+            color: #4a4a4a;
+            font-size: 14px;
+          }
 
-        .owl-nav { 
+          .image {
+            margin: 0 1%;
+            display: block;
+          }
 
-          & > * {
-            background-color: rgba(255, 255, 255, 0.5);
-            width: 20%;
+          .owl-stage-outer {
+            width: 130%;
+            margin-left: -25%;
+          }
+
+          .owl-nav {
+
+            & > * {
+              background-color: rgba(255, 255, 255, 0.5);
+              width: 20%;
+            }
           }
         }
       }
     }
-  
+
 
     .carousel-wrapper {
       .owl-carousel {
@@ -128,7 +130,7 @@
     .article-container.owl-carousel {
       width: 86%;
       margin-left: 7%;
-      
+
       .owl-stage-outer {
         margin: 40px;
       }
@@ -154,20 +156,28 @@
 
     .wrapper {
       display: flex;
+      flex-direction: column;
 
-      .text {
+      section {
+        display: flex;
         flex-basis: 65%;
+
+        article {
+          &.text {
+            width: 65%;
+          }
+        }
 
         .carousel-wrapper {
           height: 493px;
-          
+
           .owl-carousel {
             position: absolute;
             height: 493px;
             width: 100%;
-            
+
             .owl-stage-outer {
-              
+
               .image {
                 max-height: 493px;
                 width: auto;
@@ -183,12 +193,16 @@
         .quote {
           margin: 30px;
         }
+      }
 
-        .aside.images-container {
-          position: absolute;
+      aside {
+        display: flex;
+        justify-content: flex-end;
+        flex-basis: 35%;
+        width: 35%;
+
+        .images-container {
           min-width: 234px;
-          margin-top: 20px;
-          margin-left: 65%;
           max-width: 35%;
 
           .image {
@@ -199,19 +213,17 @@
             }
           }
         }
-      }
-
-      aside {
-        margin-left: 86px;
-        flex-basis: 35%;
-        min-width: 234px;
-        padding-top: 216px;
 
         .author {
           flex-direction: column;
+          padding: 16px;
 
           figure {
             margin: 0 auto;
+          }
+
+          p {
+            max-width: 236px;
           }
         }
       }
@@ -219,5 +231,5 @@
 
   }
 }
-  
+
 }

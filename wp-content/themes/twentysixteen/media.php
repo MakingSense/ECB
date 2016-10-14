@@ -31,6 +31,28 @@ get_header(); ?>
       $this->isNavigationVisible = get_field('navigation_visible',get_the_ID()) == 'Yes';
     }
 
+    public function getPostById($mp) {
+      $id = $mp->ID;
+
+      $images = [];
+      for ($index = 1; $index < 3; $index ++) {
+        $image = (object) [
+          'src' => get_field('image_' . $index, $id), 
+          'link' => get_field('link_image_' . $index, $id)
+        ];
+        secure_array_push($images, $image, $image->src);
+      }
+      
+      return (object) [
+        'title' => get_the_title($id),
+        'content' => str_replace(']]>', ']]&gt;', apply_filters('the_content', $mp->post_content)),
+        'image_feature' => get_field('image_feature', $id),
+        'video' => get_field('video', $id),
+        'images' => $images
+
+      ];
+    }
+
     public function generateAsideMenu() {
       $box="<aside class='desktop-only'><ul>";
       foreach($this->media_posts as $mp ){
@@ -86,7 +108,7 @@ get_header(); ?>
   </aside>
   <?php if(is_array($media->media_posts)) : ?>	
   <section class="medias">
-      <?php foreach ($media->media_posts as $mp) {?>
+      <?php foreach ($media->media_posts as $mp) : $mediapost = $media->getPostById($mp) ?>
         <hr>
         <article class="media">
           <?php
@@ -95,100 +117,72 @@ get_header(); ?>
           }
           ?>
           <div class="text <?= (!$media->isNavigationVisible) ? 'full': ''; ?>" id="<?=$mp->post_name?>">
-            <h2><?= get_the_title($mp->ID)?></h2>
-            <p><?php
-              $content = apply_filters('the_content', $mp->post_content);
-                $content = str_replace(']]>', ']]&gt;', $content);
-                echo $content;
-              ?>
-            <?php if(get_field('image_feature', $mp->ID)){?>
+            <h2><?= $mediapost->title ?></h2>
+            <p><?= $mediapost->content ?></p>
+
+            <?php if ($mediapost->image_feature) :?>
               <div class="video">
-                <img src="<?=get_field('image_feature',$mp->ID)?>?txtsize=33&txt=350%C3%97150&w=556&h=377"/>
+                <img src="<?= $mediapost->image_feature ?>"/>
+              </div>
+            <?php endif; ?>
+
+            <?php if ($mediapost->video) : ?>
+              <div class="video-wrapper">
+                <iframe width="420" height="315" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" src="<?= $mediapost->video ?>"></iframe>
+              </div>
+            <?php endif; ?>
+
+            <?php if (count($mediapost->images) > 0 ) : ?>
+              <div class="video-collection desktop-only">
+                <?php foreach ($mediapost->images as $image) : ?>
+                  <div class="video">
+                    <?php if($image->link) : ?>
+                      <a href="<?= $image->link ?>" target="_blank"><img src="<?= $image->src ?>"></a>
+                    <?php endif; ?>
+
+                    <?php if(!$image->link) : ?>
+                      <img src="<?= $image->src ?>">
+                    <?php endif; ?>
+                  </div>
+                <?php endforeach; ?>
               </div>
 
-          <?php } ?>
+              <div class="video-collection mobile-only owl-carousel">
+                <?php foreach ($mediapost->images as $image) : ?>
+                  <div class="video">
+                    <?php if($image->link) : ?>
+                      <a href="<?= $image->link ?>" target="_blank"><img src="<?= $image->src ?>"></a>
+                    <?php endif; ?>
 
-          <?php if(get_field('video',$mp->ID)){?>
-              <iframe width="420" height="315" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""
-                src="<?=get_field('video',$mp->ID)?>">
-              </iframe>
-
-
-          <?php } ?>
-
-          <?php if((get_field('image_1',$mp->ID))&& (get_field('image_2',$mp->ID)) ){?>
-            <div class="video-collection desktop-only">
-              <div class="video">
-              <?php if(get_field('link_image_1',$mp->ID)){?>
-              <a href="<?=get_field('link_image_1',get_the_ID())?>" target="_blank">
-              <?php }?>
-              <img src="<?=get_field('image_1',$mp->ID)?>?txtsize=33&txt=350%C3%97150&w=268&h=180">
-              <?php if(get_field('link_image_1',$mp->ID)){?>
-              </a>
-              <?php }?>
+                    <?php if(!$image->link) : ?>
+                      <img src="<?= $image->src ?>">
+                    <?php endif; ?>
+                  </div>
+                <?php endforeach; ?>
               </div>
-              <div class="video">
-              <?php if(get_field('link_image_2',$mp->ID)){?>
-              <a href="<?=get_field('link_image_2',$mp->ID)?>" target="_blank">
-              <?php }?>
-              <img src="<?=get_field('image_2',$mp->ID)?>?txtsize=33&txt=350%C3%97150&w=268&h=180">
-            <?php if(get_field('link_image_2',$mp->ID)){?>
-              </a>
-              <?php }?>
-              </div>
-            </div>
-
-            <div class="video-collection mobile-only owl-carousel">
-              <div class="video">
-              <?php if(get_field('link_image_1',$mp->ID)){?>
-              <a href="<?=get_field('link_image_1',$mp->ID)?>" target="_blank">
-              <?php }?>
-              <img src="<?=get_field('image_1',$mp->ID)?>?txtsize=33&txt=350%C3%97150&w=268&h=180">
-              <?php if(get_field('link_image_1',$mp->ID)){?>
-              </a>
-              <?php }?>
-              </div>
-              <div class="video">
-              <?php if(get_field('link_image_2',$mp->ID)){?>
-              <a href="<?=get_field('link_image_2',get_the_ID())?>" target="_blank">
-              <?php }?>
-              <img src="<?=get_field('image_2',$mp->ID)?>?txtsize=33&txt=350%C3%97150&w=268&h=180">
-              <?php if(get_field('link_image_2',$mp->ID)){?>
-              </a>
-              <?php }?>
-              </div>
-            </div>
+            <?php endif; ?>
 
 
-          <?php } ?>
-          <?php if( (get_field('form',$mp->ID)=='Yes')&& (get_field('email_to_send',$mp->ID)) && (get_field('text_button',$mp->ID)) && (get_field('placeholder',$mp->ID)) ) {?>
-           <form id="form-<?=get_the_ID();?>"class="apply-container">
-            <label>
-              <input type="text" name="email" placeholder="<?=get_field('placeholder',$mp->ID)?>">
-            </label>
-            <button class="submit-button media-submit-button"><?=get_field('text_button',$mp->ID)?></button>
-            <span class="submit-message">Submit Message</span>
-            <input type="hidden" name="to_send" value="<?=get_field('email_to_send',$mp->ID);?>"/>
-            <input type="hidden" name="url" value="<?=get_home_url();?>"/>
-          </form>
-        <?php }?>
+            <?php if( (get_field('form',$mp->ID)=='Yes')&& (get_field('email_to_send',$mp->ID)) && (get_field('text_button',$mp->ID)) && (get_field('placeholder',$mp->ID)) ) : ?>
+              <form id="form-<?=get_the_ID();?>" class="apply-container">
+                <label>
+                  <input type="text" name="email" placeholder="<?=get_field('placeholder',$mp->ID)?>">
+                </label>
+                <button class="submit-button media-submit-button"><?=get_field('text_button',$mp->ID)?></button>
+                <span class="submit-message">Submit Message</span>
+                <input type="hidden" name="to_send" value="<?=get_field('email_to_send',$mp->ID);?>"/>
+                <input type="hidden" name="url" value="<?=get_home_url();?>"/>
+              </form>
+            <?php endif; ?>
 
-          </p>
           </div>
+        </article>
+      <?php endforeach; ?>
 
-            </article>
-
-
-      <?php } ?>
-
-        <?php wp_reset_postdata(); ?>
-
-
+      <?php wp_reset_postdata(); ?>
     </section>
 	<?php endif;?>
-	
   </section>
-
-  </main>
+</main>
 
 <?php get_footer(); ?>

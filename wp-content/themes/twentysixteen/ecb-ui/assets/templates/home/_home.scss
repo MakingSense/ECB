@@ -30,6 +30,13 @@
         display: flex;
         flex-direction: column;
 
+        img {
+          transition: filter 0.5s linear;
+          &:hover {
+            @extend .grayscale;
+          }
+        }
+
         .post-thumbnail {
           overflow: hidden;
           flex-basis: 50%;
@@ -118,6 +125,12 @@
             h3 {
               height: 185px;
               overflow: hidden;
+            }
+
+            h4 {
+              font-family: 'flamabasic';
+              font-size: 14px;
+              font-style: italic;
             }
 
             &:before {

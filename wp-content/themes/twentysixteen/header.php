@@ -21,6 +21,9 @@ $primary_menu = get_primary_menu();
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 	<?php endif; ?>
 	<?php wp_head(); ?>
+	<script>
+	  const DIRECTORY_URI =  '<?= get_template_directory_uri(); ?>';
+	</script>
 </head>
 
 <body>

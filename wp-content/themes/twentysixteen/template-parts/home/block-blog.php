@@ -3,7 +3,7 @@
     <div class="text">
       <span><?= search_category_post($post->ID) ?></span>
       <?php the_title( sprintf( '<h3>', esc_url( get_permalink() ) ), '</h3>' ); ?>
-      <h4><?php the_date(); ?></h4>
+      <h4><?= get_the_date() . ' | '; ?><?= get_author_name() ?></h4>
       <?php
         edit_post_link(
           sprintf(

@@ -5,8 +5,8 @@ function getCarouselConfig(config) {
     dots: false,
     nav: true,
     navText: [
-      '<span class="ms-icon icon-arrow-left"></span>',
-      '<span class="ms-icon icon-arrow-right"></span>'
+      '<img src="' + DIRECTORY_URI + '/img/arrow-left.svg" />',
+      '<img src="' + DIRECTORY_URI + '/img/arrow-right.svg" />',
     ]
   };
 

@@ -80,7 +80,9 @@ get_header(); ?>
                 <h4><?= $media->date ?></h4>
                   <?php if($media->link->url) :?>
                     <div class="button-container">
-                      <button onclick="window.location.href=&quot;<?= $media->link->url ?>&quot;;" class="more-button"><?= $media->link->text ?></button>
+                      <a href="<?= $media->link->url ?>">
+                        <button class="more-button"><?= $media->link->text ?></button>
+                      </a>
                     </div>
                   <?php endif; ?>
 

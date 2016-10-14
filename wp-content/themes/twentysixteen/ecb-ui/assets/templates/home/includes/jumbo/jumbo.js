@@ -4,7 +4,7 @@
   var $jumboSelectorButtons = $jumboSelector.find('.button-container').children('a');
 
   $(document).ready(function(){
-    setTimeout(removeJumboGrayscale, 4000);
+    setTimeout(removeJumboGrayscale, 5000);
     setInterval(autochangeJumboImage, 10000);
   });
 
@@ -23,9 +23,9 @@
     switchActiveElement($jumboSelector.find('.text-container').children(), index);
     switchActiveElement($jumboSelector.find('.button-container .text'), index);
     switchActiveElement($jumboSelectorButtons, index);
-    
+
     if (e) {
-      e.preventDefault(); 
+      e.preventDefault();
     }
   }
 
@@ -38,5 +38,5 @@
     index = (index < $jumboSelectorButtons.length - 1) ? index+1 : 0;
     changeJumboActive(null, index);
   }
-  
+
 })();

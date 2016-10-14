@@ -43,7 +43,7 @@ $primary_menu = get_primary_menu();
 			</div>
 
 			<div class="nav-container">
-				<a href="./">
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
 					<figure>
 						<img class="desktop-only logo logo-white" src="<?php echo get_template_directory_uri(); ?>/img/logo-inline-white.svg" alt="Ecocity Builders" />
 						<img class="desktop-only logo logo-black" src="<?php echo get_template_directory_uri(); ?>/img/logo-inline-black.svg" alt="Ecocity Builders" />
@@ -57,7 +57,7 @@ $primary_menu = get_primary_menu();
 						  <ul class="main-menu" role="menu">
 								<?php
 								echo $primary_menu;
-							 ?>							
+							 ?>
 					   </ul>
 				 	</div>
 			 </nav>

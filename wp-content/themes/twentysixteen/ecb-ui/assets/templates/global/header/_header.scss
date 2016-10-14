@@ -13,6 +13,7 @@
   .donate-button {
     background: #bdf6c8;
     margin-left: 15px;
+    margin-top: 3px;
     min-width: 122px;
 
     &:hover {
@@ -43,7 +44,7 @@
   .nav-container {
     display: flex;
     justify-content: space-between;
-
+    align-items: center;
     h2 {
       font-size: 25px;
 
@@ -106,6 +107,7 @@
       position: absolute;
       width: 100%;
       left: 0;
+      top: 0;
 
       .menu-head {
         display: flex;
@@ -133,7 +135,7 @@
         }
       }
     }
-  }  
+  }
 }
 
 .header-light .component--header {
@@ -160,15 +162,12 @@
     margin: 16px 30px;
 
     figure {
-      margin-top: 15px;
-      
       .logo {
-        width: 330px;
+        width: toem(500px);
       }
     }
 
   }
-
 
   .header-light .component--header {
     h2 {
@@ -178,5 +177,14 @@
     a {
       color: white;
     }
+    .donate-button a {
+      color: black;
+    }
+  }
+}
+
+@include respond-to ('desktop') {
+  .component--header figure  .desktop-only{
+      width: toem(400px);
   }
 }

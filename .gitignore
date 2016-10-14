@@ -68,3 +68,4 @@ node_modules/
 !wp-content/themes/twentysixteen/template-parts
 wp-content/themes/twentysixteen/msuif
 wp-content/uploads/
+wp-content/themes/twentysixteen/*.html

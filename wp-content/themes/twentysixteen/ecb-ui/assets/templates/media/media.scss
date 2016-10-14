@@ -44,7 +44,7 @@
       }
 
       .text {
-        background: rgba(229, 253, 121, 0.85);
+        background: rgba(229, 253, 121, 0.9);
         padding: 15px 9px;
         display: flex;
         flex-direction: column;
@@ -63,7 +63,7 @@
         }
 
         h4 {
-          font-family: 'flamamedium';
+          font-family: 'flamabold';
           font-size: 18px;
           margin: 5px 0;
         }
@@ -284,17 +284,18 @@
           flex: 1 0 auto;
 
           h2 {
-            margin-top: 0;
+            margin: 0;
             font-size: 24px;
           }
 
           h3 {
-            font-size: 54px;
-            margin: 5px 0;
+            font-size: 72px;
+            margin: 0;
           }
 
           h4 {
-            font-size: 20px;
+            font-size: 34px;
+            margin-top: 0;
           }
 
 

@@ -15,7 +15,6 @@ if(isset($template_variables['is-padded']) && $template_variables['is-padded']) 
 
 <?php if(isset($entries) && $count) : ?>
 <section class="component--featured">
-	<h2>Featured</h2>
 
 	<div class="article-wrapper">
 		<section class="article-container desktop-only">
@@ -42,11 +41,13 @@ if(isset($template_variables['is-padded']) && $template_variables['is-padded']) 
 								<h2><?php echo $entry['cat'] ?></h2>
 								<?php if($instance['show_page_title']) : ?>
 									<h3 class="tpc-title">
+                                                                            <a href="<?php echo $entry['link']?>" target="_blank">
 										<?php if($instance['linked_page_title'] && $entry['link']) : ?>
 											<?php echo $entry['title'] ?>      
 										<?php else : ?>
 											<?php echo $entry['title'] ?>
 										<?php endif; ?>
+                                                                            </a>
 									</h3>
 									<h4>
 										<?php echo $entry['date']; ?>

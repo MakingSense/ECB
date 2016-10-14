@@ -21,7 +21,7 @@
 	margin-bottom: 15px;
 }
 .tpc-column {
-	width: 50%;
+	width: 80%;
 
 	box-sizing: border-box;
 }
@@ -40,7 +40,7 @@
 }
 
 .tpc-column.tpc-full-width {
-	width: 100%;
+	width: 80%;
 }
 
 .tpc-posts-list {

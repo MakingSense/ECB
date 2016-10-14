@@ -23,6 +23,9 @@
         width: 100%;
         height: 100%;
         z-index: -1;
+        background-position: center center;
+        background-size: cover;
+        @extend .grayscale;
       }
 
       .text {
@@ -92,6 +95,7 @@
 
         .text {
           font-size: 20px;
+          font-family: 'flamamedium';
         }
       }
     }

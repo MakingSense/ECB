@@ -69,7 +69,7 @@ $primary_menu = get_primary_menu();
 
 				<div class="mobile-menubar mobile-only">
 					<div class="menu-head">
-						<a href="/">
+						<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
 							<figure>
 								<img class="mobile-only logo" src="<?php echo get_template_directory_uri(); ?>/img/logo-stacked-white.svg" alt="Ecocity Builders" />
 							</figure>

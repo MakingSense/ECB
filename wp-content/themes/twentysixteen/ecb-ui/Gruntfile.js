@@ -349,7 +349,6 @@ module.exports = function (grunt) {
 
   grunt.registerTask('run', [
     'bowercopy',
-    'copy:images',
     'webfont',
     'processhtml',
     'uglify:dev',
@@ -362,13 +361,11 @@ module.exports = function (grunt) {
     'processhtml',
     'sass',
     'copy:build',
-    'copy:images',
     'uglify:build'
   ]);
 
   grunt.registerTask('deploy', [
     'bowercopy',
-    'copy:images',
     'webfont',
     'processhtml',
     'sass',

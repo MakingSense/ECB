@@ -7,14 +7,10 @@
       <h4><?php the_date(); ?></h4>
       <p><?php custom_excerpt_length(the_excerpt()); ?></p>
       <?php
-        edit_post_link(
-          sprintf(
+          echo sprintf(
             __( '<div><a class="button-container" href="'.get_permalink().'"><button class="more-button">Learn More</button></a></div>', 'twentysixteen' ),
             get_the_title()
-          ),
-          '<span class="edit-link">',
-          '</span>'
-        );
+          );
       ?>
     </div>
   </div>

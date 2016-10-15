@@ -67,5 +67,6 @@ node_modules/
 !wp-content/themes/twentysixteen
 !wp-content/themes/twentysixteen/template-parts
 wp-content/themes/twentysixteen/msuif
+wp-content/themes/twentysixteen/ecb-ui/node_modules/
 wp-content/uploads/
 wp-content/themes/twentysixteen/*.html

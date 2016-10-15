@@ -13,7 +13,7 @@
           <h4><?= get_the_date('M d, Y');?></h4>
           <?php include(get_template_directory() .'/template-parts/social_networks.php'); ?>
         </header>
-        <p><?= get_the_content() ?></p>
+        <p><?= wpautop( get_the_content() ); ?></p>
       </div>
     </div>
   </section>

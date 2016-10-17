@@ -57,7 +57,6 @@
 
   $article = new Article;
 ?>
-
 <main role="main" class="section--article">
   <div class="hr-wrapper"><hr class="slim"></div>
   <section class="content">
@@ -65,7 +64,7 @@
     <div class="wrapper">
       <section>
         <article class="text">
-          <h2><?= $article->category ?></h2>
+          <h3><?= $article->category ?></h3>
           <h1><?= $article->title ?></h1>
           <h4><?= $article->date?></h4>
           <?php include(get_template_directory() .'/template-parts/social_networks.php'); ?>
@@ -152,7 +151,7 @@
     <hr>
 
     <section class="component--featured">
-      <h1>You May Also Like</h1>
+      <h2>You May Also Like</h2>
 
       <div class="article-wrapper">
         <section class="article-container desktop-only">

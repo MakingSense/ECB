@@ -5,13 +5,19 @@
 ////
 
 
+/// Custom Fonts ///
+$flamabasic:  'flamabasic';
+$flamamedium: 'flamamedium';
+$flamabold:   'flamabold';
+$flamabook:   'flamabook';
+
 /// Fonts ///
 ///
 $msuif-font-size:                 18px;
 ///
 $msuif-font-weight:               500;
 ///
-$msuif-font-family:               "flamabasic", Arial, "Helvetica Neue", Helvetica, sans-serif;
+$msuif-font-family:               $flamabasic, Arial, "Helvetica Neue", Helvetica, sans-serif;
 ///
 $msuif-font:                      $msuif-font-weight toem($msuif-font-size) $msuif-font-family;
 ///

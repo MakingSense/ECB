@@ -10,7 +10,8 @@
     }
 
     h2 {
-      font-size: 14px;
+      font-size: 24px;
+      font-family: 'flamabold';
     }
 
     h4 {
@@ -147,6 +148,21 @@
     padding-top: 17px;
   }
 
+  .component--featured {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 40px;
+
+    .article-container.owl-carousel {
+      .owl-stage-outer {
+        margin: 0;
+
+        .article.featured {
+          padding: 0;
+        }
+      }
+    }
+  }
 
 }
 
@@ -157,6 +173,15 @@
     h1 {
       font-size: 34px;
       font-family: 'flamabold';
+    }
+
+    h2 {
+      font-size: 24px;
+      font-family: 'flamabold';
+    }
+
+    h3 {
+      font-size: 14px;
     }
 
     .wrapper {
@@ -241,6 +266,14 @@
             margin: 0 auto;
           }
         }
+      }
+    }
+
+    .component--featured {
+      padding-bottom: 40px;
+
+      .article.featured {
+        padding-top: 0;
       }
     }
 

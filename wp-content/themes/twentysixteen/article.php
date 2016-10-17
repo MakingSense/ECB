@@ -46,9 +46,9 @@
     public function getArticleById($id) {
       return $post = (object) [
         'title' => get_the_title($id),
-        'category' => search_category_post($id),
+        'category' =>  get_field('category',$id),
         'date' => get_the_date(),
-        'image' => wp_get_attachment_image_src(get_post_thumbnail_id($id), 'post')[0],
+        'image' =>  get_field('thumbnail',$id),
         'author' => get_the_author($id),
         'link' => get_the_permalink($id)
       ];

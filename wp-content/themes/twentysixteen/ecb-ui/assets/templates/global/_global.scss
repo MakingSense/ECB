@@ -84,14 +84,14 @@
   .article-container {
     article.article {
       padding: 15px;
-      flex-basis: 50%;
+      width: 50%;
 
       .wrapper {
         flex-direction: row-reverse;
 
         .text {
           padding: 30px 22px;
-          flex: 1 0 0;
+          flex: 1 0 auto;
 
           .button-container {
             text-align: left;

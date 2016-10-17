@@ -761,3 +761,24 @@ function custom_remove() {
 }
 
 add_action('admin_head-nav-menus.php', 'custom_remove');
+
+function my_relationship_query( $args, $field, $post_id ) {
+	$args = array(
+		'post_type' => 'page',//it is a Page right?
+		'post_status' => 'publish',
+		'orderby'   => 'title',
+		'order'     => 'ASC',
+		'posts_per_page' => -1,
+		'meta_query' => array(
+		array(
+			'key' => '_wp_page_template',
+			'value' => 'article.php', // template name as stored in the dB
+			)
+		)
+	);
+
+return $args;
+
+}
+// filter for every field
+add_filter('acf/fields/relationship/query/name=post_articles', 'my_relationship_query', 10, 4);

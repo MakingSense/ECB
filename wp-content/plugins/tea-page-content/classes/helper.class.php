@@ -158,6 +158,7 @@ class TeaPageContent_Helper {
 				'title' => $post->post_title,
 				'content' => do_shortcode($content),
 				'thumbnail' => get_the_post_thumbnail($post->ID),
+                                'link_thumbnail' => wp_get_attachment_image_src(get_post_thumbnail_id($post->ID))[0],
 				'link' => get_permalink($post->ID),
                                 'date' => get_the_date(),
                                 'author' => get_the_author($post->ID),

@@ -771,11 +771,11 @@ function my_relationship_query( $args, $field, $post_id ) {
 		'posts_per_page' => -1,
 		'meta_query' => array(
 		array(
-						'key' => '_wp_page_template',
-						'value' => 'article.php', // template name as stored in the dB
-				)
+			'key' => '_wp_page_template',
+			'value' => 'article.php', // template name as stored in the dB
+			)
 		)
-);
+	);
 
 return $args;
 

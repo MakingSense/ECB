@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * @param is-padded checkbox 0
  */
@@ -18,10 +18,10 @@ if(isset($template_variables['is-padded']) && $template_variables['is-padded']) 
 
 	<div class="article-wrapper">
 		<section class="article-container desktop-only">
-			<?php foreach ($entries as $key => $entry) : ?>  
+			<?php foreach ($entries as $key => $entry) : ?>
 				<article class="article featured">
-					<div class="wrapper" style="background-image: <?= ($entry['link_thumbnail']) ? 'url('. $entry['link_thumbnail'] . ')' : '';  ?>; "   href="<?php echo $entry['link'] ?>">
-						<div class="text">
+					<div class="wrapper" href="<?php echo $entry['link'] ?>">
+						<div class="text" style="background-image: url(<?= $entry['link_thumbnail'] ?>);">
 							<?php if($instance['show_page_title'] || $instance['show_page_content']) : ?>
 							<div class="tpc-body">
 								<h2><?php echo $entry['cat'] ?></h2>
@@ -29,7 +29,7 @@ if(isset($template_variables['is-padded']) && $template_variables['is-padded']) 
 									<h3 class="tpc-title">
                                                                             <a href="<?php echo $entry['link']?>" target="_blank">
 										<?php if($instance['linked_page_title'] && $entry['link']) : ?>
-											<?php echo $entry['title'] ?>      
+											<?php echo $entry['title'] ?>
 										<?php else : ?>
 											<?php echo $entry['title'] ?>
 										<?php endif; ?>
@@ -49,7 +49,7 @@ if(isset($template_variables['is-padded']) && $template_variables['is-padded']) 
 						</div>
 					</div>
 				</article>
-		                 <?php 
+		                 <?php
 		                         wp_reset_query();
 		                  ?>
 			<?php endforeach; ?>

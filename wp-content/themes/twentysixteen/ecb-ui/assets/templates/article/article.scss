@@ -6,7 +6,7 @@
   .content {
     h1 {
       font-size: 28px;
-      font-family: 'flamabold';
+      font-family: $flamabold;
     }
 
     h2 {
@@ -20,11 +20,11 @@
     }
 
     p {
-      font-family: 'flamabasic';
+      font-family: $flamabasic;
     }
 
     .quote {
-      font-family: 'flamamedium';
+      font-family: $flamamedium;
       font-size: 20px;
       position: relative;
       display: inline-block;
@@ -172,7 +172,7 @@
   .content {
     h1 {
       font-size: 34px;
-      font-family: 'flamabold';
+      font-family: $flamabold;
     }
 
     h2 {

@@ -19,7 +19,7 @@
 
   if( isset( $_POST['cat']) ) {
       if ($_POST['cat'] != "-1") {
-        if ($_POST['cat'] == 'media' || $_POST['cat'] == 'article') {
+        if ($_POST['cat'] == 'article') {
             $_SESSION['cats_page'] =  $_POST['cat'].'.php';
             $_SESSION['cats'] = "-2";
         }else{
@@ -76,7 +76,7 @@
         SELECT  {$wpdb->posts}.* FROM {$wpdb->posts} INNER JOIN {$wpdb->postmeta} ON {$wpdb->postmeta}.post_id = {$wpdb->posts}.ID
         WHERE
         (". $_SESSION['author']." = '-1' OR {$wpdb->posts}.post_author = ". $_SESSION['author'].")
-            AND (('". $_SESSION['cats_page']."' = '-1' AND {$wpdb->postmeta}.meta_value IN ('media.php', 'article.php' ) ) OR {$wpdb->postmeta}.meta_value = '". $_SESSION['cats_page']."' )
+            AND (('". $_SESSION['cats_page']."' = '-1' AND {$wpdb->postmeta}.meta_value = 'article.php' ) OR {$wpdb->postmeta}.meta_value = '". $_SESSION['cats_page']."' )
             AND {$wpdb->posts}.post_type = 'page' 
             
             AND {$wpdb->posts}.post_status = 'publish'    
@@ -103,7 +103,7 @@
         SELECT  {$wpdb->posts}.* FROM {$wpdb->posts} INNER JOIN {$wpdb->postmeta} ON {$wpdb->postmeta}.post_id = {$wpdb->posts}.ID
         WHERE
         (". $_SESSION['author']." = '-1' OR {$wpdb->posts}.post_author = ". $_SESSION['author'].")
-            AND (('". $_SESSION['cats_page']."' = '-1' AND {$wpdb->postmeta}.meta_value IN ('media.php', 'article.php' ) ) OR {$wpdb->postmeta}.meta_value = '". $_SESSION['cats_page']."' )
+            AND (('". $_SESSION['cats_page']."' = '-1' AND {$wpdb->postmeta}.meta_value = 'article.php' ) OR {$wpdb->postmeta}.meta_value = '". $_SESSION['cats_page']."' )
             AND {$wpdb->posts}.post_type = 'page' 
             AND {$wpdb->posts}.post_status = 'publish'
         

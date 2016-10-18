@@ -129,8 +129,9 @@ module.exports = function (grunt) {
       options: {
         map: true,
         processors: [
-          require('autoprefixer')({browsers: ['last 2 versions']}),
-          require('cssnano')({zindex: false}) // minify the result
+          require('autoprefixer')({browsers: ['last 2 versions', '> 1%', 'last 3 iOS versions', 'Firefox > 20', 'ie 9']}),
+          require('cssnano')({zindex: false}), // minify the result
+          require('postcss-flexibility')()
         ]
       },
       dist: {

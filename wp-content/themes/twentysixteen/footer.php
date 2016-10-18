@@ -98,6 +98,7 @@
 <script type='text/javascript' src='https://static.ctctcdn.com/h/contacts-embedded-signup-assets/1.0.2/js/signup-form.js'></script>
 <!--End CTCT Sign-Up Form-->
 <script type="text/javascript" src="<?php echo get_template_directory_uri()?>/js/vendor/jquery.min.js"></script>
+<script type="text/javascript" src="<?php echo get_template_directory_uri()?>/js/vendor/flexibility.js"></script>
 <script type="text/javascript" src="<?php echo get_template_directory_uri()?>/js/vendor/owl.carousel.min.js"></script>
 <script type="text/javascript" src="<?php echo get_template_directory_uri()?>/js/scripts.min.js"></script>
 </body>

@@ -34,6 +34,8 @@
   .article-container {
 
     article.blog {
+      width: 50%;
+
       a {
         color: black;
       }
@@ -75,6 +77,7 @@
     article.blog {
       .text {
         height: 309px;
+        width: 100%;
       }
     }
 

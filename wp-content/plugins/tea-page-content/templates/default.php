@@ -57,13 +57,14 @@
 				<?php foreach ($featured->posts as $post) : ?>
 					<article class="article featured">
 						<div class="wrapper">
-							<div class="text" style="background-image: url(<?= $post->image ?>);">
-								<div>
-									<h2><?= $post->category ?></h2>
-									<h3><a href="<?= $post->link ?>" target="_blank"><?= $post->title ?></a></h3>
-									<h4><?= $post->date ?></h4>
-								</div>
-							</div>
+							<a
+								class="text"
+								style="background-image: url(<?= $post->image ?>);"
+								href="<?= $post->link ?>">
+								<h2><?= $post->category ?></h2>
+								<h3><?= $post->title ?></h3>
+								<h4><?= $post->date ?></h4>
+							</a>
 						</div>
 					</article>
 				<?php endforeach; ?>
@@ -73,18 +74,19 @@
 				<?php foreach ($featured->posts as $post) : ?>
 					<article class="article featured">
 						<div class="wrapper">
-							<div class="text" style="background-image: url(<?= $post->image ?>);">
-								<div>
-									<h2><?= $post->category ?></h2>
-									<h3><a href="<?= $post->link ?>" target="_blank"><?= $post->title ?></a></h3>
-									<h4><?= $post->date ?></h4>
-								</div>
-							</div>
+							<a
+								class="text"
+								style="background-image: url(<?= $post->image ?>);"
+								href="<?= $post->link ?>">
+								<h2><?= $post->category ?></h2>
+								<h3><?= $post->title ?></h3>
+								<h4><?= $post->date ?></h4>
+							</a>
 						</div>
 					</article>
 				<?php endforeach; ?>
 			</section>
-			
+
 		</div>
 	</section>
 <?php endif; ?>

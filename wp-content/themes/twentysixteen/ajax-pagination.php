@@ -164,17 +164,16 @@
 
       if($current_page > 1){
         $previous_link = ($previous == 0)? 1 : $previous;
-        //$pagination .= '<a href="#" class="prev" data-page="'.$previ.'" title="Previous">&lt; Previous</a></li>';
         $first_link = false; //set first link to false
       } else { // Setup a dud link if were on the first page already - Had to set this to keep the links in order
-        //$pagination .= '<li class="pagi-prev-dud">&lt; PREVIOUS</li>'; //previous link
+        
       }
 
       if($current_page < $total_pages) {
         $next_link = ($i > $total_pages)? $total_pages : $i;
         $pagination .= '<a href="#" id="nextbutton" class="next" data-page="'.$next.'" title="Next">See More</a></li>'; //next link
       } else { // Setup a dud link if were on the first page already - Had to set this to keep the links in order
-        //$pagination .= '<li class="pagi-next-dud">NEXT &gt;</li>';
+        
       }
 
       $pagination .= '</div>';

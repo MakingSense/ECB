@@ -19,7 +19,7 @@
 
   if( isset( $_POST['cat']) ) {
       if ($_POST['cat'] != "-1") {
-        if ($_POST['cat'] == 'media' || $_POST['cat'] == 'article') {
+        if ($_POST['cat'] == 'article') {
             $_SESSION['cats_page'] =  $_POST['cat'].'.php';
             $_SESSION['cats'] = "-2";
         }else{
@@ -76,10 +76,10 @@
         SELECT  {$wpdb->posts}.* FROM {$wpdb->posts} INNER JOIN {$wpdb->postmeta} ON {$wpdb->postmeta}.post_id = {$wpdb->posts}.ID
         WHERE
         (". $_SESSION['author']." = '-1' OR {$wpdb->posts}.post_author = ". $_SESSION['author'].")
-            AND (('". $_SESSION['cats_page']."' = '-1' AND {$wpdb->postmeta}.meta_value IN ('media.php', 'article.php' ) ) OR {$wpdb->postmeta}.meta_value = '". $_SESSION['cats_page']."' )
-            AND {$wpdb->posts}.post_type = 'page'
-
-            AND {$wpdb->posts}.post_status = 'publish'
+            AND (('". $_SESSION['cats_page']."' = '-1' AND {$wpdb->postmeta}.meta_value = 'article.php' ) OR {$wpdb->postmeta}.meta_value = '". $_SESSION['cats_page']."' )
+            AND {$wpdb->posts}.post_type = 'page' 
+            
+            AND {$wpdb->posts}.post_status = 'publish'    
     ) AS RESULT2";
   $results = $wpdb->get_var($query_blog);
 
@@ -103,8 +103,8 @@
         SELECT  {$wpdb->posts}.* FROM {$wpdb->posts} INNER JOIN {$wpdb->postmeta} ON {$wpdb->postmeta}.post_id = {$wpdb->posts}.ID
         WHERE
         (". $_SESSION['author']." = '-1' OR {$wpdb->posts}.post_author = ". $_SESSION['author'].")
-            AND (('". $_SESSION['cats_page']."' = '-1' AND {$wpdb->postmeta}.meta_value IN ('media.php', 'article.php' ) ) OR {$wpdb->postmeta}.meta_value = '". $_SESSION['cats_page']."' )
-            AND {$wpdb->posts}.post_type = 'page'
+            AND (('". $_SESSION['cats_page']."' = '-1' AND {$wpdb->postmeta}.meta_value = 'article.php' ) OR {$wpdb->postmeta}.meta_value = '". $_SESSION['cats_page']."' )
+            AND {$wpdb->posts}.post_type = 'page' 
             AND {$wpdb->posts}.post_status = 'publish'
 
     ) AS RESULT2
@@ -164,18 +164,13 @@
 
       if($current_page > 1){
         $previous_link = ($previous == 0)? 1 : $previous;
-        //$pagination .= '<a href="#" class="prev" data-page="'.$previ.'" title="Previous">&lt; Previous</a></li>';
         $first_link = false; //set first link to false
-      } else { // Setup a dud link if were on the first page already - Had to set this to keep the links in order
-        //$pagination .= '<li class="pagi-prev-dud">&lt; PREVIOUS</li>'; //previous link
-      }
+      } 
 
       if($current_page < $total_pages) {
         $next_link = ($i > $total_pages)? $total_pages : $i;
         $pagination .= '<a href="#" id="nextbutton" class="next" data-page="'.$next.'" title="Next">See More</a></li>'; //next link
-      } else { // Setup a dud link if were on the first page already - Had to set this to keep the links in order
-        //$pagination .= '<li class="pagi-next-dud">NEXT &gt;</li>';
-      }
+      } 
 
       $pagination .= '</div>';
     }

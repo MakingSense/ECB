@@ -473,6 +473,7 @@ function wp_dropdown_categories( $args = '' ) {
 	}
 
 	if ( ! $r['hide_if_empty'] || ! empty( $categories ) ) {
+                $output .= "\t<option value='article'>All Articles</option>\n";
 		$output .= "</select>\n";
 	}
 	/**

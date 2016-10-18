@@ -1,59 +1,90 @@
 <?php
-/**
- * @param is-padded checkbox 0
- */
+	/**
+	 * @param is-padded checkbox 0
+	 */
 
-// prevention for old version of this plugin, @deprecated since 1.1
-$isPadded = false;
-if(isset($template_variables['is-padded']) && $template_variables['is-padded']) {
-	$isPadded = true;
-}?>
+	// prevention for old version of this plugin, @deprecated since 1.1
+	$isPadded = false;
+	if(isset($template_variables['is-padded']) && $template_variables['is-padded']) {
+		$isPadded = true;
+	}
 
-<?php if(isset($instance['title']) && $caller === 'shortcode') : ?>
-	<h2 class="tpc-shortcode-main-title"><?php echo $instance['title']; ?></h2>
-<?php endif; ?>
+	class Featured {
+    public function __construct($instance, $entries) {
+			$this->title = $instance['title'];
+			$this->caller = $instance['caller'];
+			$this->isContentVisible = $raw->show_page_content;
+			$this->posts = $this->loadFeaturedPosts($entries);;
+		}
 
-<?php if(isset($entries) && $count) : ?>
-<section class="component--featured">
+		private function loadFeaturedPosts ($rawentries) {
+			$posts = [];
+			if (isset($rawentries)) {
+				foreach ($rawentries as $key => $rawentry) {
+					$post = new FeaturedPost($rawentry);
+					array_push($posts, $post);
+				}
+			}
+			return $posts;
+		}
+	}
 
-	<div class="article-wrapper">
-		<section class="article-container desktop-only">
-			<?php foreach ($entries as $key => $entry) : ?>
-				<article class="article featured">
-					<div class="wrapper" href="<?php echo $entry['link'] ?>">
-						<div class="text" style="background-image: url(<?= $entry['link_thumbnail'] ?>);">
-							<?php if($instance['show_page_title'] || $instance['show_page_content']) : ?>
-							<div class="tpc-body">
-								<h2><?php echo $entry['cat'] ?></h2>
-								<?php if($instance['show_page_title']) : ?>
-									<h3 class="tpc-title">
-                                                                            <a href="<?php echo $entry['link']?>" target="_blank">
-										<?php if($instance['linked_page_title'] && $entry['link']) : ?>
-											<?php echo $entry['title'] ?>
-										<?php else : ?>
-											<?php echo $entry['title'] ?>
-										<?php endif; ?>
-                                                                            </a>
-									</h3>
-									<h4>
-										<?php echo $entry['date']; ?>
-									</h4>
-								<?php endif; ?>
-								<?php if($instance['show_page_content']) : ?>
-									<div class="tpc-content post-content">
-										<?php echo $entry['content'] ?>
-									</div>
-								<?php endif; ?>
+	class FeaturedPost {
+		function __construct($raw) {
+			$this->title = $raw['title'];
+			$this->link = $raw['link'];
+			$this->image = $raw['link_thumbnail'];
+			$this->category = $raw['cat'];
+			$this->date = $raw['date'];
+			$this->content = $raw['content'];
+		}
+	}
+
+	$featured = new Featured($instance, $entries);
+?>
+
+
+<?php if(count($featured->posts) > 0) : ?>
+
+	<section class="component--featured">
+		<?php if($featured->title && $caller === 'shortcode') : ?>
+			<h2><?= $featured->title ?></h2>
+		<?php endif; ?>
+
+		<div class="article-wrapper">
+
+			<section class="article-container desktop-only">
+				<?php foreach ($featured->posts as $post) : ?>
+					<article class="article featured">
+						<div class="wrapper">
+							<div class="text" style="background-image: url(<?= $post->image ?>);">
+								<div>
+									<h2><?= $post->category ?></h2>
+									<h3><a href="<?= $post->link ?>" target="_blank"><?= $post->title ?></a></h3>
+									<h4><?= $post->date ?></h4>
+								</div>
 							</div>
-							<?php endif; ?>
 						</div>
-					</div>
-				</article>
-		                 <?php
-		                         wp_reset_query();
-		                  ?>
-			<?php endforeach; ?>
-		</section>
-	</div>
-</section>
-<?php endif;
+					</article>
+				<?php endforeach; ?>
+			</section>
+
+			<section class="article-container mobile-only owl-carousel">
+				<?php foreach ($featured->posts as $post) : ?>
+					<article class="article featured">
+						<div class="wrapper">
+							<div class="text" style="background-image: url(<?= $post->image ?>);">
+								<div>
+									<h2><?= $post->category ?></h2>
+									<h3><a href="<?= $post->link ?>" target="_blank"><?= $post->title ?></a></h3>
+									<h4><?= $post->date ?></h4>
+								</div>
+							</div>
+						</div>
+					</article>
+				<?php endforeach; ?>
+			</section>
+			
+		</div>
+	</section>
+<?php endif; ?>

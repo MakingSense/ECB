@@ -56,6 +56,10 @@
         &:hover {
           z-index: 2;
 
+          > a.sub-menu-parent {
+            visibility: hidden;
+          }
+
           .sub-menu {
             background-color:rgba(0, 0, 0, 0.7);
             display: flex;

@@ -56,6 +56,10 @@
         &:hover {
           z-index: 2;
 
+          a {
+            visibility: hidden;
+          }
+
           .sub-menu {
             background-color:rgba(0, 0, 0, 0.7);
             display: flex;
@@ -74,6 +78,7 @@
               a {
                 font-family: $flamabold;
                 color: white;
+                visibility: visible;
               }
             }
 
@@ -83,6 +88,7 @@
 
               a {
                 color: white;
+                visibility: visible;
               }
 
               &:hover {

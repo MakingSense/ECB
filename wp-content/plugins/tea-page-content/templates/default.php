@@ -8,7 +8,7 @@
 	if(isset($template_variables['is-padded']) && $template_variables['is-padded']) {
 		$isPadded = true;
 	}
-
+        
 	class Featured {
     public function __construct($instance, $entries) {
 			$this->title = $instance['title'];
@@ -28,12 +28,12 @@
 			return $posts;
 		}
 	}
-
+        
 	class FeaturedPost {
 		function __construct($raw) {
 			$this->title = $raw['title'];
 			$this->link = $raw['link'];
-			$this->image = $raw['link_thumbnail'];
+			$this->image =  ($raw['link_thumbnail']) ? $raw['link_thumbnail'] : $raw['img'];
 			$this->category = $raw['cat'];
 			$this->date = $raw['date'];
 			$this->content = $raw['content'];

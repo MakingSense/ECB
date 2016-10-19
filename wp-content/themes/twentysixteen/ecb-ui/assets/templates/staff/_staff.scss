@@ -79,6 +79,8 @@
         flex-direction: row;
 
         .image {
+          max-width: 210px;
+
           figure {
             margin: 0 30px 10px 0;
           }

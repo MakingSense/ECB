@@ -165,7 +165,8 @@ class TeaPageContent_Helper {
                                 'cat' => search_category_post($post->ID),
                                 $category = get_the_category($post->ID),
                                 'category' => $category[0]->cat_name,
-                                'post_status' => get_post_status($post->ID)
+                                'post_status' => get_post_status($post->ID),
+                                'img' =>  get_field('thumbnail',$post->ID)
                                 
 			);
 			// Post data can be in different modes

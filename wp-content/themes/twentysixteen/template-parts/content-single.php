@@ -1,7 +1,9 @@
 <article id="post-<?php the_ID(); ?>" class="section--post-media">
 	<header class="entry-header">
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-                <?php the_date(); ?>
+		<?php if(trim(get_field("date", get_the_ID() ))!="") {?>
+			<?=get_field("date", get_the_ID() ) ?>
+		<?php } ?>
 	</header><!-- .entry-header -->
 
 	<?php twentysixteen_excerpt(); ?>
@@ -28,6 +30,6 @@
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">
-		
+
 	</footer><!-- .entry-footer -->
 </article><!-- #post-## -->

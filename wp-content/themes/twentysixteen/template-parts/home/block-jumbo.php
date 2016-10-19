@@ -35,7 +35,6 @@ function get_pilars() {
           $class = 'active';
         }
         $desktop_pilars .= '<a href="#" class="'.$class.'" data-jumbo-id="'.$pilars_count.'">'.$value['title'].'</a>'
-                         .'<p class="text active mobile-only">'.$value['text'].'</p>';
                          .'<p class="text mobile-only '.$class.'">'.$value['text'].'</p>';
         $mobile_pilars  .= '<p class="text '.$class.'"><span class="ms-icon '.$value['type_icon'].'"></span>'
                           .'<span>'.$value['text'].'</span></p>';

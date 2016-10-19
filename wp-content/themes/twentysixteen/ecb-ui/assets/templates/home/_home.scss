@@ -6,7 +6,7 @@
 
   .content {
     h2 {
-      font-family: $flamamedium;
+      font-family: $flamabold;
       font-size: 18px;
       margin: 12px 0;
     }
@@ -80,8 +80,15 @@
 
       }
 
+      &.block-first {
+        .wrapper {
+          height: 347px;
+        }
+      }
+
       &.block-second {
         .wrapper {
+          height: 347px;
           .text {
             background: transparent;
             position: relative;
@@ -106,6 +113,7 @@
 
       &.block-third {
         .wrapper {
+          height: 347px;
           .text {
             background: #bdf6c8;
           }
@@ -117,6 +125,8 @@
           position: relative;
 
           .text {
+            height: 100%;
+            width: 100%;
             background: rgba(0, 209, 163, 0.85);
             padding-bottom: 40px;
 
@@ -279,10 +289,9 @@
 
           .text {
             padding: 30px 22px;
-            flex: 1;
 
             h3 {
-              font-size: 54px;
+              font-size: 34px;
               margin: 5px 0;
             }
 
@@ -298,9 +307,41 @@
 
         }
 
-        &:not(.blog) .wrapper > :nth-child(1).text {
-          & > * {
-            max-width: 50%;
+        &.block {
+          .wrapper {
+            .text {
+              width: 50%;
+
+              h3 {
+                max-height: 100px;
+              }
+            }
+          }
+
+          &.block-first {
+            h3 {
+              font-size: 54px;
+              white-space: nowrap;
+              text-overflow: ellipsis;
+              overflow: hidden;
+            }
+          }
+
+          &.block-second {
+            .wrapper {
+              flex-direction: row;
+
+              .arturo {
+                height: 100%;
+                width: 100%;
+                opacity: 0.3;
+                position: relative;
+
+                + .text {
+                  position: absolute;
+                }
+              }
+            }
           }
         }
 

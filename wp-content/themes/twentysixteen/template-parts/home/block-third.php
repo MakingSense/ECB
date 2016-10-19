@@ -1,4 +1,4 @@
-<article id="post-<?php the_ID(); ?>" class="block-third">
+<article id="post-<?php the_ID(); ?>" class="block block-third">
   <h2>Featured Project</h2>
   <div class="wrapper">
     <div class="text">

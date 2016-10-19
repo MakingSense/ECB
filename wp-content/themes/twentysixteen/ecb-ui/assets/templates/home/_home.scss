@@ -366,6 +366,11 @@
 
       .blog-wrapper {
         .blog-page {
+
+          .text {
+            min-height: 295px;
+          }
+
           .owl-nav {
             & > * {
               background-color: transparent;

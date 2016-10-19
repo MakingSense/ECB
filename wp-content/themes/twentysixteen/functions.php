@@ -658,6 +658,15 @@ function get_donate_menu ($isMobile) {
 		}
 }
 
+function item_menu_has_children($id,$menuitems){
+
+ foreach($menuitems as $item){
+  if($id == $item->menu_item_parent)
+   return true;
+ }
+ return false;
+}
+
 function get_primary_menu() {
   $menu_name = 'primary';
   $locations = get_nav_menu_locations();
@@ -677,7 +686,11 @@ function get_primary_menu() {
             if ( !$item->menu_item_parent ):
              // save this id for later comparison with sub-menu items
              $parent_id = $item->ID;
-						 $return_li .= '<li class="menuitem" role="menuitem"><a href="'.$link.'">'.$title.'</a>';
+						 if(item_menu_has_children( $parent_id,$menuitems)):
+			        	$return_li .= '<li class="menuitem" role="menuitem"><a href="'.$link.'" class="sub-menu-parent">'.$title.'</a>';
+			       else:
+			        	$return_li .= '<li class="menuitem" role="menuitem"><a href="'.$link.'">'.$title.'</a>';
+			       endif;
            endif;
 
            if ( $parent_id == $item->menu_item_parent ):

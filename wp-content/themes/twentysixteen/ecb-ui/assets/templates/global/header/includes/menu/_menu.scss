@@ -56,7 +56,7 @@
         &:hover {
           z-index: 2;
 
-          > a {
+          > a.sub-menu-parent {
             visibility: hidden;
           }
 

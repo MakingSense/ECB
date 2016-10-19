@@ -41,7 +41,13 @@ Template Name: Page Staff
   <section class="content">
     <?php foreach($staff->members as $member) : ?>
       <article class="member">
-        <div class="image"><figure><img src="<?= $member->image ?>" /></figure></div>
+        <div class="image">
+          <figure>
+            <?php if ($member->image) : ?>
+              <img src="<?= $member->image ?>" alt="Picture: <?= $member->name ?>" />
+            <?php endif; ?>
+          </figure>
+        </div>
         <div class="text">
           <h2><?= $member->name ?></h2>
           <h3><?= $member->position ?></h3>

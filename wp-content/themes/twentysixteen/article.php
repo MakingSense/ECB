@@ -36,11 +36,6 @@
         'display_name' => nl2br(get_the_author(get_the_ID()))
       ];
 
-    /*  if(trim($this->author->display_name)!="")
-        $this->date = get_the_date('M d, Y') ." | ". $this->author->display_name;
-      else
-        $this->date = get_the_date('M d, Y');*/
-
       $this->related_articles = get_field('post_articles', get_the_ID());
     }
 

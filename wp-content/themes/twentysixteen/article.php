@@ -13,7 +13,6 @@
 
       $this->title = get_the_title();
       $this->category = get_field('category',get_the_ID());
-      $this->date = get_field('date',get_the_ID());
       $this->quote = get_field('quote',get_the_ID());
       $this->content_1 = get_the_content();
       $this->content_2 = get_field('content_2',get_the_ID());
@@ -36,6 +35,11 @@
         'display_name' => nl2br(get_the_author(get_the_ID()))
       ];
 
+      if(trim($this->author->display_name)!="")
+        $this->date = get_the_date('M d, Y') ." | ". $this->author->display_name;
+      else
+        $this->date = get_the_date('M d, Y');
+
       $this->related_articles = get_field('post_articles', get_the_ID());
     }
 
@@ -43,7 +47,7 @@
       return $post = (object) [
         'title' => get_the_title($id),
         'category' =>  get_field('category',$id),
-        'date' =>  get_field('date',$id),
+        'date' => get_the_date(),
         'image' =>  get_field('thumbnail',$id),
         'author' => get_the_author($id),
         'link' => get_the_permalink($id)
@@ -157,7 +161,7 @@
                 <div class="text" style="background-image: <?= ($related->image) ? 'url('. $related->image . ')' : '';  ?>; ">
                   <h4><?= $related->category ?></h4>
                   <h3 class="tpc-title"><?= $related->title ?></h3>
-                  <h4><?= $related->date?></h4>
+                  <h4><?= $related->date ?> | <?= $related->author ?></h4>
                 </div>
               </a>
             </article>
@@ -171,7 +175,8 @@
                 <div class="text" style="background-image: <?= ($related->image) ? 'url('. $related->image . ')' : '';  ?>; ">
                   <h4><?= $related->category ?></h4>
                   <h3 class="tpc-title"><?= $related->title ?></h3>
-                  <h4><?=$related->date ?></h4>
+                  <h4><?= $related->date ?></h4>
+                  <h4><?= $related->author ?></h4>
                 </div>
               </a>
             </article>

@@ -6,6 +6,15 @@
   function setAsideMenu() {
     var menus = section.find('.media-menu');
     menus.find('.menuitem').on('click', function(e){
+      var target = $($(this).find('a')[0].hash);
+
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html, body').animate({
+          scrollTop: target.offset().top
+        }, 500);
+      }
+
       menus.removeClass('active').eq($(this).index()).addClass('active');
     });
   }

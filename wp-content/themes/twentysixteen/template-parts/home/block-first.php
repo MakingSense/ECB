@@ -9,8 +9,10 @@
       <?php } ?>
       <p><?php custom_excerpt_length(the_excerpt()); ?></p>
       <?php
+          $link_button = get_field('link_button');
+          $button = get_field('button_name');
           echo sprintf(
-            __( '<div><a class="button-container" href="'.get_permalink().'"><button class="more-button">Learn More</button></a></div>', 'twentysixteen' ),
+            __( '<div><a class="button-container" href="'.$link_button.'"><button class="more-button">'.$button.'</button></a></div>', 'twentysixteen' ),
             get_the_title()
           );
       ?>

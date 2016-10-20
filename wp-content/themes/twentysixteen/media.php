@@ -38,7 +38,8 @@ get_header(); ?>
       for ($index = 1; $index < 3; $index ++) {
         $image = (object) [
           'src' => get_field('image_' . $index, $id),
-          'link' => get_field('link_image_' . $index, $id)
+          'link' => get_field('link_image_' . $index, $id),
+          'link_text' => get_field('link_text_image_' . $index, $id)
         ];
         secure_array_push($images, $image, $image->src);
       }
@@ -146,9 +147,13 @@ get_header(); ?>
                 <?php foreach ($mediapost->images as $image) : ?>
                   <div class="video">
                     <?php if($image->link) : ?>
-                      <a href="<?= $image->link ?>" target="_blank"><img src="<?= $image->src ?>"></a>
+                      <?php if($image->link_text) { ?>
+                            <h5><a href="<?= $image->link ?>" target="_blank"><?=$image->link_text?></a></h5>
+                            <a href="<?= $image->link ?>" target="_blank"><img src="<?= $image->src ?>"></a>
+                      <?php }else{?>
+                            <a href="<?= $image->link ?>" target="_blank"><img src="<?= $image->src ?>"></a>
+                      <?php }?>
                     <?php endif; ?>
-
                     <?php if(!$image->link) : ?>
                       <img src="<?= $image->src ?>">
                     <?php endif; ?>

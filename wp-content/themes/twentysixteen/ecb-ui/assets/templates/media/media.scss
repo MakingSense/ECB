@@ -135,7 +135,12 @@
                 color: black;
               }
 
-              &.active {
+            }
+          }
+          
+          &.active {
+            ul {
+              li.active {
                 a {
                   color: #01d2a3;
                 }

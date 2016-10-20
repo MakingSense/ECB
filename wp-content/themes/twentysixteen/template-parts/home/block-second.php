@@ -4,10 +4,10 @@
     <div class="background-img" style="background: url(<?php echo get_field('image_feature'); ?>); background-size: cover; -webkit-filter: grayscale(1); filter: grayscale(1);"></div>
     <div class="text">
       <?php the_title( sprintf( '<h3>', esc_url( get_permalink() ) ), '</h3>' ); ?>
-      <?php date_block_home() ?>
-      <?php custom_excerpt_length(the_excerpt()); ?>
+      <?php get_date_block_home() ?>
+      <p><?php custom_excerpt_length(the_excerpt()); ?></p>
       <?php
-          buttom_block_home();
+          get_text_link_button_home();
       ?>
     </div>
   </div>

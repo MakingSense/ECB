@@ -83,7 +83,7 @@ get_header(); ?>
                 <h4><?= $media->date ?></h4>
                   <?php if($media->link->url) :?>
                     <div class="button-container">
-                      <a href="<?= $media->link->url ?>">
+                      <a href="<?= $media->link->url ?>" target="_blank">
                         <button class="more-button"><?= $media->link->text ?></button>
                       </a>
                     </div>

@@ -327,9 +327,11 @@
             height: 380px;
             .text {
               width: 50%;
+              max-height: 380px;
               display: flex;
               flex-direction: column;
               justify-content: space-around;
+              position: absolute;
 
               h3 {
                 max-height: 125px;
@@ -347,6 +349,14 @@
               white-space: nowrap;
               text-overflow: ellipsis;
               overflow: hidden;
+            }
+
+            .wrapper {
+              background: #e5fd79;
+
+              .text {
+                left: 0;
+              }
             }
           }
 
@@ -371,7 +381,12 @@
 
           &.block-third {
             .wrapper {
-              flex-direction: row-reverse;
+              flex-direction: row;
+              background: #bdf6c8;
+
+              .text {
+                right: 0;
+              }
             }
           }
         }

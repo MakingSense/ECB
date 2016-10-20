@@ -27,7 +27,7 @@
 /**
  * Twenty Sixteen only works in WordPress 4.4 or later.
  */
-function buttom_block_home() {
+function get_text_link_button_home() {
     if(trim(get_field('link_button', get_the_ID() ))!=""  && trim(get_field('button_name', get_the_ID() ))!="" ){
         $link_button = get_field('link_button');
         $button = get_field('button_name');
@@ -37,7 +37,7 @@ function buttom_block_home() {
         );
     }	
 }
-function date_block_home() {
+function get_date_block_home() {
     if(trim(get_field("date", get_the_ID() ))!="") {
         $date = get_field("date", get_the_ID() );
          echo '<h4>'.$date.'</h4>';

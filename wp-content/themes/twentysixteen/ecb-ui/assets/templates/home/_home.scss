@@ -324,7 +324,7 @@
 
         &.block {
           .wrapper {
-            height: 347px;
+            height: 380px;
             .text {
               width: 50%;
               display: flex;
@@ -333,6 +333,10 @@
 
               h3 {
                 max-height: 125px;
+              }
+
+              p {
+                font-size: 18px;
               }
             }
           }

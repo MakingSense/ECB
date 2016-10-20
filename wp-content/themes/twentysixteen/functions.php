@@ -27,7 +27,22 @@
 /**
  * Twenty Sixteen only works in WordPress 4.4 or later.
  */
-
+function buttom_block_home() {
+    if(trim(get_field('link_button', get_the_ID() ))!=""  && trim(get_field('button_name', get_the_ID() ))!="" ){
+        $link_button = get_field('link_button');
+        $button = get_field('button_name');
+        echo sprintf(
+            __( '<div><a class="button-container" href="'.$link_button.'"><button class="more-button">'.$button.'</button></a></div>', 'twentysixteen' ),
+            get_the_title()
+        );
+    }	
+}
+function date_block_home() {
+    if(trim(get_field("date", get_the_ID() ))!="") {
+        $date = get_field("date", get_the_ID() );
+         echo '<h4>'.$date.'</h4>';
+    }
+}
 function custom_excerpt_length( $length ) {
 	return 30;
 }

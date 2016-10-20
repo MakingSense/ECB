@@ -12,6 +12,12 @@
     }
 
     .blog-wrapper {
+      &.mobile-only {
+        h2 {
+          margin-bottom: 0;
+        }
+      }
+
       .blog-page {
         .owl-nav {
           & > * {
@@ -38,10 +44,8 @@
         }
 
         .post-thumbnail {
-          overflow: hidden;
-          flex-basis: 50%;
+          height: 200px;
           display: flex;
-          position: relative;
         }
 
         .text {
@@ -77,18 +81,21 @@
           }
         }
 
-
       }
 
-      &.block-first {
-        .wrapper {
-          height: 347px;
-        }
-      }
 
       &.block-second {
         .wrapper {
-          height: 347px;
+          background: $msuif-background;
+          position: relative;
+
+          .background-img{
+            height: 100%;
+            width: 100%;
+            opacity: 0.3;
+            position: absolute;
+          }
+
           .text {
             background: transparent;
             position: relative;
@@ -113,7 +120,7 @@
 
       &.block-third {
         .wrapper {
-          height: 347px;
+          flex-direction: column-reverse;
           .text {
             background: #bdf6c8;
           }
@@ -279,6 +286,14 @@
         .wrapper {
           flex-direction: row-reverse;
 
+          .post-thumbnail {
+            height: 100%;
+            display: flex;
+            flex-basis: 50%;
+            overflow: hidden;
+            position: relative;
+          }
+
           img {
             position: absolute;
             height: 100%;
@@ -309,11 +324,15 @@
 
         &.block {
           .wrapper {
+            height: 347px;
             .text {
               width: 50%;
+              display: flex;
+              flex-direction: column;
+              justify-content: space-around;
 
               h3 {
-                max-height: 100px;
+                max-height: 125px;
               }
             }
           }
@@ -330,8 +349,9 @@
           &.block-second {
             .wrapper {
               flex-direction: row;
+              background: $msuif-background;
 
-              .arturo {
+              .background-img {
                 height: 100%;
                 width: 100%;
                 opacity: 0.3;
@@ -339,8 +359,15 @@
 
                 + .text {
                   position: absolute;
+                  left: 0;
                 }
               }
+            }
+          }
+
+          &.block-third {
+            .wrapper {
+              flex-direction: row-reverse;
             }
           }
         }

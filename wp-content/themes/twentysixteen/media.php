@@ -54,11 +54,11 @@ get_header(); ?>
     }
 
     public function generateAsideMenu($activeIndex) {
-      $box="<aside class='desktop-only'><ul>";
+      $box="<aside class='media-menu desktop-only'><ul>";
       $mediaIndex = 0;
       foreach($this->media_posts as $mp ){
-        $active = ($mediaIndex === $activeIndex) ? 'class="active"' : '';
-        $box.="<li ".$active."><a href='#".$mp->post_name."'>".get_the_title($mp->ID)."</a></li>";
+        $active = ($mediaIndex === $activeIndex) ? 'active' : '';
+        $box.="<li class='menuitem ".$active."'><a href='#".$mp->post_name."'>".get_the_title($mp->ID)."</a></li>";
         $mediaIndex++;
       }
       $box.="</ul></aside>";

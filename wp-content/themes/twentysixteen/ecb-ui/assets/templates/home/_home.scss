@@ -70,13 +70,16 @@
             color: black;
           }
 
-          .button-container {
+          .button-wrapper {
             text-align: center;
 
-            .more-button {
-              background: white;
-              border: 1px solid black;
-              margin-top: 15px;
+            .button-container {
+
+              .more-button {
+                background: white;
+                border: 1px solid black;
+                margin-top: 15px;
+              }
             }
           }
         }
@@ -315,7 +318,7 @@
               min-height: 27px;
             }
 
-            .button-container {
+            .button-wrapper {
               text-align: left;
             }
           }

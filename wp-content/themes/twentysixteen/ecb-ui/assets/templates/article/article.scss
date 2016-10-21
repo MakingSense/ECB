@@ -76,7 +76,7 @@
     }
 
     aside {
-      .images-container {
+      &.images-container {
         .image {
           img {
             width: 100%;
@@ -89,23 +89,14 @@
           }
         }
 
-        .mobile-only {
+        &.mobile-only {
           .image {
             height: 234px;
             margin: 0 1%;
             display: block;
-          }
 
-          .owl-stage-outer {
-            width: 130%;
-            margin-left: -25%;
-          }
-
-          .owl-nav {
-
-            & > * {
-              background-color: rgba(255, 255, 255, 0.5);
-              width: 20%;
+            img {
+              height: 200px;
             }
           }
         }
@@ -126,6 +117,7 @@
 
             img {
               height: 200px;
+              object-fit: cover;
             }
           }
         }
@@ -191,31 +183,31 @@
 
       section {
         display: flex;
-        flex-basis: 65%;
         padding-bottom: 28px;
+        justify-content: space-between;
 
         article {
           &.text {
-            width: 65%;
+            width: 60%;
           }
         }
 
         .carousel-wrapper {
-          height: 493px;
+          height: 500px;
 
           .owl-carousel {
             position: absolute;
-            height: 493px;
+            height: 500px;
             width: 100%;
 
             .owl-stage-outer {
 
               .image {
-                max-height: 493px;
+                max-height: 500px;
                 width: auto;
 
                 img {
-                  height: 493px;
+                  height: 500px;
                 }
               }
             }
@@ -238,12 +230,9 @@
       aside {
         display: flex;
         flex-direction: row-reverse;
-        flex-basis: 35%;
-        width: 35%;
 
         .images-container {
-          padding: 16px;
-          max-width: 270px;
+          padding-top: 16px;
           display: flex;
           flex-direction: column;
 
@@ -251,8 +240,15 @@
             display: flex;
             flex-direction: column;
             padding-bottom: 30px;
+
             img {
-              width: 100%;
+              width: 250px;
+              height: 250px;
+              object-fit: cover;
+            }
+
+            p {
+              font-size: 14px;
             }
           }
         }
@@ -274,6 +270,10 @@
 
       .article.featured {
         padding-top: 0;
+
+        .wrapper {
+          height: 280px;
+        }
       }
     }
 

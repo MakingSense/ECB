@@ -148,7 +148,7 @@
 
     </div>
     <?php if(is_array($article->related_articles)) { ?>
-    <hr>
+    <hr class="slim">
 
     <section class="component--featured">
       <h2>You May Also Like</h2>

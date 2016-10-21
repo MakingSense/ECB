@@ -1,4 +1,4 @@
-/* 
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -28,7 +28,7 @@ function main($) {
   }
   var _form = $('[data-id="embedded_signup:form"]');
 
- 
+
   _form.submit(function(e) {
     e.preventDefault();
 
@@ -171,6 +171,7 @@ function main($) {
               var required = item.required;
               var inputUI = _form.find('[name=' + offender + ']');
               var labelUI = null;
+              var message = $('#submit-message');
               var p = inputUI.parent('p');
               if (p.length === 0) {
                 labelUI = _form.find('[data-name=' + offender + ']');
@@ -187,27 +188,27 @@ function main($) {
 
               if (required === true && !offender.match(/list.*/)) {
                 if (!labelUI.hasClass('ctct-flagged')) {
-                  $(".subscribe-button").after(errorSection('required'));
+                  message.html(errorSection('required'));
                 }
               } else if (offender === 'ca') {
                 if (!labelUI.hasClass('ctct-flagged')) {
-                  $(".subscribe-button").after(errorSection('ca'));
+                  message.html(errorSection('ca'));
                 }
               } else if (offender === 'email' || offender === 'unsubscribed') {
                 if (!labelUI.hasClass('ctct-flagged')) {
                   if (offender === 'email') {
-                    $(".subscribe-button").after(errorSection('email'));
+                    message.html(errorSection('email'));
                   } else {
-                    labelUI.after(errorSection('unsubscribed'));
+                    message.html(errorSection('unsubscribed'));
                   }
                 }
               } else if (offender.match(/list.*/)) {
                 if (!labelUI.hasClass('ctct-flagged')) {
-                  labelUI.after(errorSection('list'));
+                  message.html(errorSection('list'));
                 }
               } else {
                 if (!labelUI.hasClass('ctct-flagged')) {
-                  labelUI.after(errorSection('generic'));
+                  message.html(errorSection('generic'));
                 }
               }
               inputUI.addClass(errClass);
@@ -222,15 +223,11 @@ function main($) {
       },
       success: function(data, status, xhr) {
         /* If there is no redirect, display success message as usual */
-        if (redirect === false)
-        {
-          $('.ctct-embed-signup p').show();
-          $('.ctct-embed-signup h2').show();
-          $('.ctct-embed-signup button').show();
-          $('.ctct-embed-signup form').show();
-          $("#email_input").val("");
-          $('#success_message').removeClass('u-hide');
-          $('#success_message').css('visibility', 'visible');
+        if (redirect === false) {
+          $("#email_input").val('');
+          $('#submit-message')
+            .html("You've successfully subscribed to our newsletter!")
+            .css('visibility', 'visible');
         }
         /* Otherwise, redirect the browser to the specified redirect */
         else
@@ -244,7 +241,6 @@ function main($) {
 }
 
 function errorSection(errorType) {
-  return '<div style="text-align:right; float: right;" class="' + msgErrClass + '">' + localizedErrMap[errorType] + '</div>';
+  $('#submit-message').css('visibility', 'visible');
+  return '<span class="' + msgErrClass + '">' + localizedErrMap[errorType] + '</span>';
 }
-
-

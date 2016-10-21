@@ -112,13 +112,26 @@
 
           .image {
             margin: 0 auto;
-            width: 300px;
+            width: 100%;
             overflow: hidden;
 
             img {
               height: 200px;
+              width: 85%;
+              margin: 0 auto;
               object-fit: cover;
             }
+          }
+        }
+
+        .owl-nav {
+
+          .owl-next {
+            right: 5px;
+          }
+
+          .owl-prev {
+            left: 5px;
           }
         }
       }
@@ -157,6 +170,22 @@
   }
 
 }
+
+@include respond-to('ipad-landscape') {
+  .section--article {
+    .content {
+      .carousel-wrapper {
+        .owl-carousel {
+          .owl-nav {
+            width: 100%;
+            margin-left: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
 
 @include respond-to('isdesktop') {
 
@@ -208,6 +237,7 @@
 
                 img {
                   height: 500px;
+                  width: 100%;
                 }
               }
             }
@@ -256,10 +286,11 @@
         .author {
           flex-direction: column;
           padding: 16px;
-          max-width: 270px;
+          width: 270px;
 
           figure {
             margin: 0 auto;
+            text-align: center;
           }
         }
       }

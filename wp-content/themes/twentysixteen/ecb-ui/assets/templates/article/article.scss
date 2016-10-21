@@ -256,10 +256,11 @@
         .author {
           flex-direction: column;
           padding: 16px;
-          max-width: 270px;
+          width: 270px;
 
           figure {
             margin: 0 auto;
+            text-align: center;
           }
         }
       }

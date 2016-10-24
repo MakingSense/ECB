@@ -60,7 +60,7 @@ $msuif-wrapper-min-width:         torem(1200px);
 $msuif-breakpoints: (
   'desktop-fhd': (max-width: 1920px),
   'desktop': (max-width: 1366px),
-  'ipad': (min-width: 1023px, max-width: 1024px),
+  'istablet': (min-device-width : 768px, max-device-width : 1024px),
   'isdesktop': (min-width: 1024px),
   'ismobile': (max-width: 1024px),
   'iphone': (max-width: 980px)

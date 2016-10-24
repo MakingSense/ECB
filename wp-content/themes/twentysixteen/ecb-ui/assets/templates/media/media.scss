@@ -137,7 +137,7 @@
 
             }
           }
-          
+
           &.active {
             ul {
               li.active {
@@ -233,6 +233,46 @@
               display: inline-block;
               visibility: hidden;
               padding: 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@include respond-to('istablet') {
+  .section--media {
+
+    .content {
+      article.media {
+        .wrapper {
+          margin: 0px -75px;
+
+          .text {
+            padding: 30px 75px;
+            min-height: 312px;
+            flex: 1 0 auto;
+
+            h2 {
+              margin: 0;
+              font-size: 24px;
+            }
+
+            h3 {
+              font-size: 72px;
+              margin: 0;
+            }
+
+            h4 {
+              font-size: 34px;
+              margin-top: 0;
+            }
+
+
+
+            .button-container {
+              text-align: left;
             }
           }
         }

@@ -100,6 +100,28 @@
             }
           }
         }
+
+        .owl-stage-outer {
+          height: 250px;
+          padding-left: 15%;
+
+          .owl-item {
+            opacity: 0.3;
+
+            &.active {
+              width: 20% !important;
+              opacity: 1;
+            }
+
+            &.active ~ .active {
+              opacity: 0.3;
+            }
+
+            &:last-child {
+              width: 5% !important;
+            }
+          }
+        }
       }
     }
 

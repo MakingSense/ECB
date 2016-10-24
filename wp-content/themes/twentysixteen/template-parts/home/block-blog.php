@@ -6,7 +6,7 @@
       <h4><?= get_the_date() . ' | '; ?><?= get_author_name() ?></h4>
       <?php
           echo sprintf(
-            __( '<div><a class="button-container" href="'.get_permalink().'"><button class="more-button">Read More</button></a></div>', 'twentysixteen' ),
+            __( '<div class="button-wrapper"><a class="button-container" href="'.get_permalink().'"><button class="more-button">Read More</button></a></div>', 'twentysixteen' ),
             get_the_title()
           );
       ?>

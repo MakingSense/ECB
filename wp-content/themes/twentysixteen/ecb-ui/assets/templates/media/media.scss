@@ -50,9 +50,9 @@
         flex-direction: column;
         justify-content: center;
 
-
         h2 {
           font-size: 18px;
+          font-family: $flamamedium;
         }
 
         h3 {
@@ -73,11 +73,12 @@
         }
 
         .button-container {
+          margin-top: 40px;
 
           .more-button {
             background: white;
             border: 1px solid black;
-            margin-top: 15px;
+            @extend .ellipsis;
           }
         }
       }
@@ -173,6 +174,10 @@
             display: flex;
             position: relative;
 
+            .owl-dots {
+              bottom: 25px;
+            }
+
             .video {
               width: auto;
               padding: 10px;
@@ -200,7 +205,7 @@
               padding: 8px;
               margin-right: 4px;
               display: inline-block;
-              min-width: 202px;
+              min-width: 190px;
 
               input {
                 background: transparent;
@@ -222,7 +227,6 @@
 
             .submit-button {
               background: white;
-              width: 120px;
               border: 1px solid black;
             }
 
@@ -335,7 +339,7 @@
           flex: 1 0 auto;
 
           h2 {
-            margin: 0;
+            margin: 10px 0 -5px 0;
             font-size: 24px;
           }
 
@@ -346,13 +350,14 @@
 
           h4 {
             font-size: 34px;
-            margin-top: 0;
+            margin: -5px;
           }
 
 
 
           .button-container {
             text-align: left;
+            margin-top: 45px;
           }
         }
       }

@@ -9,9 +9,9 @@
     }));
 
     section.find('.aside.images-container.owl-carousel.mobile-only').owlCarousel(getCarouselConfig({
-      items: 1,
+      items: 2,
       nav: false,
-      dots: true
+      dots: false
     }));
 
     section.find('.article-container.owl-carousel.mobile-only').owlCarousel(getCarouselConfig({

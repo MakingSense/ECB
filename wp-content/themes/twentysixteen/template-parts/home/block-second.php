@@ -3,10 +3,10 @@
   <div class="wrapper">
     <div class="background-img" style="background: url(<?php echo get_field('feature_image'); ?>); background-size: cover; -webkit-filter: grayscale(1); filter: grayscale(1);"></div>
     <div class="text">
+      <h3><?=mb_strimwidth( get_the_title(),0, 53, '...' )?></h3>
       <?php
-      echo the_title('<h3>','</h3>');
        get_date_block_home();
-       echo mb_strimwidth(strip_tags(get_the_content()), 0, 270, "..." );
+       echo mb_strimwidth(strip_tags(get_the_content()), 0, 269, "..." );
        get_text_link_button_home();
       ?>
     </div>

@@ -30,7 +30,7 @@
 function get_text_link_button_home() {
     if(trim(get_field('link_button', get_the_ID() ))!=""  && trim(get_field('button_name', get_the_ID() ))!="" ){
         $link_button = get_field('link_button');
-        $button = get_field('button_name');
+        $button = mb_strimwidth(get_field('button_name'),0, 10, "...");
         echo sprintf(
             __( '<div class="button-wrapper"><a class="button-container" href="'.$link_button.'"><button class="more-button">'.$button.'</button></a></div>', 'twentysixteen' ),
             get_the_title()

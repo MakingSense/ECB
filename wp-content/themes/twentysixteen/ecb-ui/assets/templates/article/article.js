@@ -16,7 +16,7 @@
 
     section.find('.article-container.owl-carousel.mobile-only').owlCarousel(getCarouselConfig({
       items: 1,
-      dots: true
+      dots: false
     }));
   }
 })();

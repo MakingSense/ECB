@@ -172,7 +172,7 @@
 
   .wrapper {
     position: relative;
-    padding-top: 17px;
+    padding: 18px 18px 0;
   }
 
   .component--featured {
@@ -185,8 +185,15 @@
         margin: 0;
 
         .article.featured {
-          padding: 0;
+          padding: 1px;
+          .text {
+            height: 200px;
+          }
         }
+      }
+
+      .owl-nav {
+        padding-top: 10px;
       }
     }
   }

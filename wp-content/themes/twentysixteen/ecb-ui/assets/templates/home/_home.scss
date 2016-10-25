@@ -131,12 +131,16 @@
       }
 
       &.blog {
+
         .wrapper {
           position: relative;
 
           .text {
             height: 100%;
             width: 100%;
+            @include respond-to('ismobile') {
+              min-height: 360px;
+            }
             background: rgba(0, 209, 163, 0.7);
             padding-bottom: 40px;
 

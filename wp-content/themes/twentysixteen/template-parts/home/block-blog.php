@@ -2,7 +2,7 @@
   <div class="wrapper">
     <div class="text">
       <?php if(get_field('feature_image')) {
-        $style = "background: url(".get_field('feature_image').")";
+        $style = "background: url(".get_field('feature_image')."); background-size: cover;";
       } else {
         $style = "background-color: white";
       }

@@ -31,9 +31,6 @@ function get_pilars() {
      foreach ($pilars_text as &$value) {
         $class = '';
 
-        if ($pilars_count === 0){
-          $class = 'active';
-        }
         $desktop_pilars .= '<a href="#" class="'.$class.'" data-jumbo-id="'.$pilars_count.'">'.$value['title'].'</a>'
                          .'<p class="text mobile-only '.$class.'">'.$value['text'].'</p>';
         $mobile_pilars  .= '<p class="text '.$class.'"><span class="ms-icon '.$value['type_icon'].'"></span>'
@@ -49,7 +46,7 @@ function get_pilars() {
  ?>
 
  <div class="component--jumbo">
-  <div class="image-container active grayscale">
+  <div class="image-container grayscale active">
     <img src="<?php echo get_template_directory_uri(); ?>/img/urban-design-logo.jpg">
     <h3>Reshaping cities for the long-term health of human and natural systems</h3>
   </div>
@@ -70,7 +67,7 @@ function get_pilars() {
   </div>
 
   <div class="owl-dots">
-    <div class="owl-dot active"><span></span></div>
+    <div class="owl-dot"><span></span></div>
     <div class="owl-dot"><span></span></div>
     <div class="owl-dot"><span></span></div>
     <div class="owl-dot"><span></span></div>

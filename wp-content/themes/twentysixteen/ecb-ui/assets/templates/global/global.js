@@ -1,3 +1,5 @@
+var isMobile = window.innerWidth < 1024;
+
 function getCarouselConfig(config) {
   var defaultValues = {
     items: 2,

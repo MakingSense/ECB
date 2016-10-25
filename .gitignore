@@ -71,3 +71,9 @@ wp-content/themes/twentysixteen/ecb-ui/node_modules/
 wp-content/themes/twentysixteen/ecb-ui/bower_components/
 wp-content/uploads/
 wp-content/themes/twentysixteen/*.html
+
+*.map
+
+wp-content/themes/twentysixteen/css/styles.css
+
+wp-content/themes/twentysixteen/js/scripts.min.js

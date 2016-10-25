@@ -46,6 +46,9 @@
         .post-thumbnail {
           height: 200px;
           display: flex;
+          img {
+            object-fit: cover;
+          }
         }
 
         .text {

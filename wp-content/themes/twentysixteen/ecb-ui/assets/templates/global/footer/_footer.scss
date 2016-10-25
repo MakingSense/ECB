@@ -17,6 +17,10 @@
       width: 100%;
       display: block;
     }
+
+    span {
+      font-size: 13px;
+    }
   }
 
   .subscribe-container {
@@ -42,7 +46,8 @@
 
     .subscribe-button {
       background: white;
-      width: 120px;
+      max-width: 50%;
+      margin-left: 15px;
     }
 
     .submit-message {
@@ -73,7 +78,7 @@
     padding: 8px;
     margin-right: 4px;
     display: inline-block;
-    min-width: 202px;
+    max-width: 50%;
 
     input {
       background: transparent;
@@ -116,6 +121,17 @@
   }
 }
 
+@include respond-to('istablet') {
+  .component--footer {
+    .contact-container {
+      :nth-child(1) {
+        width: auto;
+        display: inline;
+      }
+    }
+  }
+}
+
 @include respond-to('isdesktop') {
   .component--footer {
     padding: 23px 88px;
@@ -130,6 +146,10 @@
       :nth-child(1) {
         width: auto;
         display: inline;
+      }
+
+      span {
+        font-size: 16px;
       }
     }
 

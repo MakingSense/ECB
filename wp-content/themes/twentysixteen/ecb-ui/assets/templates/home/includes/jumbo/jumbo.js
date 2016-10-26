@@ -5,7 +5,10 @@
 
   $(document).ready(function(){
     setTimeout(removeJumboGrayscale, 5000);
-    setInterval(autochangeJumboImage, 10000);
+    if (!isMobile) {
+      setInterval(autochangeJumboImage, 10000);
+      changeJumboActive(null, 0);
+    }
   });
 
   $jumboSelectorButtons.on('click', changeJumboActive);

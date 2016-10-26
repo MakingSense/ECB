@@ -100,6 +100,7 @@
             width: 100%;
             opacity: 0.3;
             position: absolute;
+            object-fit: cover;
             @extend .grayscale;
           }
 
@@ -124,6 +125,15 @@
         .wrapper {
           position: relative;
 
+          .background-img {
+            height: 100%;
+            width: 100%;
+            background-color: white;
+            position: absolute;
+            z-index: 0;
+            @extend .grayscale;
+          }
+
           .text {
             height: 100%;
             width: 100%;
@@ -132,6 +142,7 @@
             }
             background: rgba(0, 209, 163, 0.7);
             padding-bottom: 40px;
+            z-index: 2;
 
             h3 {
               height: 185px;
@@ -142,17 +153,6 @@
               font-family: $flamabasic;
               font-size: 14px;
               font-style: italic;
-            }
-
-            .background-img {
-              height: 100%;
-              width: 100%;
-              background-color: white;
-              filter: grayscale(1);
-              position: absolute;
-              top: 0;
-              left: 0;
-              z-index: -1;
             }
           }
         }

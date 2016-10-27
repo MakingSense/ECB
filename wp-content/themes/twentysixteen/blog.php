@@ -35,32 +35,35 @@ $the_query = new WP_Query( $args );
     <?php if( get_field('featured_articles',get_the_ID())) { ?>
       <?php $mobile=array();?>
       <section>
-        <h2>Featured</h2>
+        <h2>Featured Articles</h2>
         <section class="component--featured">
           <div class="article-wrapper">
             <section class="article-container desktop-only">
               <?php foreach( get_field('featured_articles',get_the_ID()) as $featured) { ?>
+                <?php
+                $cat="Uncategorized";
+                $date="";
+                $background="";
+                if(get_post_type($featured->ID)=='post'){
+                  $background=get_field('feature_image',$featured->ID);
+                  $date=get_field('date',$featured->ID);
+                  $cats=get_the_category($featured->ID);
+                  if(count($cats) > 0) {
+                    $cat=$cats[0]->name;
+                  }
+                }
+                else {
+                  if(get_post_type($featured->ID)=='page'){
+                    $background=get_field('thumbnail',$featured->ID);
+                    if(get_field('category', $featured->ID)) {
+                      $cat=get_field('category', $featured->ID);
+                    }
+                  }
+                }
+                ?>
                 <article class="article featured">
                   <div class="wrapper">
-                    <a class="text" style="background-image: url();" href="<?=get_permalink($featured->ID)?>">
-                      <?php
-                      $cat="Uncategorized";
-                      $date="";
-                      if(get_post_type($featured->ID)=='post'){
-                        $date=get_field('date',$featured->ID);
-                        $cats=get_the_category($featured->ID);
-                        if(count($cats) > 0) {
-                          $cat=$cats[0]->name;
-                        }
-                      }
-                      else {
-                        if(get_post_type($featured->ID)=='page'){
-                          if(get_field('category', $featured->ID)) {
-                            $cat=get_field('category', $featured->ID);
-                          }
-                        }
-                      }
-                      ?>
+                    <a class="text" style="background-image: url(<?=$background?>);" href="<?=get_permalink($featured->ID)?>">
                       <?php if($cat!=="Uncategorized") { ?>
                         <h2><?=$cat?></h2>
                         <?php } ?>
@@ -73,7 +76,7 @@ $the_query = new WP_Query( $args );
                     </div>
                   </article>
                   <?php
-                  $mobile[]=array('cat'=>$cat,'url'=>get_permalink($featured->ID),'title'=>get_the_title($featured->ID),'date'=>$date);
+                  $mobile[]=array('background'=>$background, 'cat'=>$cat,'url'=>get_permalink($featured->ID),'title'=>get_the_title($featured->ID),'date'=>$date);
                 } ?>
               </section>
             </div>
@@ -84,7 +87,7 @@ $the_query = new WP_Query( $args );
                     <div class="owl-item">
                       <article class="article featured">
                         <div class="wrapper">
-                          <a class="text" style="background-image: url();" href="<?=$item['url']?>">
+                          <a class="text" style="background-image: url(<?=$item['background']?>);" href="<?=$item['url']?>">
                             <?php if($cat!=="Uncategorized") { ?>
                               <h2><?=$item['cat']?></h2>
                               <?php } ?>

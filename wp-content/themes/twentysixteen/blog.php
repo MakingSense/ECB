@@ -28,20 +28,17 @@ Template Name: Page Blog
 
 <?php get_header(); ?>
 <main role="main" class="section--blog">
-
   <div class="head">
     <h1>Blog</h1>
   </div>
-
   <section class="content">
-
-<?php if( get_field('featured_articles',get_the_ID())) { ?>
+  <?php if( get_field('featured_articles',get_the_ID())) { ?>
   <?php $mobile=array();?>
     <section>
       <h2>Featured</h2>
       <section class="component--featured">
       	<div class="article-wrapper">
-    		<section class="article-container desktop-only">
+    		    <section class="article-container desktop-only">
              <?php foreach( get_field('featured_articles',get_the_ID()) as $featured) { ?>
               <article class="article featured">
     						<div class="wrapper">
@@ -49,7 +46,6 @@ Template Name: Page Blog
                     <?php
                     $cat="Uncategorized";
                     $date="";
-
                     if(get_post_type($featured->ID)=='post'){
                       $date=get_field('date',$featured->ID);
                       $cats=get_the_category($featured->ID);
@@ -57,7 +53,7 @@ Template Name: Page Blog
                         $cat=$cats[0]->name;
                       }
                     }
-                    else{
+                    else {
                        if(get_post_type($featured->ID)=='page'){
                          if(get_field('category', $featured->ID)) {
                            $cat=get_field('category', $featured->ID);
@@ -70,16 +66,15 @@ Template Name: Page Blog
                     <?php } ?>
     								<h3><?=get_the_title($featured->ID)?></h3>
                     <?php if(trim($date)=="") {
-                       $date=get_the_date('F d, Y', $featured->ID);
-                    }?>
+                            $date=get_the_date('F d, Y', $featured->ID);
+                     }  ?>
                     <h4><?=$date?></h4>
-
     							</a>
     						</div>
     					</article>
               <?php
-              $mobile[]=array('cat'=>$cat,'url'=>get_permalink($featured->ID),'title'=>get_the_title($featured->ID),'date'=>$date);
-            } ?>
+                $mobile[]=array('cat'=>$cat,'url'=>get_permalink($featured->ID),'title'=>get_the_title($featured->ID),'date'=>$date);
+              } ?>
     				</section>
           </div>
           <section class="article-container mobile-only owl-carousel owl-loaded owl-drag">
@@ -99,17 +94,12 @@ Template Name: Page Blog
       						    </div>
       					    </article>
                   </div>
-                <?php } ?>  
+                <?php } ?>
                 </div>
               </div>
     	       </section>
            </section>
-
     <?php } ?>
-
-
-
-
     <h1><?php _e('All articles'); ?></h1>
     <form  id="filter-form">
         <?php wp_dropdown_categories(array('name' =>'category')); ?>

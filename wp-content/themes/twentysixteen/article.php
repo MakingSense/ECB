@@ -73,19 +73,12 @@
 
       <section>
         <article class="text">
-          <?php if(trim($article->content_1)) { ?>
+          <?php if(trim($article->content_1)) : ?>
             <p><?= $article->content_1 ?></p>
-          <?php } ?>
-          <?php
-          if(trim($article->quote)!="") {
-
-              $q_arr = explode(" ", $article->quote);
-              $last_word = $q_arr[count($q_arr) - 1];
-              $position = strrpos($article->quote, $last_word);
-
-            echo '<p class="quote">'.substr_replace($article->quote,'<label>'.$last_word.'</label>',$position).'</p>';
-          }
-          ?>
+          <?php endif; ?>
+          <?php if(trim($article->quote)!="") : ?>
+            <p class="quote"><span class="quote-mark open"/><?= $article->quote ?><span class="quote-mark close"/></p>
+          <?php endif; ?>
         </article>
 
         <aside>

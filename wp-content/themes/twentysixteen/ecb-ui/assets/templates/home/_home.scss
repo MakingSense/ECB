@@ -146,6 +146,7 @@
             }
             background: rgba(0, 209, 163, 0.7);
             padding-bottom: 40px;
+            z-index: 1;
 
             h3 {
               height: 185px;
@@ -157,17 +158,17 @@
               font-size: 14px;
               font-style: italic;
             }
+          }
 
-            .background-img {
-              height: 100%;
-              width: 100%;
-              background-color: white;
-              filter: grayscale(1);
-              position: absolute;
-              top: 0;
-              left: 0;
-              z-index: -1;
-            }
+          .background-img {
+            height: 100%;
+            width: 100%;
+            background-color: white;
+            filter: grayscale(1);
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
           }
         }
       }

@@ -223,11 +223,10 @@
 
       .component--jumbo-selector {
         .button-container {
-          display: flex;
-          justify-content: space-between;
-          flex-direction: column;
+          display: block;
 
           a {
+            display: block;
             background: #4a4a4a;
             width: 100%;
             padding: 1em;
@@ -486,13 +485,19 @@
         display: block;
         .component--jumbo-selector {
           .button-container {
+            display: flex;
+            justify-content: space-between;
             flex-direction: row;
+
             a {
+              display: flex;
               font-size: 18px;
               margin: 8px;
+
               &:first-of-type {
                 margin-left: 0;
               }
+
               &:last-of-type {
                 margin-right: 0;
               }

@@ -89,8 +89,10 @@ $primary_menu = get_primary_menu();
 						<div class="component--top-bar">
 
 						  <div class="top-menu-container">
-								<?php include(get_template_directory() .'/template-parts/social_networks.php'); ?>
-                <?php include(get_template_directory() .'/template-parts/top_menu.php'); ?>
+								<?php
+							  include(get_template_directory() .'/template-parts/top_menu.php');
+							  include(get_template_directory() .'/template-parts/social_networks.php');
+							  ?>
 						  </div>
 
 						  <hr>

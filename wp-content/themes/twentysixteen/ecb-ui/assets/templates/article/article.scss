@@ -31,34 +31,29 @@
       quotes: "“" "”" "‘" "’";
       margin: 30px;
 
-      &:before {
-        content: ' ';
-        background: url(../img/quote-mark-1.svg) no-repeat;
-        position: absolute;
-        font-size: 120px;
-        top: 0;
-        right: 100%;
-        color: #bdf6c8;
-        font-family: serif;
-        z-index: -1;
-        line-height: 45px;
-        width: 52px;
-        height: 40px;
-      }
+      .quote-mark {
+        position: relative;
+        &:after {
+          content: ' ';
+          position: absolute;
+          left: -25px;
+          top: 0;
+          z-index: -1;
+          width: 52px;
+          height: 40px;
+        }
 
-      &:after {
-        content: ' ';
-        background: url(../img/quote-mark-2.svg) no-repeat;
-        position: absolute;
-        font-size: 120px;
-        bottom: 0%;
-        left: 100%;
-        color: #bdf6c8;
-        font-family: serif;
-        z-index: -1;
-        line-height: 45px;
-        width: 52px;
-        height: 40px;
+        &.open {
+          &:after {
+            background: url(../img/quote-mark-1.svg) no-repeat;
+          }
+        }
+
+        &.close {
+          &:after {
+            background: url(../img/quote-mark-2.svg) no-repeat;
+          }
+        }
       }
     }
 

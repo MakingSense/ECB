@@ -73,12 +73,12 @@
 
       <section>
         <article class="text">
-          <?php if(trim($article->content_1)) { ?>
+          <?php if(trim($article->content_1)) : ?>
             <p><?= $article->content_1 ?></p>
-          <?php } ?>
-          <?php if(trim($article->quote)!="") { ?>
-            <p class="quote"><?= $article->quote ?></p>
-          <?php } ?>
+          <?php endif; ?>
+          <?php if(trim($article->quote)!="") : ?>
+            <p class="quote"><span class="quote-mark open"/><?= $article->quote ?><span class="quote-mark close"/></p>
+          <?php endif; ?>
         </article>
 
         <aside>

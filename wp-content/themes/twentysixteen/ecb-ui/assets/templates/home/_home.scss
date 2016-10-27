@@ -48,7 +48,6 @@
           display: flex;
           img {
             object-fit: cover;
-            width: 100%;
           }
         }
 
@@ -104,11 +103,7 @@
           }
 
           .text {
-            min-height: 240px;
-            display: flex;
             background: transparent;
-            flex-direction: column;
-            justify-content: space-around;
             position: relative;
 
             &:before {

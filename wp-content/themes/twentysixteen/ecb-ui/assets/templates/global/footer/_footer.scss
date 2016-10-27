@@ -19,7 +19,6 @@
     }
 
     :last-child {
-      width: 100%;
       display: block;
     }
   }
@@ -133,7 +132,6 @@
       }
 
       :last-child {
-        width: auto;
         display: inline;
       }
     }

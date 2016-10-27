@@ -23,7 +23,6 @@
         @include respond-to ('desktop') {
           font-size: 20px;
         }
-        
         &:before {
           color: white;
           content: "\25B8";
@@ -31,16 +30,6 @@
         }
       }
 
-    }
-  }
-}
-
-@include respond-to('istablet') {
-  .component--menu {
-    .main-menu {
-      button {
-        margin-left: 0;
-      }
     }
   }
 }

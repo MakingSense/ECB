@@ -80,47 +80,41 @@ $the_query = new WP_Query( $args );
                 } ?>
               </section>
             </div>
-            <section class="article-container mobile-only owl-carousel owl-loaded owl-drag">
-              <div class="owl-stage-outer">
-                <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: 0s;">
-                  <?php foreach($mobile as $item) { ?>
-                    <div class="owl-item">
-                      <article class="article featured">
-                        <div class="wrapper">
-                          <a class="text" style="background-image: url(<?=$item['background']?>);" href="<?=$item['url']?>">
-                            <?php if($cat!=="Uncategorized") { ?>
-                              <h2><?=$item['cat']?></h2>
-                              <?php } ?>
-                              <h3><?=$item['title']?></h3>
-                              <h4><?=$date?></h4>
-                            </a>
-                          </div>
-                        </article>
-                      </div>
+
+            <section class="article-container owl-carousel mobile-only">
+              <?php foreach($mobile as $item) { ?>
+                <article class="article featured">
+                  <a class="wrapper" href="<?=$item['url']?>">
+                    <div class="text" style="background-image: url(<?=$item['background']?>);">
+                      <?php if($cat!=="Uncategorized") { ?>
+                        <h2><?=$item['cat']?></h2>
                       <?php } ?>
+                      <h3><?=$item['title']?></h3>
+                      <h4><?=$date?></h4>
                     </div>
-                  </div>
-                </section>
-              </section>
+                  </a>
+                </article>
               <?php } ?>
-              <h1><?php _e('All articles'); ?></h1>
-              <form  id="filter-form">
-                <?php wp_dropdown_categories(array('name' =>'category')); ?>
-                <?php wp_dropdown_users(array('name' => 'author')); ?>
-
-                <select name='date' id="date-filter" class="filter-blog">
-                  <option value='DESC'>Newest First</option>
-                  <option value='ASC'>Oldest First</option>
-                </select>
-                <input id="btn-filter-blog" type="submit" name="submit" value="mostrar categorias" hidden/>
-
-              </form>
-
-              <section class="article-container" id="results">
-                <!-- Articles injected here with ajax -->
-              </section>
-
             </section>
-          </main>
+          </section>
+          <hr class="slim">
+          <?php } ?>
+          <h1><?php _e('All articles'); ?></h1>
+          <form  id="filter-form">
+            <?php wp_dropdown_categories(array('name' =>'category')); ?>
+            <?php wp_dropdown_users(array('name' => 'author')); ?>
 
-          <?php get_footer(); ?>
+            <select name='date' id="date-filter" class="filter-blog">
+              <option value='DESC'>Newest First</option>
+              <option value='ASC'>Oldest First</option>
+            </select>
+            <input id="btn-filter-blog" type="submit" name="submit" value="mostrar categorias" hidden/>
+          </form>
+
+          <section class="article-container" id="results">
+            <!-- Articles injected here with ajax -->
+          </section>
+        </section>
+      </main>
+
+      <?php get_footer(); ?>

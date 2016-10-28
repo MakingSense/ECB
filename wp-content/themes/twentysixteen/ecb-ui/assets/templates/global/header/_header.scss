@@ -45,9 +45,15 @@
   }
 
   .nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    width: 100%;
+    display: inline-block;
+
+    @include respond-to('ismobile') {
+      button.mobile-only.menu-button {
+        float: right;
+      }
+    }
+
     h2 {
       font-size: 25px;
 
@@ -194,6 +200,12 @@
 @include respond-to('isdesktop') {
   .component--header {
     margin: 16px 30px;
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
     figure {
       .logo {

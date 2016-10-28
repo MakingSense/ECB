@@ -12,10 +12,18 @@
     }
   }
 
+  .component--featured {
+    margin: 0 -14px;
+  }
+
   h1 {
     font-family: $flamamedium;
     font-size: 24px;
     padding: 26px 16px 0;
+  }
+
+  h2 {
+    padding-top: 30px;
   }
 
   form {
@@ -32,7 +40,6 @@
   }
 
   .article-container {
-
     article.blog {
       width: 100%;
 
@@ -48,6 +55,18 @@
         border: none;
         height: 4px;
         background: #000;
+      }
+    }
+
+    &.mobile-only {
+      .article.featured {
+        .text {
+          height: 210px;
+
+          h2 {
+            padding-top: 0;
+          }
+        }
       }
     }
   }
@@ -74,6 +93,10 @@
       }
     }
 
+    .component--featured {
+      margin: 0;
+    }
+
     .article-container {
       article.blog {
         width: 50%;
@@ -81,6 +104,18 @@
         .text {
           height: 309px;
           width: 100%;
+
+          h2 {
+            padding-top: 0;
+          }
+        }
+      }
+
+      .article.featured {
+        .text {
+          h2 {
+            padding-top: 0;
+          }
         }
       }
     }

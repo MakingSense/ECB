@@ -26,6 +26,7 @@
   }
 
   figure {
+    display: inline-block;
     margin: 0;
 
     .logo {
@@ -110,21 +111,52 @@
       top: 0;
 
       .menu-head {
-        display: flex;
-        justify-content: space-between;
+        display: block;
 
         .menu-button{
           color: white;
           background: none;
+          float: right;
         }
       }
 
       .menu-content {
+        width: 100%;
         font-family: $flamabold;
         letter-spacing: 1.2px;
         font-size: 18px;
-        display: flex;
-        flex-direction: column;
+
+        .component--menu {
+          display: block;
+        }
+
+        .top-menu-container {
+          display: block;
+
+          .top-menu {
+            display: block;
+
+            .menuitem {
+              display: block;
+            }
+          }
+
+          .component--social-menu {
+            display: block;
+            padding: 0 40px;
+            text-align: center;
+
+            a {
+              &:first-child {
+                float: left;
+              }
+
+              &:last-child {
+                float: right;
+              }
+            }
+          }
+        }
 
         a {
           color: white;

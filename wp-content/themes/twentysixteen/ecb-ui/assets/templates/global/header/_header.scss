@@ -15,7 +15,9 @@
     margin-left: 15px;
     margin-top: 3px;
     min-width: 122px;
-
+    @include respond-to('ipad-landscape') {
+      margin-left: 0px;
+    }
     &:hover {
       background: #01d2a3;
     }
@@ -216,7 +218,12 @@
 }
 
 @include respond-to ('desktop') {
-  .component--header figure  .desktop-only{
+  .component--header figure .desktop-only {
       width: toem(400px);
+  }
+}
+@include respond-to('ipad-landscape') {
+  .component--header .donate-button {
+    margin-left: 0px;
   }
 }

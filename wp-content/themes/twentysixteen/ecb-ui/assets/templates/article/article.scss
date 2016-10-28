@@ -201,7 +201,7 @@
 
 }
 
-@include respond-to('ipad-landscape') {
+@include respond-to('ipad-portrait') {
   .section--article {
     .content {
       .carousel-wrapper {

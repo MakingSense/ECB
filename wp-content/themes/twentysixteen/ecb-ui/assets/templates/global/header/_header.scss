@@ -49,13 +49,7 @@
     display: inline-block;
 
     @include respond-to('ismobile') {
-      a {
-        display: inline-block;
-        float: left;
-      }
-
-      button.mobile-only {
-        display: inline-block;
+      button.mobile-only.menu-button {
         float: right;
       }
     }

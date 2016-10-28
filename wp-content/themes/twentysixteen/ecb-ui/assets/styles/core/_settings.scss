@@ -61,8 +61,8 @@ $msuif-breakpoints: (
   'desktop-fhd': (max-width: 1920px),
   'desktop': (max-width: 1366px),
   'istablet': (min-device-width : 768px, max-device-width : 1024px),
-  'ipad-landscape': (orientation: landscape, max-width:1024px),
-  'ipad-portrait': (orientation: portrait),
+  'ipad-landscape': (orientation: landscape, max-width: 1024px),
+  'ipad-portrait': (orientation: portrait, min-height: 1023px, max-height: 1024px),
   'isdesktop': (min-width: 1023px),
   'ismobile': (max-width: 1023px),
   'iphone': (max-width: 980px)

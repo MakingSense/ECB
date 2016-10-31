@@ -10,7 +10,7 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
-
+               
 	</header><!-- .entry-header -->
 
 	<?php twentysixteen_post_thumbnail(); ?>
@@ -31,11 +31,15 @@
 	</div><!-- .entry-content -->
 
 	<?php
-			echo sprintf(
+		edit_post_link(
+			sprintf(
 				/* translators: %s: Name of current post */
 				__( 'Edit<span class="screen-reader-text"> "%s"</span>', 'twentysixteen' ),
 				get_the_title()
-			);
+			),
+			'<footer class="entry-footer"><span class="edit-link">',
+			'</span></footer><!-- .entry-footer -->'
+		);
 	?>
 
 </article><!-- #post-## -->

@@ -46,9 +46,9 @@
     public function getArticleById($id) {
       return $post = (object) [
         'title' => get_the_title($id),
-        'category' =>  get_field('category',$id),
+        'category' => search_category_post($id),
         'date' => get_the_date(),
-        'image' =>  get_field('thumbnail',$id),
+        'image' => wp_get_attachment_image_src(get_post_thumbnail_id($id), 'post')[0],
         'author' => get_the_author($id),
         'link' => get_the_permalink($id)
       ];
@@ -57,6 +57,7 @@
 
   $article = new Article;
 ?>
+
 <main role="main" class="section--article">
   <div class="hr-wrapper"><hr class="slim"></div>
   <section class="content">
@@ -64,7 +65,7 @@
     <div class="wrapper">
       <section>
         <article class="text">
-          <h3><?= $article->category ?></h3>
+          <h2><?= $article->category ?></h2>
           <h1><?= $article->title ?></h1>
           <h4><?= $article->date?></h4>
           <?php include(get_template_directory() .'/template-parts/social_networks.php'); ?>
@@ -151,7 +152,7 @@
     <hr>
 
     <section class="component--featured">
-      <h2>You May Also Like</h2>
+      <h1>You May Also Like</h1>
 
       <div class="article-wrapper">
         <section class="article-container desktop-only">

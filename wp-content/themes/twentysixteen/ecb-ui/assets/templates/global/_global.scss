@@ -39,20 +39,20 @@
         padding: 15px 9px;
 
         h2 {
-          font-family: $flamabasic;
+          font-family: 'flamabasic';
           font-size: 14px;
           margin: 5px 0;
         }
 
         h3 {
-          font-family: $flamabold;
+          font-family: 'flamabold';
           font-size: 20px;
           margin: 5px 0;
           letter-spacing: 0.5px;
         }
 
         h4 {
-          font-family: $flamabasic;
+          font-family: 'flamabasic';
           font-size: 14px;
           font-style: italic;
           margin: 5px 0;
@@ -84,14 +84,14 @@
   .article-container {
     article.article {
       padding: 15px;
-      width: 50%;
+      flex-basis: 50%;
 
       .wrapper {
         flex-direction: row-reverse;
 
         .text {
           padding: 30px 22px;
-          flex: 1 0 auto;
+          flex: 1 0 0;
 
           .button-container {
             text-align: left;

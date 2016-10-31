@@ -72,13 +72,13 @@
               white-space: nowrap;
 
               a {
-                font-family: $flamabold;
+                font-family: 'flamabold';
                 color: white;
               }
             }
 
             li:not(:first-child) {
-              font-family: $flamamedium;
+              font-family: 'flamamedium';
               list-style: none;
 
               a {

@@ -40,11 +40,17 @@
   }
 
   .article-container {
+    display: block;
+
     article.blog {
       width: 100%;
 
       a {
         color: black;
+
+        .text {
+          display: block;
+        }
       }
 
       &:before {
@@ -98,6 +104,8 @@
     }
 
     .article-container {
+      display: flex;
+
       article.blog {
         width: 50%;
 

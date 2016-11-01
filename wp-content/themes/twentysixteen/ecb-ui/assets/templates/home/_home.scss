@@ -47,7 +47,7 @@
           height: 200px;
           display: flex;
           img {
-            object-fit: cover;            
+            object-fit: cover;
             width: 100%;
           }
         }
@@ -148,6 +148,7 @@
             background: rgba(0, 209, 163, 0.7);
             padding-bottom: 40px;
             z-index: 1;
+            -webkit-transform:translateZ(1px);
 
             h3 {
               height: 185px;

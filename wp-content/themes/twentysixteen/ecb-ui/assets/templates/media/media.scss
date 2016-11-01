@@ -1,6 +1,8 @@
 .section--media {
 
   .owl-nav>* {
+    display: -webkit-box;
+    -webkit-box-align: center;
     padding: 15px;
   }
 
@@ -50,6 +52,7 @@
         flex-direction: column;
         justify-content: center;
         z-index: 1;
+        -webkit-transform:translateZ(1px);
 
         h2 {
           font-size: 18px;

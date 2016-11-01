@@ -151,10 +151,14 @@
 
           .owl-next {
             right: 5px;
+            display: -webkit-box;
+            -webkit-box-align: center;
           }
 
           .owl-prev {
             left: 5px;
+            display: -webkit-box;
+            -webkit-box-align: center;
           }
         }
       }
@@ -187,18 +191,27 @@
 
         .article.featured {
           padding: 1px;
-          .text {
-            height: 200px;
+          .wrapper {
+            display: -webkit-box;
+
+            .text {
+              height: 200px;
+              width: 100%
+            }
           }
         }
       }
 
       .owl-nav {
         padding-top: 10px;
+
+        .owl-prev, .owl-next{
+          display: -webkit-box;
+          -webkit-box-align: center;
+        }
       }
     }
   }
-
 }
 
 @include respond-to('ipad-portrait') {

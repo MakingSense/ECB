@@ -15,7 +15,7 @@
           <?php } ?>
           <?php include(get_template_directory() .'/template-parts/social_networks.php'); ?>
         </header>
-        <p><?= wpautop( get_the_content() ); ?></p>
+        <p><?php wpautop( the_content() ); ?></p>
       </div>
     </div>
   </section>
